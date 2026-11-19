@@ -188,3 +188,23 @@ with open(f'{W}/build/final_list.txt', 'w') as f:
     f.write("file 'body.mp4'\nfile 'endcard.mp4'\n")
 run(f"ffmpeg -v error -y -f concat -safe 0 -i {W}/build/final_list.txt -c copy -movflags +faststart {W}/build/final.mp4")
 print(run(f"ffprobe -v error -show_entries format=duration -of csv=p=0 {W}/build/final.mp4"))
+
+# ---------- v2: clean base (no burned captions) + timeline for motion graphics ----------
+acc = 0.0; seg_out = []
+for g in segs:
+    d = g['n']/FPS
+    seg_out.append(dict(s=acc/SPEED, e=(acc+d)/SPEED, shot=g['shot'], text=g['text'])); acc += d
+json.dump(dict(segs=seg_out, words=[dict(s=a, e=b, w=w) for a, b, w in cap_words],
+               body=body_len, end=END_CARD, emph=sorted(EMPH)),
+          open(f'{W}/build/timeline.json', 'w'), ensure_ascii=False, indent=1)
+run(f"ffmpeg -v error -y -i {W}/build/body_raw.mp4 -i {W}/build/speech.wav "
+    f"-filter_complex \"[0:v]setpts=PTS/{SPEED},fps={FPS}[v];"
+    f"[1:a]atempo={SPEED},loudnorm=I=-14:TP=-1.5:LRA=11,aresample=48000[a]\" "
+    f"-map [v] -map [a] -c:v libx264 -preset medium -crf 16 -pix_fmt yuv420p -c:a aac -b:a 192k -ar 48000 {W}/build/body_clean.mp4")
+run(f"ffmpeg -v error -y -loop 1 -t {D} -i {W}/build/last.png -f lavfi -t {D} -i anullsrc=r=48000:cl=stereo "
+    f"-filter_complex \"[0:v]gblur=sigma=40,eq=brightness=-0.22:saturation=0.75,format=yuv420p,fps={FPS}[v]\" "
+    f"-map [v] -map 1:a -c:v libx264 -preset medium -crf 16 -pix_fmt yuv420p -c:a aac -b:a 192k -ar 48000 {W}/build/endbg.mp4")
+with open(f'{W}/build/base_list.txt', 'w') as f:
+    f.write("file 'body_clean.mp4'\nfile 'endbg.mp4'\n")
+run(f"ffmpeg -v error -y -f concat -safe 0 -i {W}/build/base_list.txt -c copy {W}/build/base.mp4")
+print('base', run(f"ffprobe -v error -show_entries format=duration -of csv=p=0 {W}/build/base.mp4"))

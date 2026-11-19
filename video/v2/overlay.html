@@ -1,0 +1,343 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:M;src:url(fonts/Montserrat-500.ttf);font-weight:500}
+@font-face{font-family:M;src:url(fonts/Montserrat-600.ttf);font-weight:600}
+@font-face{font-family:M;src:url(fonts/Montserrat-700.ttf);font-weight:700}
+@font-face{font-family:M;src:url(fonts/Montserrat-800.ttf);font-weight:800}
+@font-face{font-family:P;src:url(fonts/PlayfairDisplay-600.ttf);font-weight:600;font-style:normal}
+@font-face{font-family:P;src:url(fonts/PlayfairDisplay-400i.ttf);font-weight:400;font-style:italic}
+@font-face{font-family:P;src:url(fonts/PlayfairDisplay-500i.ttf);font-weight:500;font-style:italic}
+@font-face{font-family:P;src:url(fonts/PlayfairDisplay-600i.ttf);font-weight:600;font-style:italic}
+@font-face{font-family:P;src:url(fonts/PlayfairDisplay-700i.ttf);font-weight:700;font-style:italic}
+:root{--ink:#1C2633;--cream:#FBF7F1;--teal:#2FCFB8;--tealD:#0F8F7E;--tealL:#A6F5E8;--lilac:#A48AD0;--pink:#EFA3BD;--pinkD:#C9567E}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;background:transparent;overflow:hidden}
+body{font-family:M,sans-serif;color:var(--ink);position:relative}
+.abs{position:absolute}
+.hide{opacity:0}
+.card{position:absolute;left:50%;background:rgba(251,247,241,.94);border-radius:34px;
+  box-shadow:0 18px 50px rgba(20,30,45,.28),0 2px 0 rgba(255,255,255,.6) inset;transform-origin:50% 0}
+.it{font-family:P;font-style:italic}
+.caps{font-family:M;font-weight:700;letter-spacing:.32em;text-transform:uppercase}
+svg{overflow:visible}
+/* captions */
+#cap{position:absolute;left:70px;right:70px;top:1270px;text-align:center;line-height:1.12}
+#cap span{display:inline-block;margin:0 .2em;font-family:M;font-weight:800;font-size:72px;color:#fff;
+  -webkit-text-stroke:10px rgba(14,20,30,.55);paint-order:stroke fill;text-shadow:0 6px 22px rgba(0,0,0,.45)}
+#cap span.e{font-family:P;font-style:italic;font-weight:700;font-size:86px;color:var(--tealL);letter-spacing:.01em}
+#grad{left:0;top:0;width:1080px;height:1920px;
+  background:linear-gradient(180deg,rgba(0,0,0,0) 52%,rgba(8,12,20,.18) 62%,rgba(8,12,20,.5) 100%)}
+#flash{left:0;top:0;width:1080px;height:1920px;background:#fff}
+/* nodes */
+.node{position:absolute;width:150px;text-align:center;transform:translateX(-50%)}
+.node .ci{width:96px;height:96px;margin:0 auto;border-radius:50%;background:#fff;border:3px solid rgba(28,38,51,.12);
+  display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(20,30,45,.12)}
+.node .lb{margin-top:10px;font-weight:700;font-size:25px}
+.bub{position:absolute;max-width:640px;padding:22px 32px;border-radius:34px;font-weight:600;font-size:36px;
+  box-shadow:0 14px 34px rgba(20,30,45,.25);white-space:nowrap}
+.bub.l{left:70px;background:rgba(251,247,241,.96);border-bottom-left-radius:10px;transform-origin:0 100%}
+.bub.r{right:70px;background:linear-gradient(135deg,#2FCFB8,#5FB7D9 60%,#A48AD0);color:#fff;border-bottom-right-radius:10px;transform-origin:100% 100%}
+.chip{position:absolute;top:0;padding:18px 28px 18px 22px;border-radius:999px;background:rgba(251,247,241,.95);
+  font-weight:700;font-size:30px;display:flex;align-items:center;gap:12px;box-shadow:0 12px 30px rgba(20,30,45,.25);white-space:nowrap}
+.dot{width:40px;height:40px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center}
+.spark{position:absolute;width:44px;height:44px}
+</style></head>
+<body>
+<div id="grad" class="abs"></div>
+
+<!-- brand tag -->
+<div id="tag" class="abs" style="left:60px;top:150px;padding:14px 24px;border-radius:999px;background:rgba(251,247,241,.92);display:flex;align-items:center;gap:12px;box-shadow:0 10px 26px rgba(20,30,45,.2)">
+  <div style="width:14px;height:14px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--lilac))"></div>
+  <div class="caps" style="font-size:19px;letter-spacing:.28em">Laboratorija Lujić</div>
+</div>
+
+<!-- B1 hook -->
+<div id="hook" class="card" style="top:225px;width:860px;margin-left:-430px;padding:34px 44px 38px;text-align:center">
+  <div id="h1" class="it" style="font-weight:700;font-size:92px;line-height:1">Nove zube<span style="color:var(--tealD)">,</span></div>
+  <div id="h2" style="margin-top:14px;font-weight:600;font-size:44px;position:relative;display:inline-block">
+    a nešto vam se <span style="position:relative;display:inline-block"><span id="hl" class="abs" style="left:-8px;right:-8px;bottom:4px;height:22px;background:var(--pink);opacity:.55;border-radius:6px;transform-origin:0 50%"></span><span style="position:relative">ne dopada?</span></span>
+  </div>
+</div>
+
+<!-- B2/B3 loop -->
+<div id="loop" class="card" style="top:205px;width:920px;margin-left:-460px;height:290px">
+  <div class="caps abs" style="left:44px;top:28px;font-size:17px;color:rgba(28,38,51,.55)">Klasičan put</div>
+  <div id="cnt" class="abs" style="right:34px;top:20px;padding:8px 18px;border-radius:999px;background:var(--ink);color:#fff;font-weight:800;font-size:22px;letter-spacing:.12em">PROBA <span id="cntn">1</span></div>
+  <svg id="loopsvg" class="abs" width="920" height="290" style="left:0;top:0">
+    <ellipse id="ell" cx="460" cy="138" rx="330" ry="58" fill="none" stroke="rgba(28,38,51,.18)" stroke-width="3" stroke-dasharray="10 12"/>
+    <circle id="ldot" r="11" fill="#2FCFB8"/><circle id="ldot2" r="7" fill="#A48AD0"/>
+  </svg>
+  <div id="nVi" class="node" style="left:150px;top:72px"><div class="ci"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#1C2633" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></div><div class="lb">Vi</div></div>
+  <div id="nSt" class="node" style="left:460px;top:72px"><div class="ci"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#1C2633" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M12 8v8M8 12h8"/></svg></div><div class="lb">Stomatolog</div></div>
+  <div id="nTe" class="node" style="left:770px;top:72px"><div class="ci" id="teci"><svg width="46" height="46" viewBox="0 0 20 20" fill="none" stroke="#1C2633" stroke-width="1.6" stroke-linejoin="round"><path d="M6.5 2.5c-2 0-3.5 1.6-3.5 4 0 2 .8 3.4 1.3 5.2.5 2 .7 5.8 2.2 5.8 1.3 0 1.4-3.7 3.5-3.7s2.2 3.7 3.5 3.7c1.5 0 1.7-3.8 2.2-5.8.5-1.8 1.3-3.2 1.3-5.2 0-2.4-1.5-4-3.5-4-1.4 0-2.2.8-3.5.8S7.9 2.5 6.5 2.5z"/></svg></div><div class="lb">Tehničar</div></div>
+  <div id="tagFix" class="abs it" style="left:700px;top:30px;font-weight:600;font-size:26px;color:var(--tealD)">prepravka</div>
+  <div id="xVi" class="abs" style="left:186px;top:62px;width:44px;height:44px;border-radius:50%;background:var(--pinkD);display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" stroke="#fff" stroke-width="3.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></div>
+  <div id="notHere" class="abs it" style="left:700px;top:232px;font-weight:700;font-size:34px;color:var(--pinkD);white-space:nowrap">— nije tu</div>
+  <div id="ring" class="abs" style="left:460px;top:138px;width:0;height:0">
+    <svg width="200" height="200" viewBox="-100 -100 200 200" style="position:absolute;left:-100px;top:-100px"><path d="M 0 -78 A 78 78 0 1 1 -67 -40" fill="none" stroke="#2FCFB8" stroke-width="10" stroke-linecap="round"/><path d="M -67 -40 l -4 -26 M -67 -40 l 24 -8" stroke="#2FCFB8" stroke-width="10" stroke-linecap="round"/></svg>
+  </div>
+</div>
+<div id="noHear" class="card" style="top:1110px;width:760px;margin-left:-380px;padding:20px 30px;text-align:center;border-radius:26px">
+  <span style="font-weight:600;font-size:32px">Onaj ko pravi vaše zube </span><span class="it" style="font-weight:700;font-size:40px;color:var(--pinkD)">ne čuje vas.</span>
+</div>
+
+<!-- B4 wipe + title -->
+<div id="wipe" class="abs" style="top:-300px;left:0;width:1500px;height:2600px;background:linear-gradient(90deg,#2FCFB8,#7FB6DD 45%,#A48AD0 75%,#EFA3BD);transform-origin:50% 50%"></div>
+<div id="t4" class="abs" style="left:0;width:1080px;top:1150px;text-align:center">
+  <div id="t4a" class="caps" style="font-size:40px;color:#fff;letter-spacing:.42em;text-shadow:0 4px 20px rgba(0,0,0,.45)">Zato mi radimo</div>
+  <div id="t4b" class="it" style="font-weight:700;font-size:170px;color:#fff;line-height:1.05;text-shadow:0 6px 40px rgba(15,143,126,.55),0 4px 18px rgba(0,0,0,.35)"></div>
+  <div id="t4line" style="margin:6px auto 0;height:6px;width:520px;border-radius:3px;background:linear-gradient(90deg,var(--teal),var(--lilac),var(--pink));transform-origin:50% 50%"></div>
+</div>
+
+<!-- B5 stepper -->
+<div id="step" class="card" style="top:205px;width:940px;margin-left:-470px;height:260px">
+  <div class="abs" style="left:0;right:0;top:30px;text-align:center"><span class="caps" style="font-size:18px;color:rgba(28,38,51,.55)">Tehničar je</span> <span class="it" style="font-weight:700;font-size:40px;color:var(--tealD)">uz vas</span></div>
+  <div class="abs" style="left:160px;width:620px;top:131px;height:6px;border-radius:3px;background:rgba(28,38,51,.1)"></div>
+  <div id="sfill" class="abs" style="left:160px;width:620px;top:131px;height:6px;border-radius:3px;background:linear-gradient(90deg,var(--teal),var(--lilac));transform-origin:0 50%"></div>
+</div>
+
+<!-- B6 chat -->
+<div id="chat" class="abs" style="left:0;top:0;width:1080px;height:1920px"></div>
+
+<!-- B7 zajedno -->
+<div id="venn" class="abs" style="left:0;top:0;width:1080px;height:1920px"></div>
+
+<!-- B8 CTA -->
+<div id="plan" class="card" style="top:215px;width:820px;margin-left:-410px;padding:26px 30px;text-align:center">
+  <span class="caps" style="font-size:18px;color:rgba(28,38,51,.55);display:block;margin-bottom:6px">Planirate</span>
+  <span class="it" style="font-weight:700;font-size:72px">nove zube?</span>
+</div>
+<div id="chips" class="abs" style="left:0;top:230px;width:1080px;height:100px"></div>
+<div id="btn" class="abs" style="left:540px;top:1085px;width:0;height:0">
+  <div id="pulse" class="abs" style="left:-300px;top:-66px;width:600px;height:132px;border-radius:999px;border:4px solid #A6F5E8"></div>
+  <div id="btnb" class="abs" style="left:-290px;top:-60px;width:580px;height:120px;border-radius:999px;background:linear-gradient(110deg,#2FCFB8,#6BB8DC 55%,#A48AD0);display:flex;align-items:center;justify-content:center;gap:22px;box-shadow:0 20px 50px rgba(20,30,45,.35);overflow:hidden">
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg>
+    <span style="font-weight:800;font-size:50px;color:#fff;letter-spacing:.02em">Pišite mi</span>
+    <div id="shine" class="abs" style="top:-20px;width:120px;height:160px;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.55),rgba(255,255,255,0));transform:skewX(-20deg)"></div>
+  </div>
+  <div id="tap" class="abs" style="left:120px;top:10px;width:90px;height:90px;border-radius:50%;border:5px solid #fff"></div>
+</div>
+
+<!-- END card -->
+<div id="end" class="abs" style="left:0;top:0;width:1080px;height:1920px">
+  <div id="logoWrap" class="abs" style="left:540px;top:820px;width:0;height:0">
+    <img id="logo" src="../logo_crop.png" style="position:absolute;width:700px;left:-350px;top:-316px">
+    <div id="lshine" class="abs" style="left:-350px;top:-316px;width:700px;height:632px;
+      -webkit-mask-image:url(../logo_crop.png);-webkit-mask-size:700px 632px;mask-image:url(../logo_crop.png);mask-size:700px 632px;
+      background:linear-gradient(110deg,rgba(255,255,255,0) 35%,rgba(255,255,255,.85) 50%,rgba(255,255,255,0) 65%);background-size:300% 100%"></div>
+  </div>
+  <div id="e1" class="abs it" style="left:0;width:1080px;top:1210px;text-align:center;font-weight:600;font-size:84px;color:#fff;text-shadow:0 4px 24px rgba(0,0,0,.4)">Pišite nam</div>
+  <div id="e2" class="abs caps" style="left:0;width:1080px;top:1325px;text-align:center;font-size:26px;color:var(--tealL)">tu smo za vas</div>
+</div>
+
+<div id="sparks" class="abs" style="left:0;top:0;width:1080px;height:1920px"></div>
+<div id="cap"></div>
+<div id="flash" class="abs"></div>
+
+<script>
+const TL = window.TL;  // injected
+const $ = id => document.getElementById(id);
+const clamp = (x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const P = (t,a,d)=>clamp((t-a)/d);
+const eo = x=>1-Math.pow(1-x,3);
+const eio = x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const eb = x=>{const c1=1.70158,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)};
+const lerp=(a,b,x)=>a+(b-a)*x;
+const norm = s=>s.toLowerCase().replace(/[.,?!—]/g,'');
+const W = TL.words;
+function T(word, after=0, which='s'){ for(const w of W){ if(w.s>=after-0.01 && norm(w.w).startsWith(word)) return w[which]; } console.log('MISSING',word,after); return 1e9; }
+const SEG = TL.segs, BODY = TL.body, TOT = TL.body + TL.end;
+const EMPH = new Set(TL.emph.map(norm));
+
+// ---------- key times ----------
+const K = {};
+K.nove=T('nove'); K.nesto=T('nešto'); K.dopada=T('dopada'); K.dalje=SEG[1].s;
+K.loopIn=SEG[2].s; K.stom=T('stomatolog'); K.teh=T('tehničaru'); K.prep=T('prepravlja'); K.stom2=T('stomatologu');
+K.opet=T('opet', K.stom2); K.treba=T('treba', K.opet); K.krug=SEG[4].s; K.osoba=SEG[5].s; K.nije=T('nije', K.osoba); K.cuje=T('čuje', K.osoba);
+K.zato=SEG[6].s; K.drug=T('drugačije'); K.stepIn=SEG[7].s; K.pre=T('pre', K.stepIn); K.priv=T('privremene'); K.zavr=T('završni');
+K.chatIn=SEG[10].s; K.dop2=T('dopada', K.chatIn); K.direk=T('direktno', K.chatIn); K.cuv=T('čuvamo'); K.menj=T('menjamo', K.cuv); K.nista=T('ništa', K.cuv);
+K.vennIn=SEG[12].s; K.zaj=T('zajedno', K.vennIn); K.isk=T('iskomuniciramo'); K.dog=T('dogovorimo');
+K.planIn=SEG[14].s; K.planir=T('planirate', K.planIn); K.pisite=T('pišite', K.planIn); K.upoz=T('upoznamo', K.pisite); K.popr=T('popričamo', K.pisite); K.dplan=T('plan', K.popr);
+window.K=K;
+
+// ---------- caption chunks ----------
+const chunks=[]; let cur=[];
+W.forEach(w=>{cur.push(w); if(cur.length===3||/[.,?!]$/.test(w.w)||(cur.length===2&&w.w.length>9)){chunks.push(cur);cur=[]}});
+if(cur.length)chunks.push(cur);
+
+// ---------- helpers ----------
+function show(el,o,tx=0,ty=0,sc=1,blur=0,rot=0,extra=''){
+  el.style.opacity=o; el.style.filter=blur>0.05?`blur(${blur}px)`:'none';
+  el.style.transform=`translate(${tx}px,${ty}px) scale(${sc}) rotate(${rot}deg) ${extra}`;
+  el.style.visibility=o<=0.001?'hidden':'visible';
+}
+function cardIO(el,t,a,b,base='translateX(0)'){ // enter at a, exit at b
+  const i=eb(P(t,a,.42)), o=eo(P(t,b-.28,.28));
+  const op=Math.min(P(t,a,.2),1-o);
+  el.style.opacity=op; el.style.visibility=op<=0.001?'hidden':'visible';
+  el.style.transform=`translateY(${lerp(-40,0,i)-o*30}px) scale(${lerp(.86,1,i)-o*.05})`;
+  el.style.filter=o>0.02?`blur(${o*10}px)`:'none';
+  return op;
+}
+const sparkSVG='<svg viewBox="-10 -10 20 20" width="44" height="44"><path d="M0 -10 C1 -2 2 -1 10 0 C2 1 1 2 0 10 C-1 2 -2 1 -10 0 C-2 -1 -1 -2 0 -10Z" fill="#fff"/></svg>';
+const SPARKS=[]; // [time,x,y,size,color]
+function addSparks(t0,cx,cy,n,spread,col='#fff'){for(let i=0;i<n;i++){const a=i/n*6.283+t0;SPARKS.push([t0+i*0.05,cx+Math.cos(a)*spread*(0.6+0.4*((i*7)%3)/2),cy+Math.sin(a)*spread*0.55,0.5+((i*5)%4)/5,col])}}
+addSparks(K.nove+0.1,540,250,4,430);
+addSparks(K.drug,540,1260,6,470,'#A6F5E8');
+addSparks(K.dog,540,300,5,260,'#fff');
+addSparks(BODY+0.5,540,820,6,420,'#A6F5E8');
+const spk=$('sparks'); SPARKS.forEach(s=>{const d=document.createElement('div');d.className='spark';d.innerHTML=sparkSVG;d.querySelector('path').setAttribute('fill',s[4]);spk.appendChild(d);s.el=d});
+
+// stepper nodes
+const STEPS=[['Pre izrade',K.pre],['Privremene krune',K.priv],['Završni rad',K.zavr]];
+const stepEls=STEPS.map((s,i)=>{const x=160+i*310; const d=document.createElement('div');d.className='abs';d.style.cssText=`left:${x-130}px;top:96px;width:260px;text-align:center`;
+ d.innerHTML=`<div class="sc" style="width:76px;height:76px;margin:0 auto;border-radius:50%;background:#fff;border:3px solid rgba(28,38,51,.15);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:30px;position:relative">
+ <span class="sn">${i+1}</span><svg class="sk abs" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" stroke-dasharray="30" stroke-dashoffset="30"/></svg></div>
+ <div class="sl" style="margin-top:12px;font-weight:700;font-size:27px">${s[0]}</div>`; $('step').appendChild(d); return d;});
+
+// chat bubbles
+const BUBS=[['l','Nešto mi se ne dopada…',K.dop2-.1],['r','Recite mi direktno.',K.direk-.05],['l','Šta čuvamo?',K.cuv-.08],['l','Šta menjamo?',K.menj-.08],['r','Ili ne menjamo ništa ✓',K.nista-.15]];
+const bubEls=BUBS.map(b=>{const d=document.createElement('div');d.className='bub '+b[0];d.textContent=b[1];
+ if(b[1].endsWith('✓')){d.innerHTML='Ili ne menjamo <span class="it" style="font-weight:700;font-size:40px">ništa</span>'}
+ $('chat').appendChild(d);return d});
+const CHAT_END=SEG[12].s;
+
+// venn
+const VN=[['Vi','#2FCFB8',-1],['Stomatolog','#A48AD0',0],['Tehničar','#EFA3BD',1]];
+const vEls=VN.map(v=>{const d=document.createElement('div');d.className='abs';d.style.cssText=`width:170px;height:170px;border-radius:50%;background:${v[1]};opacity:.9;display:flex;align-items:center;justify-content:center;box-shadow:0 14px 34px rgba(20,30,45,.25);border:4px solid rgba(255,255,255,.7)`;
+ d.innerHTML=`<span style="font-weight:800;font-size:${v[0].length>3?22:40}px;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.2)">${v[0]}</span>`;$('venn').appendChild(d);return d});
+const vLabel=document.createElement('div');vLabel.className='abs';vLabel.style.cssText='left:0;width:1080px;top:520px;text-align:center';
+vLabel.innerHTML='<span class="it" style="font-weight:700;font-size:78px;color:#fff;text-shadow:0 4px 22px rgba(0,0,0,.45)">zajedno</span>';$('venn').appendChild(vLabel);
+const vCheck=document.createElement('div');vCheck.className='abs';vCheck.style.cssText='width:96px;height:96px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(20,30,45,.35)';
+vCheck.innerHTML='<svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="#0F8F7E" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';$('venn').appendChild(vCheck);
+const VENN_END=SEG[14].s;
+
+// chips
+const CH=[['upoznavanje',K.upoz],['razgovor',K.popr],['dobar plan',K.dplan]];
+const chipEls=CH.map((c,i)=>{const d=document.createElement('div');d.className='chip';d.innerHTML=`<div class="dot"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>${c[0]}`;$('chips').appendChild(d);return d});
+let chipX=null;
+
+// drugačije letters
+const word='drugačije.'; $('t4b').innerHTML=[...word].map(c=>`<span style="display:inline-block">${c}</span>`).join('');
+const t4letters=[...$('t4b').children];
+
+const FLASH=[SEG[1].s,SEG[4].s,SEG[6].s+0.32,SEG[9].s,SEG[15].s];
+
+window.render = function(t){
+  // gradient
+  $('grad').style.opacity = 1-P(t,BODY-.1,.4);
+  // brand tag
+  { const a=eb(P(t,.15,.45)), o=P(t,4.4,.3); const a2=eo(P(t,K.planIn,.4)), o2=P(t,BODY-.2,.25);
+    const op = t<20 ? Math.min(a,1-o) : Math.min(a2,1-o2);
+    show($('tag'),op, (t<20?lerp(-40,0,a):lerp(-40,0,a2)),0,1); }
+  // hook
+  { const el=$('hook'); const op=cardIO(el,t,.2,K.dalje+.05);
+    const h1=eo(P(t,K.nove-.12,.4)); show($('h1'),h1,0,lerp(30,0,h1),1,(1-h1)*8);
+    const h2=eo(P(t,K.nesto-.1,.4)); show($('h2'),h2,0,lerp(24,0,h2),1,(1-h2)*6);
+    $('hl').style.transform=`scaleX(${eio(P(t,K.dopada-.05,.45))})`; }
+  // loop
+  { const el=$('loop'); cardIO(el,t,K.loopIn-.05,K.zato+.12);
+    const hi=(id,tt,col)=>{const ci=$(id).querySelector('.ci'); const k=Math.max(0,1-Math.abs(t-tt-0.35)/0.75)*(t>tt-.2?1:0);
+      ci.style.transform=`scale(${1+0.16*eb(clamp(k))})`; ci.style.borderColor=k>0.05?col:'rgba(28,38,51,.12)';
+      ci.style.boxShadow=`0 8px 20px rgba(20,30,45,.12),0 0 0 ${10*k}px ${col}33`; };
+    // glow sequence
+    const evs=[['nSt',K.stom,'#A48AD0'],['nTe',K.teh,'#EFA3BD'],['nTe',K.prep,'#EFA3BD'],['nSt',K.stom2,'#A48AD0'],['nVi',K.opet,'#2FCFB8'],['nVi',K.treba,'#C9567E']];
+    ['nVi','nSt','nTe'].forEach(id=>{const ci=$(id).querySelector('.ci');ci.style.transform='scale(1)';ci.style.borderColor='rgba(28,38,51,.12)';ci.style.boxShadow='0 8px 20px rgba(20,30,45,.12)'});
+    let best=null; evs.forEach(e=>{ if(t>=e[1]-.2 && (!best||e[1]>best[1])) best=e; }); if(best && t<K.krug) hi(best[0],best[1],best[2]);
+    const tf=eb(P(t,K.prep-.05,.35))*(1-P(t,K.stom2,.25)); show($('tagFix'),tf,0,lerp(14,0,tf),lerp(.7,1,tf));
+    const xv=eb(P(t,K.treba-.1,.35))*(1-P(t,K.krug+.2,.3)); show($('xVi'),xv,0,0,lerp(.2,1,xv),0,lerp(-90,0,xv));
+    // moving dot around ellipse; accelerate at krug
+    let ang; if(t<K.krug) ang=(t-K.loopIn)*1.6; else ang=(K.krug-K.loopIn)*1.6+(t-K.krug)*1.6+Math.pow(Math.max(0,Math.min(t,K.osoba+.8)-K.krug),2)*4.5;
+    if(t>K.osoba+.8) ang=(K.krug-K.loopIn)*1.6+(K.osoba+.8-K.krug)*1.6+Math.pow(K.osoba+.8-K.krug,2)*4.5;
+    const d1=$('ldot'),d2=$('ldot2'); d1.setAttribute('cx',460+330*Math.cos(ang+Math.PI)); d1.setAttribute('cy',138+58*Math.sin(ang+Math.PI));
+    d2.setAttribute('cx',460+330*Math.cos(ang)); d2.setAttribute('cy',138+58*Math.sin(ang));
+    const dotsOp=1-P(t,K.osoba+.3,.4); d1.style.opacity=dotsOp; d2.style.opacity=dotsOp;
+    // counter
+    let n=1; if(t>=K.opet) n=2; if(t>=K.krug+.1) n=2+Math.min(4,Math.floor((t-K.krug-.1)/0.22)+1);
+    $('cntn').textContent = (t>=K.krug+1.25)?'∞':n;
+    const cp=t>=K.opet?eb(P(t,K.opet,.3)):1; $('cnt').style.transform=`scale(${t<K.krug+1.4?lerp(1.3,1,cp):1})`;
+    // ring spin on krug
+    const r=eb(P(t,K.krug-.05,.35))*(1-P(t,K.osoba-.1,.3)); show($('ring'),r,0,0,lerp(.3,1.05,r),0,(t-K.krug)*420);
+    // nodes dim during ring
+    const dim=1-0.75*r; ['nVi','nSt','nTe'].forEach(id=>$(id).style.opacity=dim);
+    // B3: technician ghost
+    const g=eo(P(t,K.nije-.1,.5)); if(t>K.osoba){ $('nTe').style.opacity=lerp(dim,0.32,g); $('teci').style.borderStyle=g>0.5?'dashed':'solid'; }
+    else $('teci').style.borderStyle='solid';
+    $('nTe').style.transform=`translateX(-50%) translateX(${lerp(0,30,g)}px)`;
+    const nh=eb(P(t,K.nije,.4)); show($('notHere'),nh,lerp(-20,0,nh),0,1);
+  }
+  // no-hear card
+  { cardIO($('noHear'),t,K.cuje-.25,K.zato+.12); }
+  // wipe + drugačije
+  { const w=P(t,K.zato-.02,.55); const x=lerp(-1700,1300,eio(w)); show($('wipe'),(w>0&&w<1)?1:0,x,0,1,0,0,'skewX(-14deg)');
+    const a=eo(P(t,K.zato+.15,.4)), o=P(t,SEG[7].s+.35,.3); show($('t4a'),Math.min(a,1-o),0,lerp(20,0,a),1,(1-a)*6+o*8);
+    t4letters.forEach((l,i)=>{const k=eb(P(t,K.drug-.12+i*.035,.42)); l.style.opacity=Math.min(P(t,K.drug-.12+i*.035,.15),1-o); l.style.transform=`translateY(${lerp(70,0,k)}px) rotate(${lerp(12,0,k)}deg)`; l.style.filter=k<0.98?`blur(${(1-k)*8}px)`:'none'});
+    const ln=eio(P(t,K.drug+.25,.5)); $('t4line').style.transform=`scaleX(${ln})`; $('t4line').style.opacity=1-o;
+    $('t4').style.visibility=(t>K.zato&&t<SEG[7].s+.7)?'visible':'hidden'; }
+  // stepper
+  { cardIO($('step'),t,K.stepIn-.05,K.chatIn+.1);
+    const last=STEPS.filter(s=>t>=s[1]-.1).length; const fillTo=[0,0,.5,1][last]; const prev=[0,0,0,.5][last];
+    const ft=last?eio(P(t,STEPS[last-1][1]-.1,.5)):0; $('sfill').style.transform=`scaleX(${lerp(prev,fillTo,ft)})`;
+    stepEls.forEach((d,i)=>{const k=eb(P(t,STEPS[i][1]-.1,.4)); const sc=d.querySelector('.sc');
+      sc.style.background=k>0.3?'linear-gradient(135deg,#2FCFB8,#0F8F7E)':'#fff'; sc.style.borderColor=k>0.3?'#fff':'rgba(28,38,51,.15)';
+      sc.style.transform=`scale(${k>0?lerp(.7,1.12,k)-(P(t,STEPS[i][1]+.4,.3))*.12:1})`;
+      d.querySelector('.sn').style.opacity=k>0.3?0:1; d.querySelector('.sk path').style.strokeDashoffset=30*(1-eo(P(t,STEPS[i][1]+.05,.35)));
+      const sl=d.querySelector('.sl'); sl.style.color=k>0.3?'#0F8F7E':'rgba(28,38,51,.45)'; sl.style.fontFamily=k>0.3?'P':'M'; sl.style.fontStyle=k>0.3?'italic':'normal'; sl.style.fontSize=k>0.3?'31px':'27px'});
+  }
+  // chat
+  { const vis=[]; BUBS.forEach((b,i)=>{ if(t>=b[2]) vis.push(i) });
+    const BOT=470, H=96, GAP=16;
+    bubEls.forEach((el,i)=>{ const b=BUBS[i]; const k=eb(P(t,b[2],.38)); const later=vis.filter(j=>j>i).length;
+      // smooth stacking: each newer bubble pushes up with easing
+      let push=0; for(const j of vis){ if(j>i) push+=(H+GAP)*eo(P(t,BUBS[j][2],.3)); }
+      const y=BOT-H-push; el.style.top=y+'px';
+      let op=t>=b[2]?Math.min(1,P(t,b[2],.12)):0; if(later>=3) op*=1-P(t,BUBS[i+3][2],.25);
+      op*=1-P(t,CHAT_END-.25,.25); const sc=lerp(.5,1,k);
+      el.style.opacity=op; el.style.visibility=op<=0.001?'hidden':'visible'; el.style.transform=`scale(${sc})`; });
+  }
+  // venn
+  { const inA=P(t,K.vennIn,.1), out=P(t,VENN_END-.3,.3);
+    vEls.forEach((el,i)=>{ const v=VN[i]; const e=eb(P(t,K.vennIn+i*.12,.45)); const m=eio(P(t,K.zaj-.1,.7));
+      const spread=lerp(300,120,m); const cx=540+v[2]*spread, cy=240+(v[2]===0?lerp(0,-40,m):lerp(0,40,m))*1;
+      const pulse=1+0.06*Math.sin(Math.max(0,t-K.zaj)*6)*P(t,K.zaj,.4)*(1-P(t,K.dog,.3));
+      el.style.left=(cx-85)+'px'; el.style.top=(cy-85)+'px'; const op=Math.min(e,1-out)*0.9;
+      el.style.opacity=op; el.style.visibility=op<=0.001?'hidden':'visible'; el.style.transform=`scale(${lerp(.3,1,e)*pulse})`; });
+    show(vLabel,0);
+    const c=eb(P(t,K.dog-.1,.45)); vCheck.style.left=(540-48)+'px'; vCheck.style.top=(240-48)+'px'; show(vCheck,Math.min(c,1-out),0,0,lerp(.2,1,c),0,lerp(-120,0,c)); }
+  // CTA
+  { cardIO($('plan'),t,K.planir-.15,K.pisite+.05);
+    chipEls.forEach((el,i)=>{ if(chipX===null){} });
+    if(!chipX){ chipX=[]; let tot=0; const ws=chipEls.map(e=>e.offsetWidth); tot=ws.reduce((a,b)=>a+b,0)+2*18; let x=540-tot/2; ws.forEach(w=>{chipX.push(x);x+=w+18}); }
+    chipEls.forEach((el,i)=>{ const k=eb(P(t,CH[i][1]-.1,.4)); const o=P(t,BODY-.25,.25); el.style.left=chipX[i]+'px';
+      show(el,Math.min(P(t,CH[i][1]-.1,.15),1-o),0,lerp(-30,0,k),lerp(.6,1,k)); });
+    const b=eb(P(t,K.pisite-.1,.5)), bo=P(t,BODY-.25,.25); show($('btn'),Math.min(P(t,K.pisite-.1,.15),1-bo),0,lerp(80,0,b),lerp(.6,1,b));
+    const ph=((t-K.pisite)%1.1)/1.1; const pp=t>K.pisite+.3?ph:0; show($('pulse'),t>K.pisite+.3?(1-pp)*.9:0,0,0,lerp(1,1.35,pp));
+    $('shine').style.left=lerp(-200,700,P((t-K.pisite-.4)%1.8,0,.8))+'px';
+    const tp=P(t,K.pisite+.75,.5); show($('tap'),tp>0&&tp<1?(1-tp):0,0,0,lerp(.4,1.6,tp));
+    $('btnb').style.transform=`scale(${1-0.06*Math.sin(Math.PI*clamp((t-K.pisite-.75)/.25))})`; }
+  // END
+  { const e=t>=BODY-.05; $('end').style.visibility=e?'visible':'hidden';
+    const r=eio(P(t,BODY,.7)); $('logo').style.clipPath=`circle(${r*75}% at 50% 50%)`;
+    const ls=eo(P(t,BODY,.9)); $('logoWrap').style.transform=`scale(${lerp(1.15,1,ls)})`; $('logoWrap').style.opacity=P(t,BODY,.2);
+    $('lshine').style.backgroundPosition=`${lerp(120,-20,P(t,BODY+.7,.9))}% 0`;
+    const a=eo(P(t,BODY+.55,.5)); show($('e1'),a,0,lerp(30,0,a),1,(1-a)*8);
+    const b=eo(P(t,BODY+.85,.5)); show($('e2'),b,0,lerp(20,0,b),1); $('e2').style.letterSpacing=lerp(.6,.38,b)+'em'; }
+  // sparks
+  SPARKS.forEach(s=>{const k=P(t,s[0],.7); const o=Math.sin(Math.PI*k); show(s.el,o,s[1]-22,s[2]-22,s[3]*lerp(.3,1.1,Math.sin(Math.PI*k)),0,k*90);});
+  // flash
+  { let f=0; FLASH.forEach(ft=>{ if(t>=ft) f=Math.max(f,0.55*(1-P(t,ft,.22))) }); $('flash').style.opacity=f; }
+  // captions
+  { const cap=$('cap'); let html='';
+    const hideCap = (t>=K.zato-.02 && t<SEG[7].s+.6) || t>=BODY-.02;
+    if(!hideCap){
+      let ch=null; for(let i=0;i<chunks.length;i++){ const c=chunks[i]; const nx=chunks[i+1]; const end= nx&&nx[0].s-c[c.length-1].e<0.6 ? nx[0].s : c[c.length-1].e+0.2; if(t>=c[0].s-0.04 && t<end){ch=c;break} }
+      if(ch){ html=ch.map(w=>{ const k=eo(P(t,w.s-0.05,.16)); const e=EMPH.has(norm(w.w)); const act=t>=w.s&&t<w.e+0.05;
+        const sc=lerp(.8,1,k)*(act&&!e?1.06:1); const col=(!e&&act)?'color:#E9FFFB;':'';
+        return `<span class="${e?'e':''}" style="opacity:${k};transform:translateY(${lerp(22,0,k)}px) scale(${sc});${k<.95?`filter:blur(${(1-k)*5}px);`:''}${col}">${e?w.w.toLowerCase():w.w}</span>` }).join(' '); }
+    }
+    cap.innerHTML=html; }
+};
+window.ready = document.fonts.ready.then(()=>true);
+</script>
+</body></html>
