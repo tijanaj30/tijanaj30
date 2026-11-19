@@ -145,7 +145,7 @@ svg{overflow:visible}
   <span class="it" style="font-weight:700;font-size:72px">nove zube?</span>
 </div>
 <div id="chips" class="abs" style="left:0;top:330px;width:1080px;height:100px"></div>
-<div id="btn" class="abs" style="left:540px;top:1085px;width:0;height:0">
+<div id="btn" class="abs" style="left:540px;top:1392px;width:0;height:0">
   <div id="pulse" class="abs" style="left:-300px;top:-66px;width:600px;height:132px;border-radius:999px;border:4px solid #A6F5E8"></div>
   <div id="btnb" class="abs" style="left:-290px;top:-60px;width:580px;height:120px;border-radius:999px;background:linear-gradient(110deg,#2FCFB8,#6BB8DC 55%,#A48AD0);display:flex;align-items:center;justify-content:center;gap:22px;box-shadow:0 20px 50px rgba(20,30,45,.35);overflow:hidden">
     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg>
@@ -174,7 +174,7 @@ svg{overflow:visible}
     <div style="font-weight:500;font-size:29px;color:rgba(28,38,51,.8);margin-top:4px">Nova poruka: <span class="it" style="font-weight:600;color:#0F8F7E">„Zdravo, planiram nove zube…”</span></div>
   </div>
 </div>
-<div id="crown" class="abs" style="left:900px;top:640px;width:0;height:0">
+<div id="crown" class="abs" style="left:968px;top:1060px;width:0;height:0">
   <div class="abs" style="left:-150px;top:-150px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(166,245,232,.85) 0%,rgba(166,245,232,.35) 45%,rgba(166,245,232,0) 70%)"></div>
   <svg class="abs" style="left:-115px;top:-120px;filter:drop-shadow(0 14px 22px rgba(20,30,45,.35))" width="230" height="230" viewBox="0 0 200 200">
     <defs>
@@ -223,7 +223,9 @@ window.K=K;
 
 // ---------- caption chunks ----------
 const chunks=[]; let cur=[];
-W.forEach(w=>{const key=EMPH.has(norm(w.w)); if(!key&&cur.length===3){chunks.push(cur);cur=[]} cur.push(w); if(key||/[.,?!]$/.test(w.w)){chunks.push(cur);cur=[]}});
+const WC=[]; for(let i=0;i<W.length;i++){ const w=W[i], n=W[i+1]; if(n && norm(w.w)==='završni' && norm(n.w)==='rad'){ WC.push({s:w.s,e:n.e,w:w.w+' '+n.w}); i++; } else WC.push(w); }
+EMPH.add('završni rad');
+WC.forEach(w=>{const key=EMPH.has(norm(w.w)); if(!key&&cur.length===3){chunks.push(cur);cur=[]} cur.push(w); if(key||/[.,?!]$/.test(w.w)){chunks.push(cur);cur=[]}});
 if(cur.length)chunks.push(cur);
 
 // ---------- helpers ----------
@@ -251,7 +253,7 @@ addSparks(K.nove+0.1,540,250,4,430);
 addSparks(K.drug,540,1260,6,470,'#A6F5E8');
 addSparks(K.dog,540,300,5,260,'#fff');
 addSparks(BODY+0.5,540,820,6,420,'#A6F5E8');
-addSparks(K.priv+.2,900,640,5,190,'#ffffff');
+addSparks(K.priv-.2,968,1060,5,150,'#ffffff');
 const spk=$('sparks'); SPARKS.forEach(s=>{const d=document.createElement('div');d.className='spark';d.innerHTML=sparkSVG;d.querySelector('path').setAttribute('fill',s[4]);spk.appendChild(d);s.el=d});
 
 // stepper nodes
@@ -293,11 +295,11 @@ window.SFX=[[K.nove-.3,'pop'],[K.dopada,'swish'],[SEG[1].s,'whoosh'],
  [K.prep-.05,'pop'],[K.stom2-.1,'whoosh_s'],[K.opet-.05,'pop'],[K.opet+.3,'tick'],
  [K.treba-.5,'pop'],[K.treba-.1,'error'],[K.krug,'spin'],[K.nije,'low'],[K.cuje-.25,'pop'],
  [K.zato,'whoosh_big'],[K.drug,'shimmer'],[K.stepIn-.05,'pop'],
- [K.pre+.05,'ding1'],[K.priv-.1,'shimmer'],[K.priv+.05,'ding2'],[K.zavr+.05,'ding3'],
+ [K.pre+.05,'ding1'],[K.priv-.45,'shimmer'],[K.priv+.05,'ding2'],[K.zavr+.05,'ding3'],
  ...BUBS.map(b=>[b[2],'bubble']),
  [K.vennIn,'pop'],[K.vennIn+.12,'pop'],[K.vennIn+.24,'pop'],[K.zaj-.1,'whoosh_s'],[K.dog-.1,'ding3'],
  [K.planir-.15,'pop'],[K.pisite-.1,'pop'],[K.pisite+.25,'notif'],[K.pisite+.75,'click'],
- ...CH.map(c=>[c[1]-.1,'tick']),[BODY,'shimmer']];
+ [BODY,'shimmer']];
 const FLASH=[SEG[1].s,SEG[4].s,SEG[6].s+0.32,SEG[9].s,SEG[15].s];
 
 window.render = function(t){
@@ -397,8 +399,8 @@ window.render = function(t){
     chipEls.forEach((el,i)=>{ if(chipX===null){} });
     if(!chipX){ chipX=[]; let tot=0; const ws=chipEls.map(e=>e.offsetWidth); tot=ws.reduce((a,b)=>a+b,0)+2*18; let x=540-tot/2; ws.forEach(w=>{chipX.push(x);x+=w+18}); }
     chipEls.forEach((el,i)=>{ const k=eb(P(t,CH[i][1]-.1,.4)); const o=P(t,BODY-.25,.25); el.style.left=chipX[i]+'px';
-      show(el,Math.min(P(t,CH[i][1]-.1,.15),1-o),0,lerp(-30,0,k),lerp(.6,1,k)); });
-    const b=eb(P(t,K.pisite-.1,.5)), bo=P(t,BODY-.25,.25); show($('btn'),Math.min(P(t,K.pisite-.1,.15),1-bo),0,lerp(80,0,b),lerp(.6,1,b));
+      show(el,0); });
+    const b=eb(P(t,K.pisite-.1,.5)), bo=P(t,BODY-.25,.25); show($('btn'),Math.min(P(t,K.pisite-.1,.15),1-bo),0,lerp(50,0,b),lerp(.5,.84,b));
     const ph=((t-K.pisite)%1.1)/1.1; const pp=t>K.pisite+.3?ph:0; show($('pulse'),t>K.pisite+.3?(1-pp)*.9:0,0,0,lerp(1,1.35,pp));
     $('shine').style.left=lerp(-200,700,P((t-K.pisite-.4)%1.8,0,.8))+'px';
     const tp=P(t,K.pisite+.75,.5); show($('tap'),tp>0&&tp<1?(1-tp):0,0,0,lerp(.4,1.6,tp));
@@ -413,8 +415,8 @@ window.render = function(t){
     const a=eo(P(t,BODY+.55,.5)); show($('e1'),a,0,lerp(30,0,a),1,(1-a)*8);
     const b=eo(P(t,BODY+.85,.5)); show($('e2'),b,0,lerp(20,0,b),1); $('e2').style.letterSpacing=lerp(.6,.38,b)+'em'; }
   // crown illustration on "privremene krune"
-  { const a=K.priv-.1, b=SEG[9].s+1.1; const k=eb(P(t,a,.55)), o=eo(P(t,b-.3,.3)); const op=Math.min(P(t,a,.15),1-o);
-    show($('crown'),op,-40,Math.sin(t*3.2)*7-o*30,lerp(.4,1.3,k)*(1-o*.15),o*8,lerp(-35,0,k)+Math.sin(t*2.1)*3);
+  { const a=K.priv-.45, b=SEG[9].s+.02; const k=eb(P(t,a,.55)), o=eo(P(t,b-.3,.3)); const op=Math.min(P(t,a,.15),1-o);
+    show($('crown'),op,0,Math.sin(t*3.2)*6-o*20,lerp(.35,.9,k)*(1-o*.15),o*8,lerp(-35,0,k)+Math.sin(t*2.1)*3);
     const l=eb(P(t,K.priv+.35,.4)); show($('crownLbl'),l,0,lerp(16,0,l),lerp(.7,1,l)); }
   // sparks
   SPARKS.forEach(s=>{const k=P(t,s[0],.7); const o=Math.sin(Math.PI*k); show(s.el,o,s[1]-22,s[2]-22,s[3]*lerp(.3,1.1,Math.sin(Math.PI*k)),0,k*90);});
@@ -433,6 +435,7 @@ window.render = function(t){
           html += `<div class="bg" style="font-size:${fs}px;opacity:${t<last.s-0.06?0:Math.min(1,P(t,last.s-0.06,.12))};transform:scale(${lerp(1.35,1,kb)});letter-spacing:${lerp(.08,0,k)}em;filter:${k<.97?`blur(${(1-k)*10}px) `:''}drop-shadow(0 6px 16px rgba(0,0,0,.45))">${txt}</div>`; }
       }
     }
+    $('cap').style.bottom=(t>=K.pisite-.15)?'200px':'270px';
     cap.innerHTML=html; }
 };
 window.ready = document.fonts.ready.then(()=>true);
