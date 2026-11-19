@@ -40,18 +40,18 @@ def snap_end(t, lo=0.5, hi=0.04, thr=-30):
 EDL = [
  (19.55, 24.70, 'A',  'Dobili ste nove zube, probate ih, ali nešto tu vam se ne dopada.', 1, 1),
  (24.72, 25.80, 'A2', 'I šta dalje?', 0, 0),
- (26.98, 30.00, 'B',  'Stomatolog uzima rad, vraća zubnom tehničaru,', 0, 0),
+ (26.98, 30.00, 'A3',  'Stomatolog uzima rad, vraća zubnom tehničaru,', 0, 0),
  (30.00, 37.10, 'A',  'zubni tehničar prepravlja rad, vraća stomatologu, opet probate, ali opet tu nešto nije kako treba.', 0, 1),
- (41.38, 43.30, 'B',  'I tako u krug.', 0, 0),
+ (41.38, 43.30, 'A3',  'I tako u krug.', 0, 0),
  (43.30, 50.28, 'A',  'Zapravo osoba koja vam je pravila zube nije tu da direktno od vas čuje šta se treba prepraviti.', 0, 0),
  (50.70, 53.20, 'A2', 'Zato mi radimo drugačije.', 1, 0),
- (53.40, 58.10, 'B',  'Ja sam tu pre početka rada, da popričamo, da se upoznamo.', 1, 1),
+ (53.40, 58.10, 'A3',  'Ja sam tu pre početka rada, da popričamo, da se upoznamo.', 1, 1),
  (58.30, 61.00, 'A',  'Tu sam kada probamo privremene krune.', 1, 1),
  (87.10, 89.95, 'A2', 'Tu sam i kad isprobavate završni rad.', 1, 1),
- (90.28, 92.10, 'B',  'Ako vam se nešto ne dopada,', 1, 0),
+ (90.28, 92.10, 'A3',  'Ako vam se nešto ne dopada,', 1, 0),
  (93.27, 98.60, 'A',  'želim da to čujem direktno od vas. Šta čuvamo, šta menjamo ili ne menjamo ništa.', 0, 1),
  (117.74, 120.05, 'A', 'Jer kada smo svi zajedno uključeni u proces', 0, 0),
- (120.40, 124.30, 'B', 'i lepo iskomuniciramo, mnogo se lakše razumemo i dogovorimo.', 0, 1),
+ (120.40, 124.30, 'A3', 'i lepo iskomuniciramo, mnogo se lakše razumemo i dogovorimo.', 0, 1),
  (171.60, 176.40, 'A', 'Ako planirate nove zube i smatrate da je ovakav pristup za vas,', 1, 1),
  (177.10, 182.25, 'A2', 'pišite mi. Tu sam da se upoznamo, popričamo i napravimo dobar plan.', 1, 1),
 ]
@@ -74,6 +74,7 @@ FRAMING = {  # source, face centre (fx, fy) as fraction, zoom start->end
     'A':  ('MVI_1127', 0.445, 0.36, 1.00, 1.05),
     'A2': ('MVI_1127', 0.445, 0.33, 1.32, 1.38),
     'B':  ('MVI_5300', 0.56, 0.32, 1.04, 1.09),
+    'A3': ('MVI_1127', 0.445, 0.35, 1.15, 1.21),
 }
 for i, g in enumerate(segs):
     src, fx, fy, z0, z1 = FRAMING[g['shot']]
