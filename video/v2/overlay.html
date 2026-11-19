@@ -22,10 +22,15 @@ body{font-family:M,sans-serif;color:var(--ink);position:relative}
 .caps{font-family:M;font-weight:700;letter-spacing:.32em;text-transform:uppercase}
 svg{overflow:visible}
 /* captions */
-#cap{position:absolute;left:70px;right:70px;top:1270px;text-align:center;line-height:1.12}
-#cap span{display:inline-block;margin:0 .2em;font-family:M;font-weight:800;font-size:72px;color:#fff;
+#cap{position:absolute;left:50px;right:50px;bottom:420px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
+#cap .sm{line-height:1.15}
+#cap .sm span{display:inline-block;margin:0 .16em;font-family:M;font-weight:600;font-size:54px;color:#fff;
+  -webkit-text-stroke:7px rgba(14,20,30,.42);paint-order:stroke fill;text-shadow:0 4px 18px rgba(0,0,0,.5)}
+#cap .bg{font-family:P;font-style:italic;font-weight:700;line-height:.98;padding:0 .12em .08em;margin-top:-6px;
+  background:linear-gradient(180deg,#FFFFFF 35%,#A6F5E8 100%);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}
+#capOld span{display:inline-block;margin:0 .2em;font-family:M;font-weight:800;font-size:72px;color:#fff;
   -webkit-text-stroke:10px rgba(14,20,30,.55);paint-order:stroke fill;text-shadow:0 6px 22px rgba(0,0,0,.45)}
-#cap span.e{font-family:P;font-style:italic;font-weight:700;font-size:86px;color:var(--tealL);letter-spacing:.01em}
+#capOld span.e{font-family:P;font-style:italic;font-weight:700;font-size:86px;color:var(--tealL);letter-spacing:.01em}
 #grad{left:0;top:0;width:1080px;height:1920px;
   background:linear-gradient(180deg,rgba(0,0,0,0) 52%,rgba(8,12,20,.18) 62%,rgba(8,12,20,.5) 100%)}
 #flash{left:0;top:0;width:1080px;height:1920px;background:#fff}
@@ -108,7 +113,7 @@ svg{overflow:visible}
   <span class="caps" style="font-size:18px;color:rgba(28,38,51,.55);display:block;margin-bottom:6px">Planirate</span>
   <span class="it" style="font-weight:700;font-size:72px">nove zube?</span>
 </div>
-<div id="chips" class="abs" style="left:0;top:230px;width:1080px;height:100px"></div>
+<div id="chips" class="abs" style="left:0;top:330px;width:1080px;height:100px"></div>
 <div id="btn" class="abs" style="left:540px;top:1085px;width:0;height:0">
   <div id="pulse" class="abs" style="left:-300px;top:-66px;width:600px;height:132px;border-radius:999px;border:4px solid #A6F5E8"></div>
   <div id="btnb" class="abs" style="left:-290px;top:-60px;width:580px;height:120px;border-radius:999px;background:linear-gradient(110deg,#2FCFB8,#6BB8DC 55%,#A48AD0);display:flex;align-items:center;justify-content:center;gap:22px;box-shadow:0 20px 50px rgba(20,30,45,.35);overflow:hidden">
@@ -131,6 +136,13 @@ svg{overflow:visible}
   <div id="e2" class="abs caps" style="left:0;width:1080px;top:1325px;text-align:center;font-size:26px;color:var(--tealL)">tu smo za vas</div>
 </div>
 
+<div id="notif" class="abs" style="left:50px;top:150px;width:980px;padding:24px 28px;border-radius:40px;background:rgba(250,248,245,.94);box-shadow:0 20px 50px rgba(20,30,45,.3);display:flex;gap:22px;align-items:center">
+  <div style="width:86px;height:86px;flex:none;border-radius:22px;background:#1C2633;display:flex;align-items:center;justify-content:center;overflow:hidden"><img src="../logo_tooth.png" style="height:70px"></div>
+  <div style="flex:1;min-width:0">
+    <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-weight:700;font-size:30px">Laboratorija Lujić</span><span style="font-weight:500;font-size:24px;color:rgba(28,38,51,.45)">sada</span></div>
+    <div style="font-weight:500;font-size:29px;color:rgba(28,38,51,.8);margin-top:4px">Nova poruka: <span class="it" style="font-weight:600;color:#0F8F7E">„Zdravo, planiram nove zube…”</span></div>
+  </div>
+</div>
 <div id="sparks" class="abs" style="left:0;top:0;width:1080px;height:1920px"></div>
 <div id="cap"></div>
 <div id="flash" class="abs"></div>
@@ -148,7 +160,7 @@ const norm = s=>s.toLowerCase().replace(/[.,?!—]/g,'');
 const W = TL.words;
 function T(word, after=0, which='s'){ for(const w of W){ if(w.s>=after-0.01 && norm(w.w).startsWith(word)) return w[which]; } console.log('MISSING',word,after); return 1e9; }
 const SEG = TL.segs, BODY = TL.body, TOT = TL.body + TL.end;
-const EMPH = new Set(TL.emph.map(norm));
+const EMPH = new Set(['zube','dopada','dalje','stomatolog','tehničar','krug','direktno','prepraviti','upoznamo','krune','završni','čuvamo','ništa','zajedno','dogovorimo','pristup','plan']);
 
 // ---------- key times ----------
 const K = {};
@@ -163,7 +175,7 @@ window.K=K;
 
 // ---------- caption chunks ----------
 const chunks=[]; let cur=[];
-W.forEach(w=>{cur.push(w); if(cur.length===3||/[.,?!]$/.test(w.w)||(cur.length===2&&w.w.length>9)){chunks.push(cur);cur=[]}});
+W.forEach(w=>{const key=EMPH.has(norm(w.w)); if(!key&&cur.length===3){chunks.push(cur);cur=[]} cur.push(w); if(key||/[.,?!]$/.test(w.w)){chunks.push(cur);cur=[]}});
 if(cur.length)chunks.push(cur);
 
 // ---------- helpers ----------
@@ -230,7 +242,7 @@ window.render = function(t){
   // brand tag
   { const a=eb(P(t,.15,.45)), o=P(t,4.4,.3); const a2=eo(P(t,K.planIn,.4)), o2=P(t,BODY-.2,.25);
     const op = t<20 ? Math.min(a,1-o) : Math.min(a2,1-o2);
-    show($('tag'),op, (t<20?lerp(-40,0,a):lerp(-40,0,a2)),0,1); }
+    const nt=P(t,K.pisite+.1,.25); show($('tag'),op*(1-nt), (t<20?lerp(-40,0,a):lerp(-40,0,a2)),0,1); }
   // hook
   { const el=$('hook'); const op=cardIO(el,t,.2,K.dalje+.05);
     const h1=eo(P(t,K.nove-.12,.4)); show($('h1'),h1,0,lerp(30,0,h1),1,(1-h1)*8);
@@ -316,6 +328,8 @@ window.render = function(t){
     $('shine').style.left=lerp(-200,700,P((t-K.pisite-.4)%1.8,0,.8))+'px';
     const tp=P(t,K.pisite+.75,.5); show($('tap'),tp>0&&tp<1?(1-tp):0,0,0,lerp(.4,1.6,tp));
     $('btnb').style.transform=`scale(${1-0.06*Math.sin(Math.PI*clamp((t-K.pisite-.75)/.25))})`; }
+  { const n=eb(P(t,K.pisite+.25,.5)), o=P(t,BODY-.3,.3); const op=Math.min(P(t,K.pisite+.25,.15),1-o);
+    show($('notif'),op,0,lerp(-260,0,n)-o*40,lerp(.92,1,n),o*8); window._notif=op; }
   // END
   { const e=t>=BODY-.05; $('end').style.visibility=e?'visible':'hidden';
     const r=eio(P(t,BODY,.7)); $('logo').style.clipPath=`circle(${r*75}% at 50% 50%)`;
@@ -332,9 +346,13 @@ window.render = function(t){
     const hideCap = (t>=K.zato-.02 && t<SEG[7].s+.6) || t>=BODY-.02;
     if(!hideCap){
       let ch=null; for(let i=0;i<chunks.length;i++){ const c=chunks[i]; const nx=chunks[i+1]; const end= nx&&nx[0].s-c[c.length-1].e<0.6 ? nx[0].s : c[c.length-1].e+0.2; if(t>=c[0].s-0.04 && t<end){ch=c;break} }
-      if(ch){ html=ch.map(w=>{ const k=eo(P(t,w.s-0.05,.16)); const e=EMPH.has(norm(w.w)); const act=t>=w.s&&t<w.e+0.05;
-        const sc=lerp(.8,1,k)*(act&&!e?1.06:1); const col=(!e&&act)?'color:#E9FFFB;':'';
-        return `<span class="${e?'e':''}" style="opacity:${k};transform:translateY(${lerp(22,0,k)}px) scale(${sc});${k<.95?`filter:blur(${(1-k)*5}px);`:''}${col}">${e?w.w.toLowerCase():w.w}</span>` }).join(' '); }
+      if(ch){ const last=ch[ch.length-1]; const hasKey=EMPH.has(norm(last.w)); const smalls=hasKey?ch.slice(0,-1):ch;
+        const sm=smalls.map(w=>{ const k=eo(P(t,w.s-0.05,.16)); const act=t>=w.s&&t<w.e+0.05;
+          return `<span style="opacity:${k};transform:translateY(${lerp(18,0,k)}px) scale(${lerp(.85,1,k)});${k<.95?`filter:blur(${(1-k)*5}px);`:''}${act?'color:#E9FFFB;':''}">${w.w}</span>` }).join(' ');
+        html = sm ? `<div class="sm">${sm}</div>` : '';
+        if(hasKey){ const k=eo(P(t,last.s-0.06,.28)); const kb=eb(P(t,last.s-0.06,.4)); const txt=last.w.toLowerCase(); const fs=Math.min(175,Math.round(1750/Math.max(txt.length,1)));
+          html += `<div class="bg" style="font-size:${fs}px;opacity:${t<last.s-0.06?0:Math.min(1,P(t,last.s-0.06,.12))};transform:scale(${lerp(1.35,1,kb)});letter-spacing:${lerp(.08,0,k)}em;filter:${k<.97?`blur(${(1-k)*10}px) `:''}drop-shadow(0 6px 16px rgba(0,0,0,.45))">${txt}</div>`; }
+      }
     }
     cap.innerHTML=html; }
 };
