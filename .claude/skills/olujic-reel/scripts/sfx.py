@@ -52,6 +52,12 @@ er[:len(a)] += a; er[int(.13*SR):int(.13*SR)+len(b)] += b
 S['error'] = norm(er, -27)
 S['low'] = norm(tone(220, .45, .15), -29)
 for k, f in [('ding1', 1047), ('ding2', 1319), ('ding3', 1568)]: S[k] = norm(bell(f), -27)
+kc = np.zeros(int(1.1*SR))
+mech = hp(rng.standard_normal(int(.05*SR)), 1800)*env_exp(.05, .006); kc[:len(mech)] += 0.5*mech
+m2 = hp(rng.standard_normal(int(.04*SR)), 2500)*env_exp(.04, .005); o=int(.07*SR); kc[o:o+len(m2)] += 0.35*m2
+for i, f in enumerate([2637, 3520]):
+    b_ = bell(f, .9, .3); o = int((.11+i*.09)*SR); kc[o:o+len(b_)] += b_*(1-.15*i)
+S['kaching'] = norm(kc, -26)
 sh = np.zeros(int(1.2*SR))
 for i, f in enumerate([1568, 2093, 2637, 3136]):
     b_ = bell(f, .7, .18); o = int(i*.07*SR); sh[o:o+len(b_)] += b_*(0.9-i*0.12)

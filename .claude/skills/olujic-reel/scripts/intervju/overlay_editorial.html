@@ -1,0 +1,210 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:C;src:url(file:///home/user/work/r6/fonts/CormorantGaramond-700.ttf);font-weight:700}
+@font-face{font-family:C;src:url(file:///home/user/work/r6/fonts/CormorantGaramond-700i.ttf);font-weight:700;font-style:italic}
+@font-face{font-family:C;src:url(file:///home/user/work/r6/fonts/CormorantGaramond-600.ttf);font-weight:600}
+@font-face{font-family:J;src:url(file:///home/user/work/r6/fonts/Jost-400.ttf);font-weight:400}
+@font-face{font-family:J;src:url(file:///home/user/work/r6/fonts/Jost-500.ttf);font-weight:500}
+@font-face{font-family:P;src:url(file:///home/user/work/v2/fonts/PlayfairDisplay-700i.ttf);font-weight:700;font-style:italic}
+@font-face{font-family:P;src:url(file:///home/user/work/v2/fonts/PlayfairDisplay-600.ttf);font-weight:600;font-style:normal}
+@font-face{font-family:M;src:url(file:///home/user/work/v2/fonts/Montserrat-600.ttf);font-weight:600}
+@font-face{font-family:M;src:url(file:///home/user/work/v2/fonts/Montserrat-700.ttf);font-weight:700}
+*{margin:0;padding:0;box-sizing:border-box}html,body{width:1080px;height:1920px;overflow:hidden;background:transparent}
+.abs{position:absolute}
+#shade{left:0;top:0;width:1080px;height:1920px;background:
+  linear-gradient(180deg,rgba(8,22,24,.35) 0%,rgba(8,22,24,0) 16%,rgba(8,22,24,0) 50%,rgba(8,22,24,.55) 72%,rgba(8,22,24,.62) 100%),
+  radial-gradient(ellipse 80% 65% at 50% 45%,rgba(0,0,0,0) 60%,rgba(0,0,0,.35) 100%)}
+#chap{left:80px;top:170px;font-family:J;font-weight:500;font-size:34px;letter-spacing:.32em;color:rgba(255,248,240,.9);text-transform:uppercase;text-shadow:0 2px 12px rgba(0,0,0,.5)}
+#chap .n{color:#7FE3D3}
+#cap{left:80px;width:900px;bottom:200px}
+#line{height:3px;width:120px;background:#7FE3D3;transform-origin:0 50%;margin-bottom:34px;box-shadow:0 2px 10px rgba(0,0,0,.4)}
+.ln{font-family:C;font-weight:700;font-size:114px;line-height:.98;color:#FFF8F0;letter-spacing:-.005em;overflow:hidden;padding:.04em 0 .14em;margin-bottom:-.1em}
+.ln span{display:inline-block;text-shadow:0 3px 18px rgba(0,0,0,.55),0 1px 3px rgba(0,0,0,.4)}
+.ln i{font-style:italic;color:#A6F0E4}
+#end{left:0;top:0;width:1080px;height:1920px;background:#F2F5F5}
+#logo{position:absolute;left:200px;top:560px;width:680px}
+#e1,#e2{position:absolute;left:120px;right:120px;text-align:left;font-family:C;font-weight:700;font-size:96px;color:#12524B;line-height:1}
+#e1{top:1230px}#e2{top:1335px;font-style:italic;color:#0F8F7E}
+#eline{position:absolute;left:120px;top:1195px;width:120px;height:3px;background:#2FCFB8;transform-origin:0 50%}
+#e3{position:absolute;left:120px;top:1480px;font-family:J;font-weight:500;font-size:30px;letter-spacing:.32em;color:#0F8F7E}
+#leak,#dust,#grain{display:none!important}
+#card{position:absolute;left:90px;width:900px;top:868px;height:560px;transform-origin:50% 0;border-radius:30px;background:rgba(255,255,255,.94);border:2px solid rgba(47,207,184,.55);box-shadow:0 30px 80px rgba(0,0,0,.30);overflow:hidden}
+#card .ct{position:absolute;left:54px;top:34px;font-family:J;font-weight:500;font-size:34px;letter-spacing:.3em;color:#0F8F7E}
+#card .ch{position:absolute;left:54px;top:78px;font-family:C;font-weight:700;font-size:76px;color:#12524B}
+#hook{left:0;top:0;width:1080px;height:1920px}
+#hookbg{left:0;top:0;width:1080px;height:1920px;background:linear-gradient(180deg,rgba(255,255,255,0) 44%,rgba(255,255,255,.62) 58%,rgba(250,252,252,.9) 74%,rgba(250,252,252,.94) 100%)}
+.bg{font-family:P;font-weight:600;line-height:1.0;white-space:nowrap;padding:.06em .12em .3em;margin:-.14em 0 -.3em -.1em;letter-spacing:-.015em;display:inline-block}
+body.K{background:#000!important}
+body.K *:not(.bg),body.S *:not(.bg){visibility:hidden!important}
+body.K .bg,body.S .bg{visibility:visible!important}
+body.K .bg{background:linear-gradient(100deg,#A6F5E8 0%,#FFFFFF 38%,#C9B6EC 66%,#F6C2D6 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+body.S .bg{color:rgba(0,0,0,.9);text-shadow:0 0 18px rgba(0,0,0,.9),0 0 40px rgba(0,0,0,.6)}
+body.N .bg{visibility:hidden}
+#card.dark{background:rgba(14,26,28,.78);border:2px solid rgba(127,227,211,.40)}
+#card.dark .ct{color:#7FE3D3}#card.dark .ch{color:#FFFFFF}
+#toplogo{position:absolute;left:56px;top:70px;width:190px;filter:drop-shadow(0 3px 10px rgba(0,0,0,.35))}
+#viz{position:absolute;left:0;top:0;width:1080px;height:1920px}
+body.K .bg.bright{visibility:hidden!important}
+body.N .bg.bright{visibility:visible;background:linear-gradient(100deg,#C8FFF6 0%,#FFFFFF 40%,#E4D8FF 70%,#FFD9E6 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+</style></head><body>
+<div id="shade" class="abs"></div><div id="leak" class="abs" style="left:0;top:0;width:1080px;height:1920px;mix-blend-mode:screen"></div><div id="dust" class="abs" style="left:0;top:0;width:1080px;height:1920px"></div><div id="grain" class="abs" style="left:0;top:0;width:1080px;height:1920px;opacity:.06"></div><div id="chap" class="abs"></div>
+<img id="toplogo" src="/home/user/work/logo2_t.png"><svg id="viz" width="1080" height="1920"></svg><div id="card"></div><div id="cap" class="abs"><div id="line"></div><div id="lines"></div></div>
+<div id="hook" class="abs"><div id="hookbg" class="abs"></div><div id="hookt" class="abs" style="left:80px;right:80px;top:1130px"></div></div>
+<div id="end" class="abs"><img id="logo" src="/home/user/work/logo2_t.png"><div id="eline"></div><div id="e1">Prvo razumete.</div><div id="e2">Tek onda odlučujete.</div><div id="e3">LABORATORIJA OLUJIĆ</div></div>
+<script>
+const TL=window.TL, W=[], BODY=TL.body, MODE=window.MODE||'N'; document.body.className=MODE;
+const norm=s=>s.toLowerCase().replace(/[.,?!:]/g,'');
+TL.words.forEach(w=>{ const pv=W[W.length-1]; if(pv&&norm(pv.w)==='timski'&&norm(w.w)==='duh'){pv.w='timski duh';pv.e=w.e} else W.push({...w}); });
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x)),P=(t,a,d)=>clamp((t-a)/d),lerp=(a,b,x)=>a+(b-a)*x;
+const eo=x=>1-Math.pow(1-x,3), eio=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const KEY=new Set(['lekarima','sarađujem','pacijenti','poštovanje','razumevanje','timski duh','prijatno','tim','ljudskost','ljubaznost','osmeh','osećaja','proces','poenta','srcem','poverenje']);
+// phrases: break on punctuation or 6 words
+const PH=[]; let cur=[];
+W.forEach(w=>{ cur.push(w); if(cur.length>=6||/[.,?!]$/.test(w.w)||KEY.has(norm(w.w))){PH.push(cur);cur=[]} }); if(cur.length)PH.push(cur);
+// merge very short phrases (1 word) into next
+for(let i=0;i<PH.length-1;i++){ if(PH[i].length===1&&!KEY.has(norm(PH[i][0].w))&&!/[.?!]$/.test(PH[i][0].w)){ PH[i+1]=PH[i].concat(PH[i+1]); PH.splice(i,1); i--; } }
+PH.forEach((p,i)=>{ p.t0=p[0].s-0.15; const nx=PH[i+1]; p.t1=nx?nx[0].s-0.15:BODY; if(p.t1-p[p.length-1].e>1.6) p.t1=p[p.length-1].e+1.2; });
+// wrap words into lines of ~16 chars
+function lines(p,mx=15){ const L=[]; let c=[],n=0; p.forEach(w=>{ const l=w.w.length; if(n+l>mx&&c.length){L.push(c);c=[];n=0} c.push(w); n+=l+1; }); if(c.length)L.push(c); return L; }
+// chapters from segment beats
+const CH={1:'Tim',2:'Osećaj',3:'Hvala'}; const CHS=[]; let acc=0, last=0;
+TL.segs.forEach(s=>{ if(s.beat!==last){ CHS.push({t:acc,b:s.beat}); last=s.beat; } acc+=s.dur; });
+// dust particles
+const RND=(()=>{let s=11;return ()=>{s=(s*16807)%2147483647;return (s-1)/2147483646}})();
+const DUST=[...Array(46)].map(()=>({x:RND()*1080,y:RND()*1920,r:1.5+RND()*3.5,vx:(RND()-.5)*12,vy:-6-RND()*14,ph:RND()*6.28,a:.25+RND()*.5}));
+const dd=document.getElementById('dust'); DUST.forEach(d=>{const e=document.createElement('div'); e.style.cssText=`position:absolute;width:${d.r*2}px;height:${d.r*2}px;border-radius:50%;background:rgba(255,226,190,1);box-shadow:0 0 ${d.r*4}px rgba(255,210,160,.9)`; dd.appendChild(e); d.el=e;});
+// grain canvas
+const gc=document.createElement('canvas'); gc.width=270; gc.height=480; gc.style.cssText='width:1080px;height:1920px;image-rendering:pixelated'; document.getElementById('grain').appendChild(gc); const gx=gc.getContext('2d');
+function Tw(k,after=0){ for(const w of W){ if(w.s>=after-0.01 && norm(w.w).startsWith(k)) return w; } return null; }
+const wHv=Tw('hvala'), wPrp=Tw('prepoznali'), wLj=Tw('ljudskost'), wLb=Tw('ljubaznost'), wMe=Tw('mestu'), wZa=Tw('zaboravite'), wOs=Tw('osećaja'), wIm=Tw('imali'), wPu=Tw('punim'), wSr=Tw('srcem'), wPo=Tw('poverenje');
+const HOOK_END=1.3;
+const CARDS=[
+ {t0:wLj.s-0.5, t1:wMe.e+1.0, kind:'wreath'},
+ {t0:wZa.s-0.6, t1:wIm.e+0.8, kind:'tooth'},
+ {t0:wHv.s-0.3, t1:BODY-0.15, kind:'hearts3'}];
+const C='#2FCFB8', CR='#12524B', DIM='rgba(18,82,75,.18)';
+function cardHTML(c,t){ const lt=t-c.t0, D=c.t1-c.t0;
+  if(c.kind==='proc'){ const st=['Pregled','Brušenje','Probe','Prilagođavanje','Završni rad']; const pr=eio(P(lt,0.3,D-1.0));
+    let g=`<div class="ct">PROTETIKA</div><div class="ch">Put do novog osmeha</div><svg width="900" height="560" style="position:absolute;left:0;top:0"><line x1="90" y1="330" x2="810" y2="330" stroke="${DIM}" stroke-width="4"/><line x1="90" y1="330" x2="${90+720*pr}" y2="330" stroke="${C}" stroke-width="5"/>`;
+    st.forEach((n,i)=>{ const x=90+i*180, on=pr*4>=i-0.02; const k=eo(P(pr*4,i-0.05,.4)); g+=`<circle cx="${x}" cy="330" r="${on?16:12}" fill="${on?C:'#1a1410'}" stroke="${on?C:DIM}" stroke-width="4" transform="translate(0,0)"/>
+      <text x="${x}" y="${i%2?420:275}" text-anchor="middle" font-family="J" font-weight="500" font-size="${n.length>10?34:40}" fill="${on?CR:DIM}" opacity="${0.35+0.65*k}">${n}</text>`; });
+    return g+'</svg>'; }
+  if(c.kind==='prot'){ const items=['Pravila struke','Protokoli rada','Iskrena preporuka']; let g=`<div class="ct">KAKO RADIMO</div><div class="ch">Protokol pre svega</div><svg width="900" height="560" style="position:absolute;left:0;top:0">`;
+    items.forEach((it,i)=>{ const k=eo(P(lt,0.5+i*0.55,.45)); const y=225+i*88; g+=`<g opacity="${k}" transform="translate(${lerp(-30,0,k)},0)"><circle cx="110" cy="${y}" r="26" fill="none" stroke="${C}" stroke-width="4"/>
+      <path d="M97,${y} L107,${y+11} L125,${y-12}" fill="none" stroke="${C}" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="40" stroke-dashoffset="${40*(1-eo(P(lt,0.75+i*0.55,.35)))}"/>
+      <text x="160" y="${y+12}" font-family="C" font-weight="700" font-size="58" fill="${CR}">${it}</text><line x1="160" y1="${y+36}" x2="${160+560*k}" y2="${y+36}" stroke="${DIM}" stroke-width="2"/></g>`; });
+    return g+'</svg>'; }
+  if(c.kind==='rings'){ const R=[['Ljudskost',wLj],['Ljubaznost',wLb]]; let g=`<div class="ct">ONO ŠTO NAS VODI</div><div class="ch">Na prvom mestu</div><svg width="900" height="560" style="position:absolute;left:0;top:0"><defs>`;
+    const H='M0,95 C-25,72 -110,25 -110,-30 C-110,-75 -75,-100 -45,-100 C-20,-100 -5,-85 0,-68 C5,-85 20,-100 45,-100 C75,-100 110,-75 110,-30 C110,25 25,72 0,95Z';
+    R.forEach(([n,w],i)=>{ const k=eio(P(t,w.s-0.15,1.0)); g+=`<clipPath id="hc${i}"><rect x="-120" y="${100-210*k}" width="240" height="${210*k+5}"/></clipPath>`; });
+    g+='</defs>';
+    R.forEach(([n,w],i)=>{ const cx=300+i*300, cy=315; const k=eio(P(t,w.s-0.15,1.0)); const pop=1+0.08*Math.sin(Math.PI*clamp((t-w.s-0.85)/0.35));
+      g+=`<g transform="translate(${cx},${cy}) scale(${0.85*pop})"><path d="${H}" fill="none" stroke="${DIM}" stroke-width="7"/><path d="${H}" fill="${C}" clip-path="url(#hc${i})"/><path d="${H}" fill="none" stroke="${k>0.02?C:DIM}" stroke-width="7"/></g>
+      <text x="${cx}" y="${cy+150}" text-anchor="middle" font-family="J" font-weight="500" font-size="40" fill="${k>0.05?CR:DIM}">${n}</text>`; });
+    return g+'</svg>'; }
+  if(c.kind==='hearts3'){ const R=[['Ljudskost',wPrp],['Razumevanje',wSr],['Poverenje',wPo]]; const HC='#7FE3D3', HW='#FFFFFF', HD='rgba(255,255,255,.28)';
+    const H='M0,95 C-25,72 -110,25 -110,-30 C-110,-75 -75,-100 -45,-100 C-20,-100 -5,-85 0,-68 C5,-85 20,-100 45,-100 C75,-100 110,-75 110,-30 C110,25 25,72 0,95Z';
+    let g=`<div class="ct">ONO ŠTO NAS VODI</div><div class="ch">Pristup sa srcem</div><svg width="900" height="560" style="position:absolute;left:0;top:0"><defs>`;
+    R.forEach(([n,w],i)=>{ const k=eio(P(t,w.s-0.15,0.9)); g+=`<clipPath id="h3${i}"><rect x="-120" y="${100-210*k}" width="240" height="${210*k+5}"/></clipPath>`; }); g+='</defs>';
+    R.forEach(([n,w],i)=>{ const cx=180+i*270, cy=315; const k=eio(P(t,w.s-0.15,0.9)); const pop=1+0.08*Math.sin(Math.PI*clamp((t-w.s-0.75)/0.35));
+      g+=`<g transform="translate(${cx},${cy}) scale(${0.85*pop})"><path d="${H}" fill="none" stroke="${HD}" stroke-width="7"/><path d="${H}" fill="${HC}" clip-path="url(#h3${i})"/><path d="${H}" fill="none" stroke="${k>0.02?HC:HD}" stroke-width="7"/></g>
+      <text x="${cx}" y="${cy+150}" text-anchor="middle" font-family="J" font-weight="500" font-size="40" fill="${k>0.05?HW:HD}">${n}</text>`; });
+    return g+'</svg>'; }
+  if(c.kind==='one'){ const H='M0,95 C-25,72 -110,25 -110,-30 C-110,-75 -75,-100 -45,-100 C-20,-100 -5,-85 0,-68 C5,-85 20,-100 45,-100 C75,-100 110,-75 110,-30 C110,25 25,72 0,95Z';
+    const k=eio(P(t,wSr.s-0.2,1.1)); const beat=1+0.05*Math.sin(Math.max(0,t-wSr.s-1)*5.5)*P(t,wSr.s+0.9,.5);
+    return `<div class="ct">OD SRCA</div><div class="ch">Hvala na poverenju</div><svg width="900" height="560" style="position:absolute;left:0;top:0"><defs><clipPath id="hf"><rect x="-130" y="${105-220*k}" width="260" height="${220*k+5}"/></clipPath>
+      <radialGradient id="glow2"><stop offset="0" stop-color="#7FE3D3" stop-opacity=".5"/><stop offset="1" stop-color="#7FE3D3" stop-opacity="0"/></radialGradient></defs>
+      <g transform="translate(450,330) scale(${1.05*beat})"><circle r="${lerp(60,190,k)}" fill="url(#glow2)" opacity="${k}"/><path d="${H}" fill="none" stroke="${DIM}" stroke-width="7"/><path d="${H}" fill="${C}" clip-path="url(#hf)"/><path d="${H}" fill="none" stroke="${k>0.02?C:DIM}" stroke-width="7"/></g>
+      <text x="450" y="520" text-anchor="middle" font-family="C" font-weight="700" font-style="italic" font-size="48" fill="${CR}" opacity="${eo(P(t,wPo.s-0.1,.6))}">punim srcem</text></svg>`; }
+  if(c.kind==='line'){ const sm=eio(P(lt,0.2,1.1)); const sw=eio(P(t,wOs.s-0.45,1.0)); const beat=1+0.045*Math.sin(Math.max(0,t-wOs.s)*5.5)*P(t,wOs.s,.5);
+    const H='M0,95 C-25,72 -110,25 -110,-30 C-110,-75 -75,-100 -45,-100 C-20,-100 -5,-85 0,-68 C5,-85 20,-100 45,-100 C75,-100 110,-75 110,-30 C110,25 25,72 0,95Z';
+    const smile='M-150,-20 C-90,60 90,60 150,-20';
+    return `<div class="ct">ONO ŠTO OSTAJE</div><div class="ch">Osmeh i osećaj</div><svg width="900" height="560" style="position:absolute;left:0;top:0">
+      <defs><radialGradient id="glow"><stop offset="0" stop-color="#7FE3D3" stop-opacity=".55"/><stop offset="1" stop-color="#7FE3D3" stop-opacity="0"/></radialGradient></defs>
+      <g transform="translate(450,300)">
+        <circle r="${lerp(40,200,sw)}" fill="url(#glow)" opacity="${sw}"/>
+        <path d="${smile}" fill="none" stroke="${CR}" stroke-width="9" stroke-linecap="round" stroke-dasharray="360" stroke-dashoffset="${360*(1-sm)}" opacity="${1-sw*0.95}" transform="translate(0,${lerp(0,30,sw)}) scale(${lerp(1,.7,sw)})"/>
+        <g transform="translate(0,-10) scale(${lerp(.3,1.3,eo(sw))*beat})" opacity="${sw}"><path d="${H}" fill="${C}" opacity=".92"/><path d="${H}" fill="none" stroke="#fff" stroke-width="4" opacity=".6"/></g>
+      </g>
+      <text x="450" y="500" text-anchor="middle" font-family="C" font-weight="700" font-style="italic" font-size="50" fill="${CR}"><tspan opacity="${eo(P(lt,0.8,.6))*(1-0.5*sw)}">osmeh se zaboravi</tspan><tspan fill="${C}" opacity="${eo(P(t,wOs.s,.6))}"> — osećaj ostaje</tspan></text></svg>`; }
+}
+const ebk=x=>{const c1=1.70158,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)};
+const BRIGHT=new Set(['prijatno']);
+const PU='#9B88C2', PL='#D6C8F2', WH='#FFFFFF';
+const VDEF=`<defs><radialGradient id="vsh"><stop offset="0" stop-color="#140E1E" stop-opacity=".5"/><stop offset="1" stop-color="#140E1E" stop-opacity="0"/></radialGradient>
+<radialGradient id="vgl"><stop offset="0" stop-color="#B9A6E6" stop-opacity=".6"/><stop offset="1" stop-color="#B9A6E6" stop-opacity="0"/></radialGradient>
+<filter id="vds"><feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#000" flood-opacity=".45"/></filter></defs>`;
+function vizHTML(c,t){ const lt=t-c.t0, out=eio(P(t,c.t1-0.5,.5)), inn=eo(P(lt,0,.5)), A=inn*(1-out);
+  if(c.kind==='wreath'){ const cx=540, cy=1010, R=165; const pt=(s,th)=>[cx+s*R*Math.sin(th), cy+R*Math.cos(th)];
+    let g=VDEF+`<g opacity="${A}"><ellipse cx="${cx}" cy="${cy+60}" rx="420" ry="320" fill="url(#vsh)"/><g filter="url(#vds)">`;
+    const dr=eio(P(lt,0.1,0.9));
+    for(const s of [-1,1]){ const pts=[]; for(let k=0;k<=40;k++) pts.push(pt(s,(18+k*3.0)*Math.PI/180));
+      g+=`<path d="M${pts.map(p=>p.map(v=>v.toFixed(1)).join(',')).join(' L')}" fill="none" stroke="${WH}" stroke-width="4" stroke-linecap="round" stroke-dasharray="320" stroke-dashoffset="${320*(1-dr)}"/>`;
+      for(let k=0;k<7;k++){ const th=(30+k*15)*Math.PI/180; const [x,y]=pt(s,th); const kk=ebk(P(lt,0.25+k*0.09,.45));
+        const tx=s*Math.cos(th), ty=-Math.sin(th); const nx=x-cx, ny=y-cy, nl=Math.hypot(nx,ny);
+        for(const side of [-1,1]){ const ox=nx/nl*side*20+tx*14, oy=ny/nl*side*20+ty*14; const ang=Math.atan2(ty+ny/nl*side*0.9, tx+nx/nl*side*0.9)*180/Math.PI;
+          g+=`<ellipse cx="${x+ox}" cy="${y+oy}" rx="${24*kk}" ry="${10*Math.min(1,kk)}" transform="rotate(${ang} ${x+ox} ${y+oy})" fill="${side>0?WH:PU}"/>`; } }
+      const [x,y]=pt(s,138*Math.PI/180); const kt=ebk(P(lt,0.9,.45)); g+=`<ellipse cx="${x}" cy="${y-14}" rx="${10*Math.min(1,kt)}" ry="${24*kt}" transform="rotate(${s*-20} ${x} ${y-14})" fill="${PU}"/>`; }
+    const k1=ebk(P(lt,0.5,.6)), kL=eo(P(t,wLj.s-0.1,.5)), kB=eo(P(t,wLb.s-0.1,.5)), kN=eo(P(lt,0.7,.6));
+    g+=`<text x="${cx}" y="${cy+45}" text-anchor="middle" font-family="J" font-weight="500" font-size="130" fill="${WH}" transform="translate(${cx},${cy}) scale(${Math.max(0,k1)}) translate(${-cx},${-cy})">1</text>
+     <text x="${cx}" y="${cy+R+95}" text-anchor="middle" font-family="J" font-weight="500" font-size="30" letter-spacing="${lerp(16,10,kN)}" fill="${PL}" opacity="${kN}">NA PRVOM MESTU</text>
+     <text x="${cx}" y="${cy+R+170}" text-anchor="middle" font-family="C" font-weight="700" font-size="64" fill="${WH}"><tspan opacity="${kL}">Ljudskost</tspan><tspan fill="${PL}" opacity="${kB}"> · </tspan><tspan opacity="${kB}">Ljubaznost</tspan></text></g></g>`;
+    return g; }
+  if(c.kind==='tooth'){ const cx=540, cy=1060; const tooth='M-70,-80 C-110,-80 -120,-30 -105,20 C-95,55 -85,90 -75,140 C-68,170 -40,170 -35,140 C-28,100 -20,70 0,70 C20,70 28,100 35,140 C40,170 68,170 75,140 C85,90 95,55 105,20 C120,-30 110,-80 70,-80 C40,-80 25,-65 0,-65 C-25,-65 -40,-80 -70,-80Z';
+    const H='M0,95 C-25,72 -110,25 -110,-30 C-110,-75 -75,-100 -45,-100 C-20,-100 -5,-85 0,-68 C5,-85 20,-100 45,-100 C75,-100 110,-75 110,-30 C110,25 25,72 0,95Z';
+    const dr=eio(P(lt,0.1,1.0)); const fadeT=eio(P(t,wZa.s+0.2,Math.max(0.6,wOs.s-0.5-wZa.s-0.2))); const hk=eo(P(t,wOs.s-0.35,.7)); const beat=1+0.05*Math.sin(Math.max(0,t-wOs.s)*5.5)*P(t,wOs.s+0.3,.5);
+    const tA=(1-0.7*fadeT)*(1-hk); const t1=eo(P(lt,0.5,.6))*(1-hk), t2=eo(P(t,wOs.s-0.1,.6));
+    return VDEF+`<g opacity="${A}"><ellipse cx="${cx}" cy="${cy+20}" rx="400" ry="320" fill="url(#vsh)"/>
+      <g filter="url(#vds)" transform="translate(${cx},${cy-20}) scale(${lerp(1,0.85,fadeT)})" opacity="${tA}"><path d="${tooth}" fill="none" stroke="${WH}" stroke-width="6" stroke-dasharray="14 10" stroke-dashoffset="${(1-dr)*400}" opacity="${dr}"/>
+        <path d="M-60,-55 C-80,-50 -88,-25 -82,0" fill="none" stroke="${WH}" stroke-width="5" stroke-linecap="round" opacity="${.7*dr}"/></g>
+      <circle cx="${cx}" cy="${cy}" r="${lerp(60,240,hk)}" fill="url(#vgl)" opacity="${hk}"/>
+      <g filter="url(#vds)" transform="translate(${cx},${cy}) scale(${lerp(.4,1.25,hk)*beat})" opacity="${hk}"><path d="${H}" fill="${PU}"/><path d="${H}" fill="none" stroke="${WH}" stroke-width="4" opacity=".7"/></g>
+      <text x="${cx}" y="${cy+230}" text-anchor="middle" font-family="C" font-weight="700" font-style="italic" font-size="58" fill="${WH}" filter="url(#vds)"><tspan opacity="${t1*.85}">osmeh se zaboravi…</tspan></text>
+      <text x="${cx}" y="${cy+230}" text-anchor="middle" font-family="C" font-weight="700" font-style="italic" font-size="58" fill="${WH}" filter="url(#vds)" opacity="${t2}">…osećaj <tspan fill="${PL}">ostaje</tspan></text></g>`; }
+  return ''; }
+window.render=function(t){
+  { const vz=document.getElementById('viz'); const c=CARDS.find(x=>t>=x.t0&&t<x.t1&&(x.kind==='wreath'||x.kind==='tooth')); vz.innerHTML=c?vizHTML(c,t):''; }
+  { const tl=document.getElementById('toplogo'); tl.style.opacity=(t<BODY?1:0)*(1-P(t,BODY-0.3,.3)); }
+  { const Hk=document.getElementById('hook'); const a=1, o=eio(P(t,HOOK_END-0.35,.35)); Hk.style.opacity=a*(1-o); Hk.style.visibility=t<HOOK_END?'visible':'hidden';
+    const w1=1, w3=1;
+    document.getElementById('hookt').innerHTML=`<div style="font-family:M;font-weight:700;font-size:24px;letter-spacing:.34em;color:#0F8F7E;opacity:1">LABORATORIJA OLUJIĆ</div>
+     <div style="font-family:M;font-weight:700;font-size:80px;line-height:1.06;color:#12524B;margin-top:20px;opacity:${w1};transform:translateY(${lerp(30,0,w1)}px)">Šta zapravo</div>
+     <div style="font-family:P;font-style:italic;font-weight:700;font-size:190px;line-height:1;padding:0 .12em .2em;margin:-.04em 0 -.24em -.1em;background:linear-gradient(100deg,#0F8F7E 10%,#2FCFB8 40%,#7B5FB8 75%,#C9567E);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:1;transform:scale(${lerp(1.06,1,eo(P(t,0,.8)))});transform-origin:0 60%;display:inline-block">pamtite</div>
+     <div style="font-family:M;font-weight:700;font-size:80px;line-height:1.06;color:#12524B;opacity:${w3>0?Math.min(1,w3):0};transform:translateY(${lerp(30,0,Math.min(1,w3))}px)">posle novih zuba?</div>`; }
+  // light leak on chapter changes
+  { let lk=0, pos=0; CHS.forEach((c,i)=>{ if(i===0) return; const k=(t-c.t+0.3)/1.6; if(k>0&&k<1){ lk=Math.max(lk,Math.sin(Math.PI*k)); pos=k; } });
+    const L=document.getElementById('leak'); L.style.opacity=lk*0.75;
+    L.style.background=`radial-gradient(ellipse 55% 40% at ${lerp(-10,110,pos)}% ${lerp(20,60,pos)}%,rgba(255,180,110,.85),rgba(255,120,80,.35) 45%,rgba(0,0,0,0) 75%)`; }
+  // dust
+  DUST.forEach(d=>{ const x=(d.x+d.vx*t+Math.sin(t*.6+d.ph)*18+1080)%1080, y=((d.y+d.vy*t)%1920+1920)%1920; d.el.style.transform=`translate(${x}px,${y}px)`; d.el.style.opacity=d.a*(0.6+0.4*Math.sin(t*1.3+d.ph))*(1-P(t,BODY-0.3,.4)); });
+  // grain
+  { const id=gx.createImageData(270,480); let s=(Math.floor(t*30)*7919)%2147483647||1; for(let i=0;i<id.data.length;i+=4){ s=(s*16807)%2147483647; const v=(s&255); id.data[i]=id.data[i+1]=id.data[i+2]=v; id.data[i+3]=255; } gx.putImageData(id,0,0); document.getElementById('grain').style.opacity=t<BODY?0.06:0; }
+
+  // chapter label
+  const chap=document.getElementById('chap'); let ch=null; CHS.forEach(c=>{ if(t>=c.t) ch=c; });
+  if(false){ const k=eo(P(t,ch.t+0.2,.8)); const nx=CHS[CHS.indexOf(ch)+1]; const o=nx?P(t,nx.t-0.4,.4):P(t,BODY-0.6,.4);
+    chap.innerHTML=`<span class="n">0${ch.b}</span> &nbsp;—&nbsp; ${CH[ch.b]}`; chap.style.opacity=k*(1-o); chap.style.transform=`translateY(${lerp(14,0,k)}px)`; chap.style.letterSpacing=lerp(.5,.32,k)+'em'; }
+  else chap.style.opacity=0;
+  { const cd=document.getElementById('card'); const c=CARDS.find(x=>t>=x.t0&&t<x.t1&&x.kind!=='wreath'&&x.kind!=='tooth');
+    if(c){ const k=eo(P(t,c.t0,.5)), o=eio(P(t,c.t1-0.4,.4)); cd.style.visibility='visible'; cd.className=c.kind==='hearts3'?'dark':''; cd.style.opacity=k*(1-o); cd.style.transform=`translateY(${lerp(30,0,k)-o*15}px) scale(${0.6*lerp(.96,1,k)})`; cd.style.filter=`blur(${(1-k)*8+o*6}px)`; cd.innerHTML=cardHTML(c,t); }
+    else cd.style.visibility='hidden'; }
+  // phrase
+  const box=document.getElementById('lines'), ln=document.getElementById('line');
+  const p=PH.find(x=>t>=x.t0&&t<x.t1);
+  if(p && t<BODY && t>=HOOK_END-0.05){ const out=P(t,p.t1-0.35,.35); const onCard=CARDS.some(x=>t>=x.t0-0.3&&t<x.t1+0.3); const L=lines(p,onCard?19:15); box.style.fontSize=onCard?'0.82em':''; document.querySelectorAll('#lines').forEach(e=>e.style.zoom=onCard?0.84:1);
+    const last=p[p.length-1], hasKey=KEY.has(norm(last.w)), sm=hasKey?p.slice(0,-1):p; const L2=lines(sm,onCard?19:15);
+    let h=L2.map(l=>`<div class="ln">${l.map(w=>{ const k=eo(P(t,w.s-0.25,.5)); const txt=w.w.replace(/,$/,'');
+        return `<span style="opacity:${k*(1-out)};transform:translateY(${lerp(70,0,k)-out*20}%);filter:blur(${(1-k)*6+out*5}px)">${txt}</span>`}).join(' ')}</div>`).join('');
+    if(hasKey){ const k=eio(P(t,last.s-0.2,.7)); const txt=last.w.replace(/[,.]$/,''); const fs=Math.min(170,Math.round(1600/Math.max(5,txt.length)));
+      h+=`<div><div class="bg${BRIGHT.has(norm(last.w))?' bright':''}" style="font-size:${fs}px;opacity:${k*(1-out)};transform:scale(${lerp(1.08,1,k)});transform-origin:0 70%;letter-spacing:${lerp(.08,-.01,k)}em;filter:blur(${(1-k)*12+out*8+(MODE==='S'?7:0)}px)">${txt}</div></div>`; }
+    box.innerHTML=h;
+    const lk=eio(P(t,p.t0,.6)); ln.style.transform=`scaleX(${lk*(1-out)})`; ln.style.opacity=1-out;
+  } else { box.innerHTML=''; ln.style.transform='scaleX(0)'; }
+  // end card
+  const e=document.getElementById('end'); const a=eio(P(t,BODY-0.1,.8)); e.style.opacity=a; e.style.visibility=a>0?'visible':'hidden';
+  const lg=document.getElementById('logo'); const l=eo(P(t,BODY+.3,1)); lg.style.opacity=l; lg.style.transform=`translateY(${lerp(20,0,l)}px)`;
+  document.getElementById('eline').style.transform=`scaleX(${eio(P(t,BODY+.8,.6))})`;
+  [['e1',1.0],['e2',1.5],['e3',2.0]].forEach(([id,d])=>{ const k=eo(P(t,BODY+d,.7)); const el=document.getElementById(id); el.style.opacity=k; el.style.transform=`translateY(${lerp(24,0,k)}px)`; el.style.filter=`blur(${(1-k)*5}px)`; });
+  document.getElementById('shade').style.opacity=1-P(t,BODY-0.2,.5);
+};
+window.ready=document.fonts.ready.then(()=>true);
+</script></body></html>

@@ -1,0 +1,63 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:M;src:url(file:///home/user/work/v2/fonts/Montserrat-800.ttf);font-weight:800}
+@font-face{font-family:M;src:url(file:///home/user/work/v2/fonts/Montserrat-600.ttf);font-weight:600}
+@font-face{font-family:P;src:url(file:///home/user/work/v2/fonts/PlayfairDisplay-500i.ttf);font-weight:500;font-style:italic}
+*{margin:0;padding:0;box-sizing:border-box}html,body{width:1080px;height:1920px;overflow:hidden;background:transparent}
+#scr{position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 50% 50%,#FFFFFF 0%,#F2F2F2 55%,#BDBDBD 100%)}
+#title{position:absolute;left:0;right:0;top:330px;text-align:center}
+.big{font-family:M;font-weight:800;font-size:150px;letter-spacing:-.03em;color:#111;line-height:1}
+.big span{display:inline-block}
+.sub{font-family:P;font-style:italic;font-weight:500;font-size:62px;color:#333;margin-top:18px}
+#ill{position:absolute;left:540px;top:1120px;width:0;height:0}
+svg{overflow:visible}
+</style></head><body><div id="scr"><div id="title"></div><div id="ill"></div></div>
+<script>
+const C=window.CUT; // {id, t0, t1, marks:{...}} times are local seconds
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x)),P=(t,a,d)=>clamp((t-a)/d),lerp=(a,b,x)=>a+(b-a)*x;
+const eo=x=>1-Math.pow(1-x,3), eio=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const INK='#1A1A1A', G='#8C8C8C', LG='#D9D9D9', TEAL='#0F8F7E';
+const sh='style="filter:drop-shadow(0 18px 18px rgba(0,0,0,.18))"';
+const tooth=(s=1,fill='#FFFFFF')=>`<g transform="scale(${s})"><path d="M-60,-70 C-95,-70 -105,-35 -100,-5 C-95,30 -85,55 -78,95 C-72,125 -50,135 -40,95 C-32,62 -22,45 0,45 C22,45 32,62 40,95 C50,135 72,125 78,95 C85,55 95,30 100,-5 C105,-35 95,-70 60,-70 C35,-70 20,-58 0,-58 C-20,-58 -35,-70 -60,-70Z" fill="${fill}" stroke="${INK}" stroke-width="7" stroke-linejoin="round"/><path d="M-62,-45 C-78,-40 -80,-15 -76,5" fill="none" stroke="${LG}" stroke-width="9" stroke-linecap="round"/></g>`;
+function letters(word,t,t0,dur=0.5){ return [...word].map((c,i)=>{ if(c===' ') return '<span>&nbsp;</span>'; const k=P(t,t0+i*dur/word.length,.25); const col=k<1?`rgb(${lerp(200,17,k)|0},${lerp(200,17,k)|0},${lerp(200,17,k)|0})`:'#111'; return `<span style="color:${col};opacity:${lerp(.15,1,k)}">${c}</span>`}).join(''); }
+window.render=function(t){
+  const D=C.t1-C.t0; const tin=eio(P(t,0,.28)), tout=eio(P(t,D-.25,.25));
+  const scr=document.getElementById('scr'); scr.style.opacity=tin*(1-tout);
+  scr.style.transform=`scale(${lerp(1.08,1,tin)*(1+0.03*P(t,0,D))})`;
+  const T=document.getElementById('title'), I=document.getElementById('ill'); const m=C.marks;
+  if(C.id===1){ // steps
+    T.innerHTML=`<div class="big" style="font-size:128px">${letters('mnogo koraka',t,.15,.7)}</div><div class="sub" style="opacity:${eo(P(t,.9,.4))}">iza jednog novog osmeha</div>`;
+    const labels=['pregled','brušenje','probe','prilagođavanja']; let g='';
+    labels.forEach((l,i)=>{ const x=-420+i*215, y=260-i*150; const k=eo(P(t,.25+i*.22,.35));
+      g+=`<g opacity="${k}" transform="translate(0,${lerp(40,0,k)})"><rect x="${x}" y="${y}" width="215" height="${520-y}" fill="${i%2?'#EDEDED':'#F7F7F7'}" stroke="${INK}" stroke-width="6"/>
+         <text x="${x+107}" y="${y+60}" text-anchor="middle" font-family="M" font-weight="600" font-size="${l.length>10?27:34}" fill="${INK}">${l}</text></g>`; });
+    const pos=clamp((t-.4)/(D-.9))*3; const si=Math.floor(pos), fr=pos-si; const x0=-420+si*215+107, y0=260-si*150;
+    const x1=-420+Math.min(3,si+1)*215+107, y1=260-Math.min(3,si+1)*150; const hop=Math.sin(Math.PI*fr)*80;
+    g+=`<g transform="translate(${lerp(x0,x1,eio(fr))},${lerp(y0,y1,eio(fr))-95-hop})" ${sh}>${tooth(.8)}</g>`;
+    I.innerHTML=`<svg width="1" height="1"><g transform="translate(0,-60)">${g}</g></svg>`;
+  }
+  if(C.id===2){ // Ne. + protocol
+    T.innerHTML=`<div class="big" style="font-size:230px">${letters('Ne.',t,.05,.25)}</div><div class="sub" style="opacity:${eo(P(t,m.prav-0.1,.4))}">pravila struke postoje s razlogom</div>`;
+    let rows=''; for(let i=0;i<4;i++){ const k=eo(P(t,.5+i*.25,.3)); rows+=`<g opacity="${k}"><rect x="-170" y="${-150+i*95}" width="${lerp(80,300,k)}" height="18" rx="9" fill="${LG}"/><circle cx="-215" cy="${-141+i*95}" r="24" fill="none" stroke="${INK}" stroke-width="6"/><path d="M-228,${-141+i*95} L-217,${-129+i*95} L-198,${-155+i*95}" fill="none" stroke="${TEAL}" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="40" stroke-dashoffset="${40*(1-k)}"/></g>`; }
+    const st=eo(P(t,1.5,.35));
+    I.innerHTML=`<svg width="1" height="1"><g ${sh}><rect x="-290" y="-300" width="580" height="660" rx="28" fill="#fff" stroke="${INK}" stroke-width="7"/><rect x="-90" y="-335" width="180" height="70" rx="16" fill="${LG}" stroke="${INK}" stroke-width="7"/>${rows}
+      <g transform="translate(150,230) rotate(-14) scale(${lerp(1.8,1,st)})" opacity="${st}"><circle r="105" fill="none" stroke="${TEAL}" stroke-width="9"/><circle r="85" fill="none" stroke="${TEAL}" stroke-width="4"/><text y="14" text-anchor="middle" font-family="M" font-weight="800" font-size="40" fill="${TEAL}">PROTOKOL</text></g></g></svg>`;
+  }
+  if(C.id===3){ // heart + tooth, three words
+    const w=[['ljudskost',m.lj],['strpljenje',m.st],['razumevanje',m.ra]];
+    T.innerHTML=`<div class="big" style="font-size:132px">${letters('ljudskost',t,.1,.5)}</div><div class="sub">${w.slice(1).map(([x,tt])=>`<span style="opacity:${eo(P(t,tt-.1,.4))};margin:0 .3em">${x}</span>`).join('·')}</div>`;
+    const hb=1+0.04*Math.sin(t*6); const k=eo(P(t,.2,.6));
+    I.innerHTML=`<svg width="1" height="1"><g transform="scale(${lerp(.8,1,k)*hb})" opacity="${k}" ${sh}><path d="M0,250 C-60,190 -330,30 -330,-120 C-330,-240 -230,-300 -150,-300 C-80,-300 -30,-260 0,-210 C30,-260 80,-300 150,-300 C230,-300 330,-240 330,-120 C330,30 60,190 0,250Z" fill="#fff" stroke="${INK}" stroke-width="8"/>
+      <path d="M0,250 C-60,190 -330,30 -330,-120 C-330,-240 -230,-300 -150,-300 C-80,-300 -30,-260 0,-210" fill="none" stroke="${TEAL}" stroke-width="8" stroke-dasharray="1400" stroke-dashoffset="${1400*(1-eio(P(t,.4,1.4)))}"/>
+      <g transform="translate(0,-40)">${tooth(1.15)}</g></g></svg>`;
+  }
+  if(C.id===4){ // smile -> heart
+    const sw=eio(P(t,m.os-0.3,.9));
+    T.innerHTML=`<div class="big" style="position:relative;height:160px"><div style="position:absolute;left:0;right:0;opacity:${1-sw};filter:blur(${sw*10}px)">${letters('osmeh',t,.1,.4)}</div><div style="position:absolute;left:0;right:0;opacity:${sw}">${letters('osećaj',t,m.os-0.2,.5)}</div></div><div class="sub" style="opacity:${eo(P(t,m.os+.5,.5))}">je ono što ostaje</div>`;
+    const sm='M-260,-40 C-180,120 180,120 260,-40'; const hr='M0,220 C-60,165 -260,40 -260,-90 C-260,-190 -180,-240 -120,-240 C-60,-240 -20,-200 0,-160 C20,-200 60,-240 120,-240 C180,-240 260,-190 260,-90 C260,40 60,165 0,220Z';
+    I.innerHTML=`<svg width="1" height="1"><g ${sh}><path d="${sm}" fill="none" stroke="${INK}" stroke-width="16" stroke-linecap="round" opacity="${1-sw}" transform="scale(${lerp(1,.6,sw)})"/>
+      <path d="${hr}" fill="${sw>0?'#fff':'none'}" stroke="${INK}" stroke-width="9" opacity="${sw}" transform="scale(${lerp(.5,1,eo(sw))})"/>
+      <path d="${hr}" fill="none" stroke="${TEAL}" stroke-width="9" opacity="${sw}" stroke-dasharray="1700" stroke-dashoffset="${1700*(1-eio(P(t,m.os+.2,1.2)))}" transform="scale(${lerp(.5,1,eo(sw))})"/></g></svg>`;
+  }
+};
+window.ready=document.fonts.ready.then(()=>true);
+</script></body></html>

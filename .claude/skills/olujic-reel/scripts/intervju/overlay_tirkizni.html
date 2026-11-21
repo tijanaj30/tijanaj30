@@ -1,0 +1,133 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:P;src:url(file:///home/user/work/v2/fonts/PlayfairDisplay-600.ttf);font-weight:600;font-style:normal}
+@font-face{font-family:P;src:url(file:///home/user/work/v2/fonts/PlayfairDisplay-500i.ttf);font-weight:500;font-style:italic}
+@font-face{font-family:P;src:url(file:///home/user/work/v2/fonts/PlayfairDisplay-600i.ttf);font-weight:600;font-style:italic}
+@font-face{font-family:P;src:url(file:///home/user/work/v2/fonts/PlayfairDisplay-400i.ttf);font-weight:400;font-style:italic}
+@font-face{font-family:M;src:url(file:///home/user/work/v2/fonts/Montserrat-600.ttf);font-weight:600}
+@font-face{font-family:C;src:url(file:///home/user/work/r6/fonts/CormorantGaramond-700.ttf);font-weight:700}
+@font-face{font-family:J;src:url(file:///home/user/work/r6/fonts/Jost-500.ttf);font-weight:500}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:transparent}
+body.K{background:#000}
+.abs{position:absolute}
+#cap{position:absolute;left:60px;right:60px;bottom:210px;display:flex;flex-direction:column;align-items:center;text-align:left}
+#cap .orn{display:block;margin-top:4px;align-self:center}
+#cap .lock{display:inline-flex;flex-direction:column;align-items:stretch;transform-origin:50% 100%}
+#cap .ln{display:block;white-space:nowrap;line-height:1.05}
+#cap .sm.ln.L{align-self:flex-start;padding-left:.15em}
+#cap .sm.ln.Rr{align-self:flex-end;padding-right:.15em}
+#cap .sm.big{font-size:120px;line-height:.92}
+body.K #cap .orn,body.S #cap .orn{visibility:hidden}
+#leak{left:0;top:0;width:1080px;height:1920px;mix-blend-mode:screen;background:radial-gradient(ellipse 60% 45% at 85% 70%,rgba(255,190,140,.55),rgba(255,160,190,.25) 45%,rgba(0,0,0,0) 75%)}
+body.K #leak,body.S #leak{display:none}
+#cap .sm{font-family:P;font-style:italic;font-weight:600;font-size:74px;color:#fff;line-height:1.2;
+  text-shadow:0 1px 4px rgba(0,0,0,.55),0 2px 14px rgba(0,0,0,.55),0 6px 34px rgba(0,0,0,.4)}
+#cap .sm span{display:inline-block;margin:0 .12em}
+#cap .bg{font-family:P;font-weight:600;line-height:1.0;white-space:nowrap;padding:.06em .12em .3em;margin:-.14em 0 -.3em;letter-spacing:-.015em;align-self:center}
+body.K #cap .bg{background:linear-gradient(100deg,#A6F5E8 0%,#FFFFFF 38%,#C9B6EC 66%,#F6C2D6 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+body.K #cap .sm{visibility:hidden}
+body.N #cap .bg{visibility:hidden}
+#vig{left:0;top:0;width:1080px;height:1920px;
+  background:radial-gradient(ellipse 78% 62% at 50% 46%,rgba(0,0,0,0) 58%,rgba(0,0,0,.42) 100%),
+             linear-gradient(180deg,rgba(0,0,0,0) 50%,rgba(0,0,0,.28) 100%)}
+#end{left:0;top:0;width:1080px;height:1920px;background:#F2F2F2}
+#logo{position:absolute;left:180px;top:610px;width:720px}
+#e1{position:absolute;left:0;width:1080px;top:1300px;text-align:center;font-family:P;font-style:italic;font-weight:600;font-size:76px;color:#1C2633}
+#e2{position:absolute;left:0;width:1080px;top:1400px;text-align:center;font-family:P;font-style:italic;font-weight:600;font-size:76px;
+  background:linear-gradient(100deg,#0F8F7E,#7B5FB8 60%,#C9567E);-webkit-background-clip:text;background-clip:text;color:transparent}
+body.K #end,body.K #vig,body.S #end,body.S #vig{display:none}
+body.S #cap .sm{visibility:hidden}
+body.S #cap .bg{color:rgba(0,0,0,.9);text-shadow:0 0 18px rgba(0,0,0,.9),0 0 40px rgba(0,0,0,.6)}
+#hook{left:0;top:0;width:1080px;height:1920px}
+#hookbg{left:0;top:0;width:1080px;height:1920px;background:linear-gradient(180deg,rgba(255,255,255,0) 44%,rgba(255,255,255,.62) 58%,rgba(250,252,252,.9) 74%,rgba(250,252,252,.94) 100%)}
+body.K #hook,body.S #hook{display:none}
+#card{position:absolute;left:90px;width:900px;top:868px;height:560px;transform-origin:50% 0;border-radius:30px;background:rgba(14,26,28,.78);border:2px solid rgba(127,227,211,.40);box-shadow:0 30px 80px rgba(0,0,0,.35);overflow:hidden;visibility:hidden}
+#card .ct{position:absolute;left:54px;top:34px;font-family:J;font-weight:500;font-size:34px;letter-spacing:.3em;color:#7FE3D3}
+#card .ch{position:absolute;left:54px;top:78px;font-family:C;font-weight:700;font-size:76px;color:#FFFFFF}
+body.K #card,body.S #card{display:none}
+</style></head>
+<body>
+<div id="vig" class="abs"></div><div id="leak" class="abs"></div>
+<div id="card"></div><div id="cap"></div><div id="hook" class="abs"><div id="hookbg" class="abs"></div><div id="hookt" class="abs" style="left:80px;right:80px;top:1130px"></div></div>
+<div id="end" class="abs"><img id="logo" src="/home/user/work/logo2_t.png"><div id="e1">Prvo razumete.</div><div id="e2">Tek onda odlučujete.</div></div>
+<script>
+const TL=window.TL, MODE=window.MODE; document.body.className=MODE;
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x)); const P=(t,a,d)=>clamp((t-a)/d);
+const eo=x=>1-Math.pow(1-x,3); const eio=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2; const lerp=(a,b,x)=>a+(b-a)*x;
+const norm=s=>s.toLowerCase().replace(/[.,?!:—"„“]/g,'');
+const KEY=new Set(['viziju','zuba','osmeha','više','protetika','teška','koraka','komplikacija','zajedno','volite','novac','ne','struke','protokoli','principi','pravilima','rešenje','pacijenta',
+ 'ljudskosti','strpljenja','razumevanja','struku','u strahu je','timski duh']);
+const isKey=w=>norm(w.w)==='ne'?/^Ne[,.]/.test(w.w):KEY.has(norm(w.w));
+const ORN=new Set(['ljudskosti','strpljenja','razumevanja','razumevanje','poštovanje','timski duh','prijatno','osećaja']);
+const W=[]; TL.words.forEach(w=>{ const pv=W[W.length-1]; if(pv&&norm(pv.w)==='timski'&&norm(w.w)==='duh'){pv.w='timski duh';pv.e=w.e} else W.push({...w}); });
+const BODY=TL.body;
+const chunks=[]; let cur=[];
+W.forEach((w,i)=>{ const key=isKey(w); if(!key&&cur.length===4){chunks.push(cur);cur=[]} cur.push(w);
+  if(key||/[.,?!]$/.test(w.w)){chunks.push(cur);cur=[]} });
+if(cur.length)chunks.push(cur);
+// timing: each chunk from first word start until next chunk start (if gap small) else last end + .5
+chunks.forEach((c,i)=>{ c.t0=c[0].s-0.12; const nx=chunks[i+1]; const le=c[c.length-1].e;
+  c.t1 = nx ? Math.min(nx[0].s-0.12, le+0.9) : Math.min(le+0.9,BODY-0.1); if(c.t1<le+0.15) c.t1=le+0.15; });
+const HOOK_END=TL.hook;
+const ebk=x=>{const c1=1.70158,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)};
+const TwK=k=>W.find(w=>norm(w.w).startsWith(k));
+const hLj=TwK('ljudskost'), hSt=TwK('strpljenj'), hRa=TwK('razumevanja')||TwK('razumevanj');
+const CARD={t0:hLj.s-0.35, t1:hRa.e+0.7};
+function card3(t){ const R=[['Ljudskost',hLj],['Strpljenje',hSt],['Razumevanje',hRa]]; const HC='#7FE3D3', HW='#FFFFFF', HD='rgba(255,255,255,.28)';
+  const H='M0,95 C-25,72 -110,25 -110,-30 C-110,-75 -75,-100 -45,-100 C-20,-100 -5,-85 0,-68 C5,-85 20,-100 45,-100 C75,-100 110,-75 110,-30 C110,25 25,72 0,95Z';
+  let g=`<div class="ct">ONO ŠTO NAS VODI</div><div class="ch">Pristup sa srcem</div><svg width="900" height="560" style="position:absolute;left:0;top:0"><defs>`;
+  R.forEach(([n,w],i)=>{ const k=eio(P(t,w.s-0.15,0.9)); g+=`<clipPath id="h3${i}"><rect x="-120" y="${100-210*k}" width="240" height="${210*k+5}"/></clipPath>`; }); g+='</defs>';
+  R.forEach(([n,w],i)=>{ const cx=180+i*270, cy=315; const k=eio(P(t,w.s-0.15,0.9)); const pop=1+0.08*Math.sin(Math.PI*clamp((t-w.s-0.75)/0.35));
+    g+=`<g transform="translate(${cx},${cy}) scale(${0.85*pop})"><path d="${H}" fill="none" stroke="${HD}" stroke-width="7"/><path d="${H}" fill="${HC}" clip-path="url(#h3${i})"/><path d="${H}" fill="none" stroke="${k>0.02?HC:HD}" stroke-width="7"/></g>
+    <text x="${cx}" y="${cy+150}" text-anchor="middle" font-family="J" font-weight="500" font-size="40" fill="${k>0.05?HW:HD}">${n}</text>`; });
+  return g+'</svg>'; }
+window.render=function(t){
+  { const cd=document.getElementById('card');
+    if(t>=CARD.t0&&t<CARD.t1){ const k=eo(P(t,CARD.t0,.5)), o=eio(P(t,CARD.t1-0.4,.4)); cd.style.visibility='visible'; cd.style.opacity=k*(1-o); cd.style.transform=`translateY(${lerp(30,0,k)-o*15}px) scale(${0.6*lerp(.96,1,k)})`; cd.style.filter=`blur(${(1-k)*8+o*6}px)`; cd.innerHTML=card3(t); }
+    else cd.style.visibility='hidden'; }
+  { const H=document.getElementById('hook'); const a=eo(P(t,0.0,.5)), o=eio(P(t,HOOK_END-0.45,.45)); H.style.opacity=a*(1-o); H.style.visibility=t<HOOK_END?'visible':'hidden';
+    const w1=eo(P(t,.2,.6)), w2=eo(P(t,.5,.6)), w3=ebk(P(t,.9,.6));
+    document.getElementById('hookt').innerHTML=`<div style="font-family:M;font-weight:700;font-size:24px;letter-spacing:.34em;color:#0F8F7E;opacity:${P(t,.1,.4)}">LABORATORIJA OLUJIĆ</div>
+     <div style="font-family:M;font-weight:700;font-size:80px;line-height:1.06;color:#12524B;margin-top:20px;opacity:${w1};transform:translateY(${lerp(30,0,w1)}px)">Da li je svako</div>
+     <div style="font-family:P;font-style:italic;font-weight:700;font-size:250px;line-height:1;padding:0 .12em .2em;margin:-.04em 0 -.24em -.1em;background:linear-gradient(100deg,#0F8F7E 10%,#2FCFB8 40%,#7B5FB8 75%,#C9567E);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:${P(t,.5,.15)};transform:scale(${lerp(1.4,1,ebk(P(t,.5,.6)))});transform-origin:0 60%;display:inline-block">NE</div>
+     <div style="font-family:M;font-weight:700;font-size:80px;line-height:1.06;color:#12524B;opacity:${w3>0?Math.min(1,w3):0};transform:translateY(${lerp(30,0,Math.min(1,w3))}px)">loše za vas?</div>`; }
+  const cap=document.getElementById('cap'); let html='';
+  const ch=chunks.find(c=>t>=c.t0&&t<c.t1);
+  let leak=0;
+  if(ch && t<BODY && t>=HOOK_END-0.05){
+    const ci=chunks.indexOf(ch); cap.style.alignItems='center';
+    const last=ch[ch.length-1], hasKey=isKey(last); const smalls=hasKey?ch.slice(0,-1):ch;
+    const out=P(t,ch.t1-0.3,0.3);
+    const spanOf=(w,big)=>{ const k=eo(P(t,w.s-0.18,.45)); return `<span style="display:inline-block;margin:0 .1em;opacity:${k*(1-out)};transform:translateY(${lerp(10,0,k)}px);filter:blur(${(1-k)*5+out*4}px)">${w.w}</span>`};
+    // centred, max two lines in total, one italic size
+    let inner='';
+    if(smalls.length){
+      if(hasKey) inner+=`<div class="sm ln" style="align-self:center">${smalls.map(w=>spanOf(w)).join('')}</div>`;
+      else { const h=Math.ceil(smalls.length/2); const l1=smalls.slice(0,smalls.length>2?h:smalls.length), l2=smalls.length>2?smalls.slice(h):[];
+        inner+=`<div class="sm ln" style="align-self:center">${l1.map(w=>spanOf(w)).join('')}</div>`;
+        if(l2.length) inner+=`<div class="sm ln" style="align-self:center">${l2.map(w=>spanOf(w)).join('')}</div>`; }
+    }
+    if(hasKey){ const k=eio(P(t,last.s-0.2,.7)); const txt=last.w.replace(/[,.]$/,''); const fs=Math.min(180,Math.round(1700/Math.max(5,txt.length)));
+      inner+=`<div class="bg" style="font-size:${fs}px;opacity:${k*(1-out)};transform:scale(${lerp(1.08,1,k)});letter-spacing:${lerp(.08,-.01,k)}em;filter:blur(${(1-k)*12+out*8+(MODE==='S'?7:0)}px)">${txt}</div>`; }
+    if(hasKey && ORN.has(norm(last.w))){ const k=P(t,last.s+0.15,0.9); leak=Math.sin(Math.PI*clamp((t-last.s+0.2)/(ch.t1-last.s+0.4)))*0.9;
+      const dl=eio(k); const wpx=Math.min(560, 60*last.w.length);
+      inner+=`<svg class="orn" width="${wpx}" height="40" viewBox="0 0 ${wpx} 40" style="opacity:${1-out}"><defs><linearGradient id="og" x1="0" x2="1"><stop offset="0" stop-color="#A6F5E8" stop-opacity="0"/><stop offset=".25" stop-color="#A6F5E8"/><stop offset=".7" stop-color="#E6D8FF"/><stop offset="1" stop-color="#F6C2D6" stop-opacity="0"/></linearGradient></defs>`+
+        `<path d="M10,20 L${wpx-10},20" stroke="url(#og)" stroke-width="3" stroke-linecap="round" stroke-dasharray="${wpx}" stroke-dashoffset="${wpx*(1-dl)}"/>`+
+        `<g transform="translate(${10+(wpx-20)*dl},20) rotate(${dl*90}) scale(${Math.sin(Math.PI*clamp(k*1.1))*1.0})"><path d="M0,-14 C2,-3 3,-2 14,0 C3,2 2,3 0,14 C-2,3 -3,2 -14,0 C-3,-2 -2,-3 0,-14Z" fill="#FFFFFF"/></g></svg>`; }
+    const tilt='none';
+    html=`<div class="lock" style="transform:${tilt}">${inner}</div>`;
+  }
+  cap.innerHTML=html; const lk=document.getElementById('leak'); if(lk) lk.style.opacity=leak*0.55;
+  // vignette + end card (N layer)
+  const v=document.getElementById('vig'); v.style.opacity = 1-P(t,BODY-0.2,0.5);
+  const e=document.getElementById('end'); const a=eio(P(t,BODY-0.15,0.8)); e.style.opacity=a; e.style.visibility=a>0?'visible':'hidden';
+  const lg=document.getElementById('logo'); const l=eo(P(t,BODY+0.3,1.0)); lg.style.opacity=l; lg.style.transform=`scale(${lerp(1.06,1,l)})`; lg.style.filter=`blur(${(1-l)*8}px)`;
+  const e1=document.getElementById('e1'), e2=document.getElementById('e2');
+  const a1=eo(P(t,BODY+0.9,0.8)), a2=eo(P(t,BODY+1.6,0.8));
+  e1.style.opacity=a1; e1.style.transform=`translateY(${lerp(14,0,a1)}px)`; e1.style.filter=`blur(${(1-a1)*6}px)`;
+  e2.style.opacity=a2; e2.style.transform=`translateY(${lerp(14,0,a2)}px)`; e2.style.filter=`blur(${(1-a2)*6}px)`;
+};
+window.ready=document.fonts.ready.then(()=>true);
+</script></body></html>
