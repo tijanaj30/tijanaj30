@@ -1,0 +1,224 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:I;src:url(fonts/Inter-Light.otf);font-weight:300}
+@font-face{font-family:I;src:url(fonts/Inter-Regular.otf);font-weight:400}
+@font-face{font-family:I;src:url(fonts/Inter-Medium.otf);font-weight:500}
+@font-face{font-family:I;src:url(fonts/Inter-SemiBold.otf);font-weight:600}
+@font-face{font-family:I;src:url(fonts/Inter-Bold.otf);font-weight:700}
+@font-face{font-family:ID;src:url(fonts/InterDisplay-Bold.otf);font-weight:700}
+@font-face{font-family:ID;src:url(fonts/InterDisplay-ExtraBold.otf);font-weight:800}
+@font-face{font-family:ID;src:url(fonts/InterDisplay-Black.otf);font-weight:900}
+@font-face{font-family:P;src:url(fonts/PlayfairDisplay-500i.ttf);font-weight:500;font-style:italic}
+@font-face{font-family:P;src:url(fonts/PlayfairDisplay-600i.ttf);font-weight:600;font-style:italic}
+@font-face{font-family:P;src:url(fonts/PlayfairDisplay-700i.ttf);font-weight:700;font-style:italic}
+:root{--navy:#1b263a;--paper:#f5f5f3}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#fff}
+body{font-family:I,sans-serif;color:#fff;-webkit-font-smoothing:antialiased}
+.abs{position:absolute}
+#world{position:absolute;inset:0;background:#fff}
+#stage{position:absolute;inset:0;overflow:hidden;transform-origin:540px 960px;background:#000}
+#cam{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:0 0}
+#cam img,#cam2 img{position:absolute;left:0;top:0;width:1080px;height:1920px}
+#person{-webkit-mask-size:1080px 1920px;mask-size:1080px 1920px;mask-mode:luminance;-webkit-mask-mode:luminance;display:none}
+#wallTxt,#scrBehind{position:absolute;left:0;top:0;width:1080px;height:1920px}
+#grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(27,38,58,.62) 0%,rgba(27,38,58,.38) 18%,rgba(27,38,58,.12) 34%,rgba(27,38,58,0) 46%);opacity:0}
+.navy{color:var(--navy)}
+.blk{font-family:ID;font-weight:900;letter-spacing:-.045em;line-height:.86}
+.it{font-family:P;font-style:italic;font-weight:600;letter-spacing:-.01em}
+/* glass */
+.glass{background:rgba(255,255,255,.6);-webkit-backdrop-filter:blur(28px) saturate(1.5);backdrop-filter:blur(28px) saturate(1.5);
+  border:1.5px solid rgba(255,255,255,.85);border-radius:34px;box-shadow:0 22px 60px rgba(27,38,58,.2),inset 0 1px 0 #fff;color:var(--navy)}
+.lab{font-weight:600;font-size:24px;letter-spacing:.2em;text-transform:uppercase;opacity:.6}
+.pill{display:inline-flex;align-items:center;gap:14px;border-radius:999px;padding:16px 30px;font-weight:600;font-size:26px;letter-spacing:.18em;text-transform:uppercase;white-space:nowrap}
+.dot{width:12px;height:12px;border-radius:50%;background:var(--navy)}
+.pillN{background:var(--navy);color:#fff}
+.ck{width:42px;height:42px;border-radius:50%;background:var(--navy);display:inline-flex;align-items:center;justify-content:center;flex:none}
+.ck svg{width:24px;height:24px}
+.row{display:flex;align-items:center;gap:20px;font-weight:600;font-size:38px;white-space:nowrap;letter-spacing:-.01em}
+/* captions */
+#cap{position:absolute;left:40px;right:40px;top:1120px;text-align:center;filter:drop-shadow(0 4px 22px rgba(0,0,0,.35))}
+.cl{display:block;white-space:nowrap}
+.sw{display:inline-block;font-weight:500;font-size:46px;letter-spacing:-.015em;margin:0 6px;line-height:1.05}
+.em{display:inline-block;font-family:ID;font-weight:900;letter-spacing:-.05em;line-height:.84}
+.ac{display:inline-block;font-family:P;font-style:italic;font-weight:600;font-size:64px;margin:0 6px;line-height:1}
+/* white cards */
+.card{position:absolute;inset:0;background:var(--paper);overflow:hidden}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(27,38,58,.06) 1.5px,transparent 1.5px),linear-gradient(90deg,rgba(27,38,58,.06) 1.5px,transparent 1.5px);background-size:90px 90px}
+#endc{position:absolute;inset:0;opacity:0;background:#fff}
+</style></head><body>
+<div id="world">
+ <div id="endc">
+  <img id="logo" src="assets/logo_t.png" class="abs" style="left:120px;width:840px;top:470px">
+  <div id="e1" class="abs navy" style="left:0;right:0;top:1000px;text-align:center">
+    <div style="font-weight:400;font-size:44px;letter-spacing:-.01em">sportski rođendani</div>
+    <div class="blk" style="font-size:150px;margin-top:6px">3–12 god.</div>
+    <div class="it" style="font-size:60px;margin-top:10px">bez brige za roditelje</div></div>
+  <div id="sb" class="abs" style="left:150px;right:150px;top:1460px;height:104px;border-radius:52px;background:var(--navy);display:flex;align-items:center;padding:0 22px 0 40px;gap:22px;box-shadow:0 20px 50px rgba(27,38,58,.3)">
+    <svg width="40" height="40" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="#fff" stroke-width="2.4"/><path d="M15.5 15.5L21 21" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg>
+    <div id="sbT" style="flex:1;font-weight:500;font-size:42px;color:#fff;white-space:nowrap;overflow:hidden"></div>
+    <div style="width:66px;height:66px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center"><svg width="30" height="30" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="#1b263a" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+  <div id="e3" class="abs navy" style="left:0;right:0;top:1610px;text-align:center;font-weight:500;font-size:34px;opacity:.75">roditelji · vlasnici prostora — javite nam se</div>
+ </div>
+ <div id="stage">
+  <div id="cam"><img id="vid"><div id="wallTxt"></div></div>
+  <div id="scrBehind"></div>
+  <div id="cam2" style="position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:0 0"><img id="person"></div>
+  <div id="grad"></div>
+ </div>
+ <div id="fx"></div>
+ <div id="cards"></div>
+ <div id="cap"></div>
+</div>
+<script>
+const W=1080,H=1920,TL=window.TL,WORDS=TL.words,SEGS=TL.segs,BODY=TL.body;
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x)),lerp=(a,b,t)=>a+(b-a)*t;
+const eo=t=>1-Math.pow(1-cl(t),3),eio=t=>{t=cl(t);return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2};
+const bo=t=>{t=cl(t);const c1=1.45,c3=c1+1;return 1+c3*Math.pow(t-1,3)+c1*Math.pow(t-1,2)};
+const norm=s=>s.toLowerCase().replace(/[.,?!„”]/g,'');
+function T(w,after=0){const x=WORDS.find(o=>o.s>=after-0.01&&norm(o.w)===w.toLowerCase());if(!x)throw Error('word '+w+' '+after);return x.s}
+const segAt=t=>SEGS.find(g=>t>=g.t0&&t<g.t1)||SEGS[SEGS.length-1];
+// ---------- framing ----------
+const SHOT={tight:{s:1.8,f:[.70,.40],p:[.5,.42],d:.04},wide:{s:1.0,f:[.5,.5],p:[.5,.5],d:.05},qwide:{s:1.32,f:[.28,.42],p:[.42,.42],d:.04},
+ own:{s:1.55,f:[.69,.40],p:[.5,.40],d:.05},own2:{s:1.22,f:[.62,.42],p:[.5,.42],d:.04},ask:{s:1.0,f:[.46,.45],p:[.5,.45],d:.06},
+ c1:{s:1.0,f:[.44,.42],p:[.5,.42],d:.05},c2:{s:1.16,f:[.45,.40],p:[.5,.40],d:.04}};
+function fpar(t){const g=segAt(t),S=SHOT[g.shot],k=cl((t-g.t0)/(g.t1-g.t0));let s=S.s*(1+S.d*k),f=S.f,p=S.p;
+ const P0=3.3,P1=5.1;if(t>=P0&&t<P1){const a=SHOT.tight,b=SHOT.wide,e=eio((t-P0)/(P1-P0));s=lerp(a.s*1.04,b.s,e);f=[lerp(a.f[0],b.f[0],e),lerp(a.f[1],b.f[1],e)];p=[lerp(a.p[0],b.p[0],e),lerp(a.p[1],b.p[1],e)]}
+ let x=p[0]*W-f[0]*W*s,y=p[1]*H-f[1]*H*s;x=cl(x,W-W*s,0);y=cl(y,H-H*s,0);return{s,x,y}}
+// ---------- helpers ----------
+const EL={};function mk(id,html,style,parent='fx'){const d=document.createElement('div');d.id=id;d.className='abs';d.style.cssText=style;d.innerHTML=html;document.getElementById(parent).appendChild(d);EL[id]=d;return d}
+function show(el,t,a,b,{dy=36,sc=.88,ex=.28}={}){if(t<a-0.001||t>b+ex){el.style.opacity=0;el.style.visibility='hidden';return 0}
+ el.style.visibility='visible';const i=cl((t-a)/.45),o=t>b?cl((t-b)/ex):0,e=bo(i);
+ el.style.opacity=cl(eo(i*1.7))*(1-o);el.style.filter=`blur(${(1-eo(i*1.4))*12+o*12}px)`;
+ el.style.transform=`translate(0,${lerp(dy,0,eo(i))-24*o}px) scale(${lerp(sc,1,e)*(1+.03*o)})`;return i}
+function sub(el,sel,t,a,{dx=-24}={}){const n=el.querySelector(sel);const i=cl((t-a)/.35);n.style.opacity=eo(i);n.style.transform=`translate(${(1-eo(i))*dx}px,0)`;n.style.filter=`blur(${(1-eo(i))*8}px)`;return i}
+function wordIn(n,t,a,d=.22,dy=18,bl=8){const i=cl((t-a)/d);n.style.opacity=eo(i);n.style.transform=`translate(0,${(1-eo(i))*dy}px)`;n.style.filter=`blur(${(1-eo(i))*bl}px)`;return i}
+const CK='<span class="ck"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';
+let A={};
+window.ready=(async()=>{await document.fonts.ready;
+const tKafu=T('kafu'),tNem=T('nemanja'),tTri=T('tri'),tSvak=T('svakodnevno'),tIgr=T('igraonice'),tInter=T('interakcija'),tUklj=T('uključeni'),
+ tBuk=T('bukvalno',20),tPauz=T('pauzicu'),tCak=T('čak'),tIdu=T('idu',30),tKuci=T('kući'),tNista=T('bukvalno ništa'),tOrg=T('organizacije'),tPrep=T('prepustio'),
+ tFeed=T('feedback'),tSav=T('savršen'),tPrez=T('prezadovoljni'),tNaj=T('najbolja'),tPrepo=T('preporuka');
+A={tKafu,tNem,tTri,tSvak,tIgr,tInter,tUklj,tBuk,tPauz,tCak,tIdu,tKuci,tNista,tOrg,tPrep,tFeed,tSav,tPrez,tNaj,tPrepo};
+const ss=b=>SEGS.find(g=>g.beat===b).t0,se=b=>{const s=SEGS.filter(g=>g.beat===b);return s[s.length-1].t1};
+for(const b of ['q1','a1','q2','a2','q3','a3'])A[b]=[ss(b),se(b)];A.end=ss('end');
+A.cardIgr=[tIgr-0.08,tIgr+1.45];A.cardQ3=[A.q3[0],A.q3[0]+2.6];
+// --- text behind subject ---
+// hook: attached to the wall (source coords, moves with the pullback)
+mk('hkWall',`<div style="position:absolute;left:0;width:1080px;top:410px;text-align:center" class="navy">
+  <div style="font-weight:500;font-size:32px;letter-spacing:-.01em;margin-left:432px">bukvalno</div>
+  <div class="blk" style="font-size:240px;margin-left:432px;margin-top:-4px">2,5h</div></div>`,'left:0;top:0;width:1080px;height:1920px','wallTxt');
+mk('hkFront',`<div class="it" style="font-size:118px;line-height:1">bez brige.</div>
+  <div style="font-weight:500;font-size:34px;letter-spacing:.24em;text-transform:uppercase;margin-top:22px;opacity:.9">iskustvo vlasnika sportskog centra</div>`,'left:0;right:0;top:1440px;text-align:center','fx');
+mk('kuciB',`<div id="kb1" style="font-weight:500;font-size:50px;letter-spacing:-.015em">čak i kad sviramo kraj,</div><div id="kb1b" style="font-weight:500;font-size:50px;letter-spacing:-.015em;margin-top:2px">kad se završi <span class="it" style="font-size:58px">rođendan</span> —</div><div id="kb2" class="blk" style="font-size:96px;margin-top:14px">neće da idu</div><div id="kb3" class="it" style="font-weight:700;font-size:300px;line-height:.9;margin-top:-6px">kući.</div>`,
+  'left:0;right:0;top:250px;text-align:center;color:#1b263a','scrBehind');
+mk('prepB',`<div style="font-weight:500;font-size:46px">najbolja</div><div class="blk" style="font-size:210px;margin-top:2px">preporuka</div>`,'left:0;right:0;top:450px;text-align:center;color:#1b263a','scrBehind');
+// --- glass widgets ---
+mk('name',`<div class="glass" style="display:flex;align-items:center;gap:24px;padding:26px 40px 26px 26px">
+ <div style="width:88px;height:88px;border-radius:50%;background:#1b263a;display:flex;align-items:center;justify-content:center;font-family:ID;font-weight:900;font-size:40px;color:#fff;letter-spacing:-.04em">NI</div>
+ <div><div style="font-family:ID;font-weight:800;font-size:54px;letter-spacing:-.03em;line-height:1">Nemanja Ilić</div>
+ <div style="font-weight:500;font-size:30px;margin-top:8px;opacity:.75">vlasnik Sportskog centra 7 · <span class="it" style="font-weight:500">Bežanijska kosa</span></div></div></div>`,'left:0;right:0;top:230px;display:flex;justify-content:center');
+for(const k of ['q1p','q2p'])mk(k,`<div class="pill glass"><span class="dot"></span>pitanje</div>`,'left:0;right:0;top:240px;text-align:center');
+mk('st3',`<div class="glass" style="padding:26px 38px;display:flex;flex-direction:column;gap:16px">
+ <div style="display:flex;align-items:center;gap:24px"><div id="n3" class="blk" style="font-size:132px">0</div>
+ <div style="font-weight:600;font-size:38px;line-height:1.1;letter-spacing:-.01em">školice fudbala<br><span class="it" style="font-weight:500;font-size:36px;opacity:.75">u istom balonu</span></div></div>
+ <div id="st3b" class="row" style="font-size:34px;opacity:0">${CK} deca dolaze svakodnevno</div></div>`,'left:0;right:0;top:215px;display:flex;justify-content:center');
+mk('chk',`<div class="glass" style="padding:28px 40px;display:flex;flex-direction:column;gap:18px;min-width:620px">
+ <div class="lab">na rođendanu</div><div id="ck1" class="row">${CK} interakcija sa decom</div><div id="ck2" class="row">${CK} sva deca uključena</div></div>`,'left:0;right:0;top:205px;display:flex;justify-content:center');
+mk('bar',`<div class="glass" style="padding:28px 40px;min-width:660px">
+ <div style="display:flex;align-items:baseline;gap:16px"><div id="barN" class="blk" style="font-size:120px">0,0h</div><div class="it" style="font-size:46px">čistog uživanja</div></div>
+ <div style="height:18px;border-radius:9px;background:rgba(27,38,58,.12);margin-top:20px;overflow:hidden"><div id="barF" style="height:100%;width:0;border-radius:9px;background:#1b263a"></div></div></div>`,'left:0;right:0;top:215px;display:flex;justify-content:center');
+mk('chip',`<div style="display:flex;gap:14px;justify-content:center"><div class="pill glass" style="letter-spacing:0;text-transform:none;font-size:34px;font-weight:500">🧃 pauza za sokiće?</div>
+ <div class="pill pillN" style="letter-spacing:0;text-transform:none;font-size:34px;font-weight:600">ne stižu 😄</div></div>`,'left:0;right:0;top:470px');
+mk('q3p',`<div class="pill pillN" style="font-size:28px;padding:20px 36px">za vlasnike prostora</div>`,'left:0;right:0;top:240px;text-align:center');
+mk('hand',`<div class="glass" style="padding:28px 40px;display:flex;flex-direction:column;gap:18px;min-width:640px">
+ <div class="lab">activity preuzima</div><div id="h1" class="row">${CK} organizaciju</div><div id="h2" class="row">${CK} program i animatore</div>
+ <div id="h3" class="row">${CK} <span class="it" style="font-weight:600">vlasnik — bez brige</span></div></div>`,'left:0;right:0;top:190px;display:flex;justify-content:center');
+mk('rev',`<div class="glass" style="padding:28px 40px;min-width:620px"><div class="lab">utisci roditelja</div>
+ <div style="display:flex;align-items:center;gap:20px;margin-top:6px"><div id="revN" class="blk" style="font-size:118px">0,0</div>
+ <div><div id="stars" style="font-size:52px;letter-spacing:4px;color:#1b263a;line-height:1">${'<span>★</span>'.repeat(5)}</div><div id="revT" class="it" style="font-size:40px;margin-top:6px">„zaista savršeno”</div></div></div></div>`,'left:0;right:0;top:215px;display:flex;justify-content:center');
+mk('prez',`<div class="pill pillN" style="letter-spacing:0;text-transform:none;font-size:36px;font-weight:600">😊 svi su prezadovoljni</div>`,'left:0;right:0;top:545px;text-align:center');
+// --- white cards ---
+mk('cardIgr',`<div class="card"><div class="grid"></div>
+  <div class="abs navy" style="left:0;right:0;top:420px;text-align:center">
+   <div id="ci1" style="font-weight:400;font-size:48px;letter-spacing:-.01em">klasične</div>
+   <div id="ci2" class="blk" style="font-size:190px;position:relative;display:inline-block;margin-top:4px">igraonice<span id="ciS" style="position:absolute;left:-10px;top:50%;height:12px;background:#1b263a;width:0"></span></div>
+   <div id="ci3" class="it" style="font-size:96px;margin-top:16px">su prevaziđene.</div></div>
+  <img src="assets/cut_owner.png" class="abs" style="left:260px;width:560px;top:1000px"></div>`,'left:0;top:0;width:1080px;height:1920px','cards');
+mk('cardQ3',`<div class="card"><div class="grid"></div>
+  <div class="abs" style="left:0;right:0;top:300px;text-align:center"><span class="pill pillN" style="font-size:28px">za vlasnike prostora</span></div>
+  <div class="abs navy" style="left:0;right:0;top:450px;text-align:center">
+   <div id="cq1" style="font-weight:400;font-size:50px;letter-spacing:-.01em">kako vam je olakšala</div>
+   <div id="cq2" class="blk" style="font-size:150px;margin-top:8px">organizaciju</div>
+   <div id="cq3" class="it" style="font-size:92px;margin-top:10px">rođendana?</div></div>
+  <img src="assets/cut_duo.png" class="abs" style="left:210px;width:660px;top:930px"></div>`,'left:0;top:0;width:1080px;height:1920px','cards');
+buildCaps();
+})();
+// ---------- captions ----------
+const EMPH=new Set(['drugačije','modernije','interakcija','uključeni','uživaju','kafić','sokiće','klopu','organizacije','prepustio','feedback','savršen','prezadovoljni','znači','balonu','razlikuje','rođendane','rođendani','olakšala','fudbala','decu','kafu','pristup','dece','prostora','priču','preporuka','radite']);
+const ACC=new Set(['zaista','bukvalno','apsolutno','mnogo','svakodnevno','celu','najviše','primetili','nešto','već','sve','čak','bukvalno ništa']);
+let PH=[];
+function buildCaps(){let cur=null;
+ WORDS.forEach((w,i)=>{const c=norm(w.w);const typ=EMPH.has(c)?'em':ACC.has(c)?'ac':'sw';const prev=WORDS[i-1];
+  const brk=!cur||cur.beat!==w.beat||/[.,?!]$/.test(prev.w)||(w.s-prev.e)>0.35||cur.ws.length>=4||(cur.em&&cur.after>=1)||(!cur.em&&cur.ws.length>=3&&typ!=='em');
+  if(brk){cur={beat:w.beat,ws:[],em:false,after:0};PH.push(cur)}
+  if(cur.em)cur.after++; cur.ws.push({...w,typ}); if(typ==='em')cur.em=true;});
+ PH.forEach(p=>{p.s=p.ws[0].s;p.e=p.ws[p.ws.length-1].e});
+ PH.forEach((p,i)=>{const nx=PH[i+1];p.until=nx?Math.min(nx.s-0.06,p.e+0.9):p.e+0.9;if(p.until<p.e+0.1)p.until=Math.min(p.e+0.1,nx?nx.s:1e9)});}
+const CAP=document.getElementById('cap');let lastPh=null;
+const capOff=t=>t<A.end&&(t<4.15||(t>=A.cardIgr[0]&&t<A.cardIgr[1])||(t>=A.cardQ3[0]&&t<A.cardQ3[1])||(t>=A.tCak-0.1&&t<A.q3[0]))||(t>=A.tNaj-0.1)||t>=BODY;
+function caps(t){if(capOff(t)){CAP.innerHTML='';lastPh=null;return}
+ const p=PH.find(p=>t>=p.s-0.12&&t<p.until);if(!p){CAP.innerHTML='';lastPh=null;return}
+ if(p!==lastPh){const ei=p.ws.findIndex(w=>w.typ==='em');let h='';
+  const word=w=>{const txt=w.w.replace(/[,]$/,'');if(w.typ==='em'){const fs=Math.round(Math.min(150,960/(txt.length*0.56)));return `<span class="em" data-s="${w.s}" data-k="1" style="font-size:${fs}px">${txt}</span>`}
+   return `<span class="${w.typ==='ac'?'ac':'sw'}" data-s="${w.s}">${txt}</span>`};
+  if(ei<0)h=`<span class="cl">${p.ws.map(word).join('')}</span>`;
+  else{const b=p.ws.slice(0,ei),a=p.ws.slice(ei+1);
+   if(b.length)h+=`<span class="cl" style="margin-bottom:-6px">${b.map(word).join('')}</span>`;
+   h+=`<span class="cl">${word(p.ws[ei])}</span>`;
+   if(a.length)h+=`<span class="cl" style="margin-top:-2px">${a.map(word).join('')}</span>`;}
+  CAP.innerHTML=h;lastPh=p}
+ const fo=t>p.until-0.1?cl((t-(p.until-0.1))/0.1):0;
+ CAP.querySelectorAll('[data-s]').forEach(n=>{const s=+n.dataset.s,k=n.dataset.k;const i=cl((t-(s-(k?0.04:0.1)))/(k?0.26:0.2));
+  n.style.opacity=eo(i)*(1-fo);n.style.transform=k?`scale(${lerp(1.18,1,eo(i))})`:`translate(0,${(1-eo(i))*16}px)`;n.style.filter=`blur(${(1-eo(i))*(k?14:6)}px)`});}
+// ---------- per frame ----------
+const $=id=>document.getElementById(id);
+window.needMask=t=>t<4.6||(t>A.tCak-0.4&&t<A.q3[0]+0.4)||(t>A.tNaj-0.3&&t<BODY);
+window.render=function(t,masked){
+ const fp=fpar(Math.min(t,BODY-0.001));$('cam').style.transform=$('cam2').style.transform=`translate(${fp.x}px,${fp.y}px) scale(${fp.s})`;
+ const P=$('person');P.style.display=masked?'block':'none';
+ const tm=(a,b,r=.35)=>cl((t-a)/r)*(1-cl((t-b)/r));
+ $('grad').style.opacity=Math.max(tm(-1,3.5),tm(A.tCak-0.15,A.q3[0]-0.1),tm(A.tNaj-0.15,BODY-0.2))*.9;
+ // hook: wall text + front subtitle
+ {const o=1-cl((t-3.9)/0.5);const h=EL.hkWall;h.style.opacity=o;h.style.visibility=o>0?'visible':'hidden';
+  const k=h.firstChild;k.style.transform=`translate(0,${(1-eo(t/0.5))*40}px)`;show(EL.hkFront,t,0.05,3.45,{dy:20,sc:1})}
+ if(show(EL.kuciB,t,A.tCak-0.1,A.q3[0]+0.05,{dy:30,sc:1})){wordIn($('kb1'),t,A.tCak-0.1,.35,20,10);wordIn($('kb1b'),t,T('završi')-0.35,.35,20,10);wordIn($('kb2'),t,A.tIdu-0.45,.3,20,10);const i=cl((t-(A.tKuci-0.08))/.3);const k=$('kb3');k.style.opacity=eo(i);k.style.transform=`scale(${lerp(1.25,1,eo(i))})`;k.style.filter=`blur(${(1-eo(i))*18}px)`}
+ show(EL.prepB,t,A.tNaj-0.15,BODY-0.25,{dy:60,sc:.92});
+ // widgets
+ show(EL.name,t,A.tNem-0.3,A.q1[0]-0.1);
+ show(EL.q1p,t,A.q1[0]+.05,A.q1[1]-.2);show(EL.q2p,t,A.q2[0]+.05,A.q2[1]-.2);show(EL.q3p,t,A.cardQ3[1]-0.1,A.q3[1]-.2);
+ if(show(EL.st3,t,A.tTri-0.1,A.cardIgr[0]-0.05)){$('n3').textContent=Math.round(3*eo(cl((t-A.tTri)/0.6)));sub(EL.st3,'#st3b',t,A.tSvak-0.1)}
+ if(show(EL.chk,t,A.tInter-0.1,A.tBuk-0.35)){sub(EL.chk,'#ck1',t,A.tInter);sub(EL.chk,'#ck2',t,A.tUklj-0.1)}
+ if(show(EL.bar,t,A.tBuk-0.05,A.tCak-0.25)){const k=eio(cl((t-(A.tBuk+0.15))/1.4));$('barF').style.width=`${k*100}%`;$('barN').textContent=(2.5*k).toFixed(1).replace('.',',')+'h'}
+ show(EL.chip,t,A.tPauz-0.15,A.tCak-0.25);
+ if(show(EL.hand,t,A.tNista-0.1,A.tFeed-0.4)){sub(EL.hand,'#h1',t,A.tOrg-0.2);sub(EL.hand,'#h2',t,A.tPrep-0.1);sub(EL.hand,'#h3',t,A.tPrep+0.5)}
+ if(show(EL.rev,t,A.tFeed-0.15,A.a3[1]-0.2)){const k=eo(cl((t-(A.tFeed+0.1))/1.0));$('revN').textContent=(5*k).toFixed(1).replace('.',',');
+  document.querySelectorAll('#stars span').forEach((n,j)=>{const i=cl((t-(A.tFeed+0.2+j*0.12))/.28);n.style.display='inline-block';n.style.opacity=.15+.85*eo(i);n.style.transform=`scale(${lerp(.4,1,bo(i))})`});sub(EL.rev,'#revT',t,A.tSav-0.05,{dx:0})}
+ show(EL.prez,t,A.tPrez-0.1,A.a3[1]-0.2);
+ // white cards (quick blur-scale in/out)
+ for(const [id,[a,b]] of [['cardIgr',A.cardIgr],['cardQ3',A.cardQ3]]){const c=EL[id];if(t<a||t>b+0.22){c.style.visibility='hidden';continue}
+  c.style.visibility='visible';const i=cl((t-a)/.22),o=cl((t-b)/.22);c.style.opacity=eo(i)*(1-o);c.style.transform=`scale(${lerp(1.06,1,eo(i))*(1+.05*o)})`;c.style.filter=`blur(${(1-eo(i))*16+o*16}px)`;
+  if(id==='cardIgr'){wordIn($('ci1'),t,a+.02);wordIn($('ci2'),t,a+.1,.25,0,12);$('ciS').style.width=`${eo(cl((t-(a+.55))/.3))*106}%`;wordIn($('ci3'),t,a+.7)}
+  else{wordIn($('cq1'),t,a+.05);wordIn($('cq2'),t,a+.5,.25,0,12);wordIn($('cq3'),t,a+1.1)}}
+ // end: pullback into card -> white end card with search bar
+ const E0=BODY-0.12,ep=eio((t-E0)/1.0),st=$('stage');
+ if(t>=E0){st.style.transform=`translate(0,${lerp(0,-520,ep)}px) scale(${lerp(1,.36,ep)})`;st.style.borderRadius=`${lerp(0,110,ep)}px`;st.style.boxShadow=`0 50px 120px rgba(27,38,58,${.3*ep})`;
+  st.style.opacity=1-eo(cl((t-(E0+0.95))/.4));$('endc').style.opacity=1}else{st.style.transform='';st.style.borderRadius='0';st.style.boxShadow='none';st.style.opacity=1;$('endc').style.opacity=0}
+ {const i=cl((t-(E0+0.8))/.55);const lg=$('logo');lg.style.opacity=eo(i);lg.style.transform=`translate(0,${(1-eo(i))*40}px) scale(${lerp(.88,1,bo(i))})`;lg.style.filter=`blur(${(1-eo(i))*10}px)`}
+ wordIn($('e1'),t,E0+1.1,.4,30,10);{const i=cl((t-(E0+1.45))/.4);const s=$('sb');s.style.opacity=eo(i);s.style.transform=`scale(${lerp(.8,1,bo(i))})`;
+  const full='@activityskolica',n=Math.floor(cl((t-(E0+1.75))/0.9)*full.length);$('sbT').textContent=full.slice(0,n)+((Math.floor(t*2.5)%2&&n<full.length+1)?'|':'')}
+ wordIn($('e3'),t,E0+2.5,.4,20,8);
+ caps(t);
+};
+</script></body></html>
