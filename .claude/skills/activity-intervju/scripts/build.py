@@ -17,7 +17,7 @@ EDL = [
     (B, 10.16, 15.36, 'q1', 'qwide'),
     (B, 15.46, 20.22, 'a1', 'own'),
     (B, 20.88, 25.30, 'a1', 'own2'),
-    (Q, 2.10, 5.58, 'q2', 'ask'),
+    (Q, 2.10, 9.02, 'q2', 'ask'),
     (C, 6.68, 11.86, 'a2', 'c1'),
     (C, 11.94, 14.02, 'a2', 'c2'),
     (C, 14.58, 19.56, 'a2', 'c1'),
@@ -30,7 +30,7 @@ EDL = [
 
 AUD = {}
 for s in {e[0] for e in EDL}:
-    sr, x = wavfile.read(f'{W}/src/{s}.wav'); AUD[s] = x.astype(np.float32) / 32768
+    sr, x = wavfile.read(f'{W}/src/{s}_dn.wav'); AUD[s] = x.astype(np.float32) / 32768
 SR = 48000
 def env(s):
     x = AUD[s]; fr = x[:len(x) // 480 * 480].reshape(-1, 480)
@@ -64,7 +64,7 @@ for g in segs: print(f"  {g['beat']:5s} {g['shot']:5s} {g['src']} {g['s']:.2f}-{
 FIX = {'Čava,': 'Ćao,', 'Bežaninskoj': 'Bežanijskoj', 'futbolskom': 'fudbalskom', 'futbala': 'fudbala', 'ovdje': 'ovde',
        'deca': 'dece', 'teli': 'hteli', 'bukva': 'bukvalno', 'osjetio': 'osetio', 'Iskrimno,': 'Iskreno,', 'sustrao': 'susreo',
        'vlasnik': 'vlasnik', 'prostorak': 'prostora', 'islave': 'slave', 'sporski': 'sportski', 'rođenjanje,': 'rođendani,',
-       'absolutno': 'apsolutno', 'najveša': 'najviše', 'Bukvomno': 'Bukvalno', 'dječaci': 'deca', 'uđe': 'uđu', 'kafeć,': 'kafić,',
+       'absolutno': 'apsolutno', 'najveša': 'najviše', 'Bukvomno': 'Bukvalno', 'dječaci': 'devojčice i dečaci', 'uđe': 'uđu', 'kafeć,': 'kafić,',
        'naprava': 'naprave', 'rođan,': 'rođendan,', 'završe': 'završi', 'sadržave': 'sadržaje', 'odličnije.': 'odlično.'}
 words = []
 for g in segs:
@@ -85,6 +85,8 @@ for w in words:
     if w['w'] == 'vlasnik' and w['beat'] == 'q3': w['w'] = 'vlasniku'
     if w['w'] in ('A', 'u') and w['beat'] == 'q3': w['w'] = ''
     if w['w'] == 'sa' and w['beat'] == 'a1': w['w'] = 's'
+    if w['w'] == 'ništa' and w['beat'] == 'a3': w['w'] = 'bukvalno ništa'
+    if w['w'] == 'i' and w['beat'] == 'a2' and 31 < w['s'] < 31.2: pass
 words = [w for w in words if w['w']]
 os.makedirs(f'{W}/build', exist_ok=True)
 json.dump(dict(segs=segs, words=words, body=BODY), open(f'{W}/build/timeline.json', 'w'), ensure_ascii=False, indent=0)
@@ -94,7 +96,7 @@ if os.environ.get('WO'): raise SystemExit
 # video: native frames, no zoom (framing is done in the overlay page)
 lst = []
 for i, g in enumerate(segs):
-    run(f"ffmpeg -v error -y -ss {g['s']:.3f} -i {W}/src/{g['src']}.MOV -frames:v {g['n']} -an -vf \"fps={FPS},scale=1080:1920,setsar=1\" "
+    run(f"ffmpeg -v error -y -ss {g['s']:.3f} -i {W}/src/{g['src']}.MOV -frames:v {g['n']} -an -vf \"zscale=t=linear:npl=203,format=gbrpf32le,zscale=p=bt709,tonemap=mobius:desat=0,zscale=t=bt709:m=bt709:r=tv,format=yuv420p,fps={FPS},scale=1080:1920,setsar=1\" "
         f"-c:v libx264 -preset fast -crf 12 -pix_fmt yuv420p -r {FPS} {W}/build/seg{i:02d}.mp4")
     lst.append(f"file 'seg{i:02d}.mp4'")
 open(f'{W}/build/list.txt', 'w').write('\n'.join(lst))

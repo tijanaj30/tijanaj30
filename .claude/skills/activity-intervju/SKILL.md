@@ -1,49 +1,48 @@
 ---
 name: activity-intervju
-description: Edit interview / testimonial reels for Activity školica sporta (Activity Centar – sportski rođendani) in the client's editorial reference style — small centred word-by-word captions with one huge Inter Black word and Playfair italic accents, text BEHIND the subject (person segmentation), white full-screen cards with B&W cut-outs, glass widgets with count-ups, pullback reveals, white end card with a typing search bar; colours white + #1b263a. Use when the request concerns Activity / Activity školica sporta / Activity Centar video footage. Not for Laboratorija Olujić (that has its own skill).
+description: Edit interview / testimonial reels for Activity školica sporta (Activity Centar – sportski rođendani) in the client's approved style — original iPhone colours (HDR tone-mapped), glass widgets with count-ups above the heads, big bottom captions, white full-screen cards with flat navy illustrations of what is being talked about, pullback reveals, logo end card, cleaned speech, original hype music; colours white + #1b263a. Use when the request concerns Activity / Activity školica sporta / Activity Centar video footage. Not for Laboratorija Olujić (that has its own skill).
 ---
 
 # Activity školica sporta – interview reel style & pipeline
 
 The user speaks Serbian; reply in Serbian (ekavica in all on-screen text).
 Client: **Activity Centar – Školica sporta** (sportski rođendani za decu 3–12 god., animatori, poligoni, pena party).
-Web/IG: `www.activitycentar.com`, `@activityskolica`. Offer PDF on Drive: "Activity - rođendanska ponuda.pdf"; logo: "Novi logo ACTIVITY.pdf" (already extracted to `assets/logo_t.png`, transparent).
-Audiences of the interview reels: **parents** (bez brige, deca uživaju) and **owners of other venues** (Activity preuzima organizaciju) — every edit should speak to both.
+Web/IG: `www.activitycentar.com`, `@activityskolica`. Offer PDF on Drive: "Activity - rođendanska ponuda.pdf"; logo "Novi logo ACTIVITY.pdf" (extracted to `assets/logo_t.png`).
+Two audiences in every edit: **parents** (bez brige, deca uživaju) and **owners of other venues** (Activity preuzima organizaciju).
 
-**First step:** `bash .claude/skills/activity-intervju/scripts/setup_work.sh` → creates `/home/user/work/act` (all scripts use that path), fonts, logo, mediapipe + segmentation model (needs storage.googleapis.com, already reachable).
+**First step:** `bash .claude/skills/activity-intervju/scripts/setup_work.sh` → `/home/user/work/act` (all scripts use that path).
 
-## Look (built from the 4 client reference edits, Drive ids below)
-Colours: **white + navy `#1b263a`** only. Fonts: **Inter** (Light–Bold) + **Inter Display Black** (big words, letter-spacing −0.045em, line-height .85) + **Playfair Display italic** (accents). No Montserrat, no gradients-on-text, no Olujić-style bottom captions.
-- **Captions**: centred, at chest height (`#cap top:1120px`), *small* (Inter 500, 46 px, white, soft drop shadow), 1–4 words at a time, each word fades/blur-rises in on its own timestamp. One **emphasis word** per phrase goes on its own line in huge Inter Display Black (≈ min(150, 960/(0.56·len)) px), small words stack tightly above/below it (ref1 "we / *actually* / have over"). Accent words (bukvalno, zaista, apsolutno, svakodnevno…) in Playfair italic 64 px. Edit the `EMPH` / `ACC` sets in `overlay.html` per video.
-- **Text behind subject** (ref2 "the truth", ref3 "captions"): giant navy Inter Black / Playfair italic placed on the bright wall *behind* the person, person re-composited on top with a per-frame mask (`seg.py` → `masks/`). Used for: the hook ("bukvalno **2,5h**", attached to the wall so it moves with the pullback), the emotional punchline ("čak i kad sviramo kraj — neće da idu **kući.**", built up word by word across the whole sentence), and the closing line ("najbolja **preporuka**" behind both people). Letters must be partly covered by the head — check frames. Front subtitle below (white Playfair italic) is fine.
-- **White full-screen cards** (ref1/ref4): `#f5f5f3` with a faint 90 px navy grid, navy type (small Inter line → huge Inter Black word → Playfair italic line), B&W cut-out of the speaker/duo (from masks, CLAHE, faded bottom) in the lower half. ~1.4–2.6 s, quick blur-scale in/out, speech keeps running underneath. Used for a key statement ("klasične **igraonice** ~~strike~~ *su prevaziđene.*") and for the section question for venue owners (pill "ZA VLASNIKE PROSTORA").
-- **Glass widgets** (user request + ref4 "997,602 views" pop card): `rgba(255,255,255,.6)` + `backdrop-filter: blur(28px)` — this only works because the video frame is inside the same page (frames are composited in the browser, not as a transparent overlay). Navy text, small caps label, check rows with navy dots, **numbers count up** (3 školice, 0→2,5h bar, 0,0→5,0 + stars). Always placed ABOVE the heads (top 190–560 px), never over a face.
-- **Bottom overlay**: soft navy gradient from the bottom at reduced opacity, ONLY on text-only moments (hook, "kući", "preporuka").
-- **Camera**: framing per segment via `SHOT` presets (tight/own/own2/qwide/wide/c1/c2) with slow drift; **pullback reveal** from the tight hook into the wide two-shot across the first cut (t 3.3→5.1 s).
-- **End card** (ref3/ref4 outro): video pulls back into a rounded card and fades, white card with logo, "sportski rođendani / **3–12 god.** / *bez brige za roditelje*", navy search bar typing `@activityskolica`, line "roditelji · vlasnici prostora — javite nam se".
+## Approved look = "verzija 1" (+ client corrections, Nov 2026)
+`scripts/overlay.html`. (`overlay_v2_alt.html` = the rejected editorial variant with small centred captions / text-behind-subject / cut-outs — only if the client asks for it.)
+- **Colours of the footage must stay original.** iPhone clips are HDR (HEVC 10-bit, BT.2020, HLG `arib-std-b67`). Never convert naively (looks washed-out/"izbeljeno"). `build.py` uses: `zscale=t=linear:npl=203,format=gbrpf32le,zscale=p=bt709,tonemap=mobius:desat=0,zscale=t=bt709:m=bt709:r=tv,format=yuv420p`. Check `ffprobe ... color_transfer` on every new clip.
+- Palette white + navy `#1b263a`; fonts Montserrat 500–800 + Playfair Display italic.
+- **Bottom overlay**: soft navy gradient from the bottom at reduced opacity (client liked it) — stronger only on text-only moments (hook, "neće da idu kući.").
+- **Captions**: bottom (`top:1395px`), Montserrat 700 54 px white with shadow, key word on its own line in big Playfair italic; questions in Playfair italic. Off during hook, text moments and cards.
+- **Glass widgets** (light frosted glass, navy text) ABOVE the heads only (top 190–560 px), counting/animated: hook timer ring 0:00→2:30 + "☕ kafa na miru", name card, "3 školice fudbala" + check row, "Klasična igraonica ✕ → ✓ Sportski rođendan", checklist "na rođendanu", bar 0→2,5h "čistog uživanja", chips "🧃 pauza za sokiće? / ne stižu 😄", "Activity preuzima" checklist, "Utisci roditelja ★★★★★", "😊 svi su prezadovoljni", "Preporuka vlasnika".
+- **NO labels above questions** ("PITANJE", "ZA VLASNIKE PROSTORA" pills were rejected). Questions must be heard **in full** (don't trim a question mid-sentence).
+- **White full-screen cards** (`#f5f5f3` + faint 90 px grid): navy text (small Montserrat line → huge Montserrat 800 word → Playfair italic line) and a **flat navy illustration of the thing being talked about** (`assets/illustrations/`: classic playroom with ball pit/slide/blocks for "igraonice su prevaziđene", clipboard checklist + calendar + balloons for "ništa ne radim oko organizacije"). **Never cut out the people** for these cards. Draw new SVG illustrations in the same style (navy `#1b263a`, tints `#c9d1de #8f9bb3 #e3e7ee`, 6–9 px strokes, round caps) for new topics; inline them in the HTML so Montserrat applies. ~1.8–3 s, quick blur-scale in/out, elements pop/stagger, speech continues underneath.
+- **Camera**: framing presets per segment (`SHOT`: tight/own/own2/qwide/wide/c1/c2) with slow drift; **pullback reveal** from the tight hook into the wide two-shot (t 3.25→5.0 s). Nothing over faces.
+- **End card**: video shrinks into a rounded card (pullback), white card with logo, "Sportski rođendani / za decu od 3 do 12 godina", buttons "Roditelji · rezervišite termin" / "Vlasnici prostora · sarađujmo", `@activityskolica · activitycentar.com`.
 
-## Content rules (from client feedback)
-- Keep ONLY the owner talking and the interviewer's questions. **Cut everything else** — e.g. a child running into frame, kicking the ball, "Bravo!" etc. is never used.
-- Remove pauses/retakes, never cut inside a word (12 ms fades), verify by re-transcribing `build/speech.wav`.
-- Spelling fixes in `build.py` `FIX` (ijekavica → ekavica: osetio, ovde, dece, hteli; fudbalskom; Bežanijskoj; kafić…).
-- Story order that worked (≈65 s + 3.5 s end card): hook punchline → name card → Q1 (zašto balon) → A1 (3 školice, drugačije/modernije, igraonice prevaziđene) → Q2 (po čemu se pristup razlikuje) → A2 (interakcija, 2,5h uživanja, pauza za sokiće, neće da idu kući) → Q3 venue owners → A3 (ništa ne radim oko organizacije, feedback roditelja savršen, prezadovoljni) → "najbolja preporuka" → end card.
+## Content rules
+- Keep ONLY the owner talking and the interviewer's questions; cut everything else (child running in, ball kicking, "Bravo!"…).
+- Remove pauses/retakes, never cut inside a word; check that no start of the next word ("tako…") bleeds after a cut — mute the tail if needed. Verify by re-transcribing `build/speech.wav`.
+- Spelling fixes in `build.py` `FIX` (ijekavica → ekavica; "i devojčice i dečaci", "bukvalno ništa"…).
 
-## Music & sound
-- Music: inspirational/sporty instrumental, **quiet** under speech (−6 dB bed, sidechain-ducked, rises on the end card). Generated with Higgsfield `elevenlabs_music_v2_5` (`force_instrumental:true`, ~0.145 credits/s) — download host `d8j0ntlcm91z4.cloudfront.net` is in the environment allow-list. `mix.sh` time-stretches it to the video length.
-- SFX (`sfx.py`, synthesized): soft pops on widgets, ticks on check rows/stars, whooshes on cards/pullback, shimmer on the logo, typing ticks on the search bar. Edit the event list per video (times come from `build/A.json`).
+## Sound
+- **Background voices/noise must be reduced**: `denoise.py <clips>` → `src/<clip>_dn.wav` (noisereduce non-stationary, prop 0.8, thresh 2.2 + soft gate −14 dB between words; the stronger setting made speech watery). Then speech chain in `build.py` (HPF, light afftdn, EQ, compressor, loudnorm −16).
+- **Music: dynamic, hype, sporty**, but under the speech. `music_hype.py <seconds> audio/music.wav <drop2> "<light ranges>"` composes an original 128 BPM house/pop track (Am–F–C–G: kick, claps, hats, offbeat bass, supersaw stabs, 16th arp, risers, impacts): drop on the hook pullback (bar 2), lighter under questions, breakdown + riser into a second drop on the venue-owner answer, final hit on the end card. Alternative: Higgsfield `elevenlabs_music_v2_5` if the client has credits (~0.145 credits/s; host `d8j0ntlcm91z4.cloudfront.net` allowed).
+- `mix.sh`: speech + sidechain-ducked music (bed volume 0.42, rises on end card) + SFX (`sfx.py`: pops on widgets, ticks on checks, whooshes on cards/pullback, shimmer on logo).
 
 ## Pipeline (`/home/user/work/act`)
-1. Download clips: `curl -L "https://drive.usercontent.google.com/download?id=ID&export=download&confirm=t"` (the Drive connector refuses files > 10 MB). Extract 48 kHz mono wavs to `src/`.
-2. Whisper medium, `language='sr'`, word timestamps → `src/<clip>.MOV.json`.
-3. `build.py`: edit `EDL` (src, start, end, beat, shot) → `build/base.mp4`, `build/speech.wav`, `build/timeline.json` (segments + corrected words in output time). Then `ffmpeg -i build/base.mp4 -q:v 2 frames/f%05d.jpg`.
-4. `seg.py a b` (4 in parallel) → `masks/` for all frames; cut-outs for cards from frames+masks (see SKILL history: grayscale, CLAHE, alpha = mask, bottom fade) → `assets/cut_*.png`.
-5. `overlay.html`: all timings anchored to spoken words with `T('word', after)`; `window.needMask(t)` says when the person layer is needed. Test single frames: `node render.js 0 0 test 15 300 ...`, look at them, fix, then render all frames with 4 workers → `out/`.
-6. `node dumpA.js > build/A.json`, `python3 sfx.py`, `bash mix.sh`.
-7. Encode video and audio separately and mux: `ffmpeg -framerate 30 -i out/f%05d.jpg -c:v libx264 -crf 18 -pix_fmt yuv420p v.mp4`, then `-map 0:v -map 1:a -c:v copy -c:a aac -b:a 192k -shortest`. Output 1080×1920, 30 fps.
+1. Download clips: `curl -L "https://drive.usercontent.google.com/download?id=ID&export=download&confirm=t"` (Drive connector refuses > 10 MB). `ffmpeg -i X.MOV -vn -ac 1 -ar 48000 src/X.wav`, then `python3 denoise.py X ...`.
+2. Whisper medium `language='sr'`, word timestamps → `src/<clip>.MOV.json`.
+3. `build.py` (edit `EDL`) → `build/base.mp4` (tone-mapped), `build/speech.wav`, `build/timeline.json`; `ffmpeg -i build/base.mp4 -q:v 2 frames/f%05d.jpg`.
+4. `overlay.html`: timings anchored to words with `T('word', after)` (pass `after` when a word repeats). Test frames `node render.js 0 0 test 15 300 ...`, look at them, then render all frames (4 workers) into `out/`. Total frames = (body + 3.47 s) × 30.
+5. `node dumpA.js > build/A.json`; `python3 sfx.py`; `python3 music_hype.py ...`; `bash mix.sh`.
+6. Encode video and audio separately, then mux (`-c:v copy -shortest`). 1080×1920, 30 fps, CRF 18, AAC 192k.
+(`seg.py` + mediapipe model remain available for person masks if a future edit needs them.)
 
-## References (Drive file ids)
-- `1z5oU3reZ3ibBtQXXxBm99WZANB-qKRxl` ref1 – podcast, tiny white captions + huge bold word, red-accent words, white cards with object, mood b-roll.
-- `1vFsF1EgQ-1cXhAWPz-OXpPSxqao9qll4` ref2 – giant text behind subject, small captions, white card with illustration + letter-by-letter bold word.
-- `1CqzV6kmLMzFhd-MmGUjGpuiVb4BnETMg` ref3 – bold sans + italic serif mix, UI/screenshot pop-ins with spotlight, outro logo + search bar.
-- `1yk9-dTDI_x0O4CMC1Wpw1sRLfmxFyQQy` ref4 – white bold + italic serif accent, stat widget count-up, coloured/white full-screen question cards with cut-out person, glitch transition.
-Raw interview (Nov 2026, Sportski centar 7, Nemanja Ilić): Drive folder `1ql5txXBE4P39B2YzeD0Q-2Bjtrp7LX6y` (IMG_8640 = full wide two-shot incl. all Q&A, IMG_8641 = interviewer close, IMG_8642 = owner close-up).
+## References (Drive ids)
+ref1 `1z5oU3reZ3ibBtQXXxBm99WZANB-qKRxl`, ref2 `1vFsF1EgQ-1cXhAWPz-OXpPSxqao9qll4`, ref3 `1CqzV6kmLMzFhd-MmGUjGpuiVb4BnETMg`, ref4 `1yk9-dTDI_x0O4CMC1Wpw1sRLfmxFyQQy` — white cards with an object/illustration, stat pop-ups, italic-serif accents, outro search bar.
+Raw interview (Sportski centar 7, Nemanja Ilić): Drive folder `1ql5txXBE4P39B2YzeD0Q-2Bjtrp7LX6y` (IMG_8640 = wide two-shot incl. all Q&A, IMG_8641 = interviewer, IMG_8642 = owner close-up).

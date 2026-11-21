@@ -22,13 +22,12 @@ fx=np.zeros(N)
 def add(t,s):
     i=int(t*SR); fx[i:i+len(s)]+=s[:max(0,N-i)]
 P=lambda: pop()
-for t in [A['tNem']-0.3,A['q1'][0]+.05,A['tTri']-.1,A['q2'][0]+.05,A['tInter']-.1,A['tBuk']-.05,A['tPauz']-.15,
-          A['cardQ3'][1]-.1,A['tNista']-.1,A['tFeed']-.15,A['tPrez']-.1]: add(t,pop())
-for t in [A['tSvak']-.1,A['tInter'],A['tUklj']-.1,A['tOrg']-.2,A['tPrep']-.1,A['tPrep']+.5,A['tSav']-.05,A['cardIgr'][0]+.55]: add(t,tick(.8))
-for j in range(5): add(A['tFeed']+.2+j*.12,pop(1300+j*120,900+j*100,0.06,.6))
-add(0.0,whoosh(0.5,.5)); add(3.2,whoosh(1.4,.9)); add(A['cardIgr'][0]-.2,whoosh(0.45,.8)); add(A['cardIgr'][1]-.1,whoosh(0.4,.5,False))
-add(A['cardQ3'][0]-.2,whoosh(0.45,.8)); add(A['cardQ3'][1]-.1,whoosh(0.4,.5,False)); add(A['tCak']-.35,whoosh(0.6,.6)); add(A['tKuci']-.08,pop(700,380,0.14,1.0)); add(A['tNaj']-.4,whoosh(0.6,.7))
-add(BODY-0.3,whoosh(1.2,.9)); add(BODY+0.7,shimmer(.8))
-for k in range(16): add(BODY+1.63+k*0.9/16,tick(.35))
+for t in [0.15,A['tKafu']-0.15,A['tNem']-0.3,A['tTri']-.1,A['cardIgr'][1]-.1,A['tInter']-.1,A['tBuk']-.05,
+          A['tPauz']-.15,A['cardOrg'][1]-.1,A['tFeed']-.15,A['tPrez']-.1]: add(t,pop())
+for t in [A['tSvak']-.1,A['cardIgr'][1]+.6,A['tInter'],A['tUklj']-.1,A['cardOrg'][1]+.15,A['cardOrg'][1]+.4,A['cardOrg'][1]+.65,A['tSav']-.05,
+          A['cardIgr'][0]+.75,A['cardOrg'][0]+.7,A['cardOrg'][0]+.98,A['cardOrg'][0]+1.26]: add(t,tick(.8))
+for j in range(5): add(A['tFeed']+.25+j*.12,pop(1300+j*120,900+j*100,0.06,.6))
+for c in ['cardIgr','cardOrg']: add(A[c][0]-.2,whoosh(0.45,.8)); add(A[c][1]-.1,whoosh(0.4,.5,False))
+add(3.2,whoosh(1.4,.9)); add(A['tCak']-.35,whoosh(0.7,.8)); add(BODY-0.25,whoosh(1.2,.9)); add(BODY+0.6,shimmer(.8))
 fx=fx/np.abs(fx).max()*0.5
 wavfile.write('build/sfx.wav',SR,fx.astype(np.float32))
