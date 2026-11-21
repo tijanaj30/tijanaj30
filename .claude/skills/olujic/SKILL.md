@@ -1,6 +1,6 @@
 ---
-name: olujic-reel
-description: Edit talking-head Instagram reels for Laboratorija Olujić (dental lab) in the client's approved style — multicam sync, silence/retake removal, 9:16 under 60 s, animated HTML motion-graphics overlay, big italic keyword captions, soft SFX, optional upbeat music. Use when the user asks for a reel/video edit "u mom stilu", for Olujić, or sends new raw videos to edit like before.
+name: olujic
+description: Edit Instagram reels and interview videos ONLY for Laboratorija Olujić (dental lab) in the client's approved styles — reel style (motion-graphics overlay, big keyword captions) and the "tirkizni" interview style (white hook overlay, editorial captions, bright gradient keywords, logo top-left). Use only when the request explicitly concerns Laboratorija Olujić / Olujić videos or raw footage from that client. Do NOT use for other clients (e.g. Activity školica sporta) or generic "u mom stilu" requests that do not mention Olujić.
 ---
 
 # Olujić reel – house style & pipeline
