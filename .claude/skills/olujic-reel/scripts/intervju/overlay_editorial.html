@@ -44,11 +44,11 @@ body.N .bg{visibility:hidden}
 #toplogo{position:absolute;left:56px;top:70px;width:190px;filter:drop-shadow(0 3px 10px rgba(0,0,0,.35))}
 #viz{position:absolute;left:0;top:0;width:1080px;height:1920px}
 body.K .bg.bright{visibility:hidden!important}
-body.N .bg.bright{visibility:visible;background:linear-gradient(100deg,#C8FFF6 0%,#FFFFFF 40%,#E4D8FF 70%,#FFD9E6 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+body.N .bg.bright{visibility:visible;background:linear-gradient(100deg,#5FE8D2 0%,#B5F5EC 32%,#C4A9F7 64%,#FFA6C6 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 </style></head><body>
 <div id="shade" class="abs"></div><div id="leak" class="abs" style="left:0;top:0;width:1080px;height:1920px;mix-blend-mode:screen"></div><div id="dust" class="abs" style="left:0;top:0;width:1080px;height:1920px"></div><div id="grain" class="abs" style="left:0;top:0;width:1080px;height:1920px;opacity:.06"></div><div id="chap" class="abs"></div>
 <img id="toplogo" src="/home/user/work/logo2_t.png"><svg id="viz" width="1080" height="1920"></svg><div id="card"></div><div id="cap" class="abs"><div id="line"></div><div id="lines"></div></div>
-<div id="hook" class="abs"><div id="hookbg" class="abs"></div><div id="hookt" class="abs" style="left:80px;right:80px;top:1130px"></div></div>
+<div id="hook" class="abs"><div id="hookbg" class="abs"></div><div id="hookt" class="abs" style="left:80px;right:80px;top:1330px"></div></div>
 <div id="end" class="abs"><img id="logo" src="/home/user/work/logo2_t.png"><div id="eline"></div><div id="e1">Prvo razumete.</div><div id="e2">Tek onda odlučujete.</div><div id="e3">LABORATORIJA OLUJIĆ</div></div>
 <script>
 const TL=window.TL, W=[], BODY=TL.body, MODE=window.MODE||'N'; document.body.className=MODE;
@@ -62,7 +62,9 @@ const PH=[]; let cur=[];
 W.forEach(w=>{ cur.push(w); if(cur.length>=6||/[.,?!]$/.test(w.w)||KEY.has(norm(w.w))){PH.push(cur);cur=[]} }); if(cur.length)PH.push(cur);
 // merge very short phrases (1 word) into next
 for(let i=0;i<PH.length-1;i++){ if(PH[i].length===1&&!KEY.has(norm(PH[i][0].w))&&!/[.?!]$/.test(PH[i][0].w)){ PH[i+1]=PH[i].concat(PH[i+1]); PH.splice(i,1); i--; } }
-PH.forEach((p,i)=>{ p.t0=p[0].s-0.15; const nx=PH[i+1]; p.t1=nx?nx[0].s-0.15:BODY; if(p.t1-p[p.length-1].e>1.6) p.t1=p[p.length-1].e+1.2; });
+PH.forEach((p,i)=>{ const last=p[p.length-1], key=KEY.has(norm(last.w)), prev=PH[i-1], nx=PH[i+1];
+  p.t0=Math.max(p[0].s-0.15, prev&&prev.hold?prev.hold:0); p.t1=nx?nx[0].s-0.15:BODY; if(p.t1-last.e>1.6) p.t1=last.e+1.2;
+  if(key){ p.hold=last.s+0.8; p.t1=Math.min(Math.max(p.t1,p.hold), nx?Math.max(nx[0].s-0.15,p.hold):BODY); } p.t1=Math.max(p.t1,p.t0+0.4); });
 // wrap words into lines of ~16 chars
 function lines(p,mx=15){ const L=[]; let c=[],n=0; p.forEach(w=>{ const l=w.w.length; if(n+l>mx&&c.length){L.push(c);c=[];n=0} c.push(w); n+=l+1; }); if(c.length)L.push(c); return L; }
 // chapters from segment beats
@@ -77,10 +79,7 @@ const gc=document.createElement('canvas'); gc.width=270; gc.height=480; gc.style
 function Tw(k,after=0){ for(const w of W){ if(w.s>=after-0.01 && norm(w.w).startsWith(k)) return w; } return null; }
 const wHv=Tw('hvala'), wPrp=Tw('prepoznali'), wLj=Tw('ljudskost'), wLb=Tw('ljubaznost'), wMe=Tw('mestu'), wZa=Tw('zaboravite'), wOs=Tw('osećaja'), wIm=Tw('imali'), wPu=Tw('punim'), wSr=Tw('srcem'), wPo=Tw('poverenje');
 const HOOK_END=1.3;
-const CARDS=[
- {t0:wLj.s-0.5, t1:wMe.e+1.0, kind:'wreath'},
- {t0:wZa.s-0.6, t1:wIm.e+0.8, kind:'tooth'},
- {t0:wHv.s-0.3, t1:BODY-0.15, kind:'hearts3'}];
+const CARDS=[];
 const C='#2FCFB8', CR='#12524B', DIM='rgba(18,82,75,.18)';
 function cardHTML(c,t){ const lt=t-c.t0, D=c.t1-c.t0;
   if(c.kind==='proc'){ const st=['Pregled','Brušenje','Probe','Prilagođavanje','Završni rad']; const pr=eio(P(lt,0.3,D-1.0));
@@ -167,9 +166,9 @@ window.render=function(t){
   { const Hk=document.getElementById('hook'); const a=1, o=eio(P(t,HOOK_END-0.35,.35)); Hk.style.opacity=a*(1-o); Hk.style.visibility=t<HOOK_END?'visible':'hidden';
     const w1=1, w3=1;
     document.getElementById('hookt').innerHTML=`<div style="font-family:M;font-weight:700;font-size:24px;letter-spacing:.34em;color:#0F8F7E;opacity:1">LABORATORIJA OLUJIĆ</div>
-     <div style="font-family:M;font-weight:700;font-size:80px;line-height:1.06;color:#12524B;margin-top:20px;opacity:${w1};transform:translateY(${lerp(30,0,w1)}px)">Šta zapravo</div>
-     <div style="font-family:P;font-style:italic;font-weight:700;font-size:190px;line-height:1;padding:0 .12em .2em;margin:-.04em 0 -.24em -.1em;background:linear-gradient(100deg,#0F8F7E 10%,#2FCFB8 40%,#7B5FB8 75%,#C9567E);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:1;transform:scale(${lerp(1.06,1,eo(P(t,0,.8)))});transform-origin:0 60%;display:inline-block">pamtite</div>
-     <div style="font-family:M;font-weight:700;font-size:80px;line-height:1.06;color:#12524B;opacity:${w3>0?Math.min(1,w3):0};transform:translateY(${lerp(30,0,Math.min(1,w3))}px)">posle novih zuba?</div>`; }
+
+     <div style="font-family:P;font-style:normal;font-weight:600;font-size:190px;line-height:1;padding:0 .12em .2em;margin:.02em 0 -.24em -.1em;background:linear-gradient(100deg,#0F8F7E 10%,#2FCFB8 40%,#7B5FB8 75%,#C9567E);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:1;transform:scale(${lerp(1.06,1,eo(P(t,0,.8)))});transform-origin:0 60%;display:inline-block">IZVAN</div>
+     <br><div style="font-family:P;font-style:normal;font-weight:600;font-size:190px;line-height:1;padding:0 .12em .2em;margin:.12em 0 -.24em -.1em;background:linear-gradient(100deg,#0F8F7E 10%,#2FCFB8 40%,#7B5FB8 75%,#C9567E);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:1;transform:scale(${lerp(1.06,1,eo(P(t,0,.8)))});transform-origin:0 60%;display:inline-block">OKVIRA</div>`; }
   // light leak on chapter changes
   { let lk=0, pos=0; CHS.forEach((c,i)=>{ if(i===0) return; const k=(t-c.t+0.3)/1.6; if(k>0&&k<1){ lk=Math.max(lk,Math.sin(Math.PI*k)); pos=k; } });
     const L=document.getElementById('leak'); L.style.opacity=lk*0.75;
@@ -194,8 +193,8 @@ window.render=function(t){
     const last=p[p.length-1], hasKey=KEY.has(norm(last.w)), sm=hasKey?p.slice(0,-1):p; const L2=lines(sm,onCard?19:15);
     let h=L2.map(l=>`<div class="ln">${l.map(w=>{ const k=eo(P(t,w.s-0.25,.5)); const txt=w.w.replace(/,$/,'');
         return `<span style="opacity:${k*(1-out)};transform:translateY(${lerp(70,0,k)-out*20}%);filter:blur(${(1-k)*6+out*5}px)">${txt}</span>`}).join(' ')}</div>`).join('');
-    if(hasKey){ const k=eio(P(t,last.s-0.2,.7)); const txt=last.w.replace(/[,.]$/,''); const fs=Math.min(170,Math.round(1600/Math.max(5,txt.length)));
-      h+=`<div><div class="bg${BRIGHT.has(norm(last.w))?' bright':''}" style="font-size:${fs}px;opacity:${k*(1-out)};transform:scale(${lerp(1.08,1,k)});transform-origin:0 70%;letter-spacing:${lerp(.08,-.01,k)}em;filter:blur(${(1-k)*12+out*8+(MODE==='S'?7:0)}px)">${txt}</div></div>`; }
+    if(hasKey){ const k=eio(P(t,last.s-0.05,.3)); const txt=last.w.replace(/[,.]$/,''); const fs=Math.min(170,Math.round(1600/Math.max(5,txt.length)));
+      h+=`<div><div class="bg bright" style="font-size:${fs}px;opacity:${k*(1-out)};transform:scale(${lerp(1.08,1,k)});transform-origin:0 70%;letter-spacing:${lerp(.08,-.01,k)}em;filter:blur(${(1-k)*12+out*8+(MODE==='S'?7:0)}px)">${txt}</div></div>`; }
     box.innerHTML=h;
     const lk=eio(P(t,p.t0,.6)); ln.style.transform=`scaleX(${lk*(1-out)})`; ln.style.opacity=1-out;
   } else { box.innerHTML=''; ln.style.transform='scaleX(0)'; }

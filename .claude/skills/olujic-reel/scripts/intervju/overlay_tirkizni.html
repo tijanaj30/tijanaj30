@@ -74,7 +74,7 @@ const HOOK_END=TL.hook;
 const ebk=x=>{const c1=1.70158,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)};
 const TwK=k=>W.find(w=>norm(w.w).startsWith(k));
 const hLj=TwK('ljudskost'), hSt=TwK('strpljenj'), hRa=TwK('razumevanja')||TwK('razumevanj');
-const CARD={t0:hLj.s-0.35, t1:hRa.e+0.7};
+const CARD={t0:1e9, t1:1e9};
 function card3(t){ const R=[['Ljudskost',hLj],['Strpljenje',hSt],['Razumevanje',hRa]]; const HC='#7FE3D3', HW='#FFFFFF', HD='rgba(255,255,255,.28)';
   const H='M0,95 C-25,72 -110,25 -110,-30 C-110,-75 -75,-100 -45,-100 C-20,-100 -5,-85 0,-68 C5,-85 20,-100 45,-100 C75,-100 110,-75 110,-30 C110,25 25,72 0,95Z';
   let g=`<div class="ct">ONO ŠTO NAS VODI</div><div class="ch">Pristup sa srcem</div><svg width="900" height="560" style="position:absolute;left:0;top:0"><defs>`;
