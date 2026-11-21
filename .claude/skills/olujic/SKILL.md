@@ -5,6 +5,8 @@ description: Edit Instagram reels and interview videos ONLY for Laboratorija Olu
 
 # Olujić reel – house style & pipeline
 
+**First step in every new session:** run `bash .claude/skills/olujic/scripts/setup_work.sh` — it copies the fonts (Playfair, Montserrat, Cormorant, Jost) and the logo from `assets/` to `/home/user/work/...`, the paths the overlay HTML files use. Python tools needed: ffmpeg, openai-whisper, scipy, numpy, gdown, pillow, opencv-python-headless==4.10.0.84; Playwright/Chromium is preinstalled.
+
 The user speaks Serbian; reply in Serbian. Brand: **Laboratorija Olujić** (NOT "Lujić"; the tooth in the logo is the "O").
 Logo for the end card: `scripts/logo_end.png` (colour logo, black text, transparent; end card background #F2F2F2 with dark ink text). Older white-outline logo `scripts/logo_crop.png`, tooth-only icon `scripts/logo_tooth.png`.
 In overlay.html the end-card logo path is `../logo2_t.png`: copy `logo_end.png` there (or edit the path).
