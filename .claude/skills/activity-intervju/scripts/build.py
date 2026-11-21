@@ -96,8 +96,8 @@ if os.environ.get('WO'): raise SystemExit
 # video: native frames, no zoom (framing is done in the overlay page)
 lst = []
 for i, g in enumerate(segs):
-    run(f"ffmpeg -v error -y -ss {g['s']:.3f} -i {W}/src/{g['src']}.MOV -frames:v {g['n']} -an -vf \"zscale=t=linear:npl=203,format=gbrpf32le,zscale=p=bt709,tonemap=mobius:desat=0,zscale=t=bt709:m=bt709:r=tv,format=yuv420p,fps={FPS},scale=1080:1920,setsar=1\" "
-        f"-c:v libx264 -preset fast -crf 12 -pix_fmt yuv420p -r {FPS} {W}/build/seg{i:02d}.mp4")
+    run(f"ffmpeg -v error -y -ss {g['s']:.3f} -i {W}/src/{g['src']}.MOV -frames:v {g['n']} -an -vf \"zscale=t=linear:npl=100,format=gbrpf32le,zscale=p=bt709,tonemap=hable:desat=0,zscale=t=bt709:m=bt709:r=tv,format=yuv420p,fps={FPS},scale=1080:1920,setsar=1\" "
+        f"-c:v libx264 -preset fast -crf 8 -pix_fmt yuv420p -r {FPS} {W}/build/seg{i:02d}.mp4")
     lst.append(f"file 'seg{i:02d}.mp4'")
 open(f'{W}/build/list.txt', 'w').write('\n'.join(lst))
 run(f"ffmpeg -v error -y -f concat -safe 0 -i {W}/build/list.txt -c copy {W}/build/base.mp4")

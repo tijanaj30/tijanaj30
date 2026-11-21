@@ -8,6 +8,8 @@
 @font-face{font-family:P;src:url(fonts/PlayfairDisplay-500i.ttf);font-weight:500;font-style:italic}
 @font-face{font-family:P;src:url(fonts/PlayfairDisplay-600i.ttf);font-weight:600;font-style:italic}
 @font-face{font-family:P;src:url(fonts/PlayfairDisplay-700i.ttf);font-weight:700;font-style:italic}
+@font-face{font-family:P;src:url(fonts/PlayfairDisplay-800i.ttf);font-weight:800;font-style:italic}
+@font-face{font-family:P;src:url(fonts/PlayfairDisplay-900i.ttf);font-weight:900;font-style:italic}
 :root{--navy:#1b263a;--navy-a:rgba(27,38,58,.58);--white:#fff}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{width:1080px;height:1920px;overflow:hidden;background:#fff}
@@ -28,7 +30,8 @@ body{font-family:M,sans-serif;color:#fff}
 .dot{width:16px;height:16px;border-radius:50%;background:var(--navy)}
 .pillN{background:var(--navy);color:#fff;border:2px solid rgba(255,255,255,.35)}
 .pillN .dot{background:#fff}
-.it{font-family:P;font-style:italic;font-weight:600;letter-spacing:0}
+.it{font-family:P;font-style:italic;font-weight:800!important;letter-spacing:0}
+#hkTitle .it,#kuci .it{font-weight:900!important;-webkit-text-stroke:12px rgba(27,38,58,.9);paint-order:stroke fill;text-shadow:0 8px 30px rgba(0,0,0,.45)}
 .ck{width:46px;height:46px;border-radius:50%;background:var(--navy);display:inline-flex;align-items:center;justify-content:center;flex:none}
 .ck svg{width:26px;height:26px}
 .row{display:flex;align-items:center;gap:22px;font-weight:700;font-size:40px;white-space:nowrap}
@@ -36,8 +39,8 @@ body{font-family:M,sans-serif;color:#fff}
 #cap{position:absolute;left:70px;right:70px;top:1395px;text-align:center}
 .ln{display:block;white-space:nowrap;line-height:1.12}
 .sw{display:inline-block;font-weight:700;font-size:54px;margin:0 8px;text-shadow:0 3px 18px rgba(0,0,0,.45)}
-.q .sw{font-family:P;font-style:italic;font-weight:500;font-size:60px}
-.kw{display:inline-block;font-family:P;font-style:italic;font-weight:700;color:#fff;text-shadow:0 6px 30px rgba(0,0,0,.4);margin-top:4px}
+.q .sw{font-family:P;font-style:italic;font-weight:800;font-size:62px;-webkit-text-stroke:8px rgba(27,38,58,.85);paint-order:stroke fill;text-shadow:0 4px 18px rgba(0,0,0,.45)}
+.kw{display:inline-block;font-family:P;font-style:italic;font-weight:900;color:#fff;-webkit-text-stroke:12px rgba(27,38,58,.9);paint-order:stroke fill;text-shadow:0 8px 30px rgba(0,0,0,.45);margin-top:4px}
 #endc{position:absolute;inset:0;opacity:0}
 .card{position:absolute;inset:0;background:#f5f5f3;overflow:hidden}
 .grid{position:absolute;inset:0;background-image:linear-gradient(rgba(27,38,58,.055) 1.5px,transparent 1.5px),linear-gradient(90deg,rgba(27,38,58,.055) 1.5px,transparent 1.5px);background-size:90px 90px}
@@ -57,7 +60,14 @@ body{font-family:M,sans-serif;color:#fff}
   </div>
   <div id="stage">
     <img id="vid">
-    <div id="grad"></div><div id="gradT"></div>
+
+    <div id="grad"></div>
+    <div id="floor" style="position:absolute;left:-200px;width:1480px;top:1500px;height:600px;perspective:760px;perspective-origin:50% -60%;pointer-events:none;opacity:0">
+      <div id="floorIn" style="position:absolute;left:0;right:0;top:40px;text-align:center;transform-origin:50% 100%;transform:rotateX(66deg)">
+        <div id="fl1" style="font-weight:800;font-size:92px;color:#fff;letter-spacing:-.01em;line-height:1;text-shadow:0 0 16px rgba(255,255,255,.5)">svi su</div>
+        <div id="fl2" class="it" style="font-weight:900!important;font-size:158px;line-height:.95;color:#fff;letter-spacing:-.01em;text-shadow:0 0 22px rgba(255,255,255,.55),0 0 50px rgba(255,255,255,.3)">prezadovoljni</div>
+      </div></div>
+    <img id="person" style="position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:0 0;display:none;"><div id="gradT"></div>
   </div>
   <div id="fx"></div>
   <div id="cap"></div>
@@ -73,8 +83,8 @@ const segAt=t=>SEGS.find(g=>t>=g.t0&&t<g.t1)||SEGS[SEGS.length-1];
 // ---------- framing ----------
 const SHOT={tight:{s:1.8,f:[.70,.40],p:[.5,.40],d:.04},wide:{s:1.0,f:[.5,.5],p:[.5,.5],d:.05},qwide:{s:1.32,f:[.28,.42],p:[.42,.42],d:.04},
   own:{s:1.55,f:[.69,.40],p:[.5,.40],d:.05},own2:{s:1.22,f:[.62,.42],p:[.5,.42],d:.04},ask:{s:1.0,f:[.46,.45],p:[.5,.45],d:.06},
-  c1:{s:1.0,f:[.44,.42],p:[.5,.42],d:.05},c2:{s:1.16,f:[.45,.40],p:[.5,.40],d:.04}};
-function frameParams(t){const g=segAt(t),S=SHOT[g.shot],k=cl((t-g.t0)/(g.t1-g.t0));
+  c1:{s:1.0,f:[.44,.42],p:[.5,.42],d:.05},flr:{s:1.04,f:[.45,.5],p:[.5,.5],d:.04},c2:{s:1.16,f:[.45,.40],p:[.5,.40],d:.04}};
+function frameParams(t){const g=segAt(t),S=(g.beat==='a3'&&g.t0>59)?SHOT.flr:SHOT[g.shot],k=cl((t-g.t0)/(g.t1-g.t0));
   let s=S.s*(1+S.d*k),f=S.f,p=S.p;
   // pullback reveal: hook tight -> wide, across the first cut
   const P0=3.25,P1=5.0; if(t>=P0&&t<P1){const W0=SHOT.tight,W1=SHOT.wide,e=eio((t-P0)/(P1-P0));
@@ -97,8 +107,8 @@ window.ready=(async()=>{await document.fonts.ready;
 // ===== timings anchored to spoken words =====
 const tKafu=T('kafu'),tNem=T('nemanja'),tInt=T('interesuje'),tTri=T('tri'),tSvak=T('svakodnevno'),tIgr=T('igraonice'),tPo=T('po'),
   tInter=T('interakcija'),tUklj=T('uključeni'),tBuk=T('bukvalno',20),tPauz=T('pauzicu'),tCak=T('čak'),tKuci=T('kući'),tVama=T('vama',40),
-  tNista=T('bukvalno ništa'),tOrg=T('organizacije'),tPrep=T('prepustio'),tFeed=T('feedback'),tSav=T('savršen'),tPrez=T('prezadovoljni'),tMisl=T('mislim',60);
-A={tKafu,tNem,tInt,tTri,tSvak,tIgr,tPo,tInter,tUklj,tBuk,tPauz,tCak,tKuci,tVama,tNista,tOrg,tPrep,tFeed,tSav,tPrez,tMisl};
+  tNista=T('bukvalno ništa'),tOrg=T('organizacije'),tPrep=T('prepustio'),tFeed=T('feedback'),tSav=T('savršen'),tPrez=T('prezadovoljni'),tSvir=T('sviramo'),tSvi=T('svi',60),tMisl=T('mislim',60);
+A={tSvir,tSvi,tKafu,tNem,tInt,tTri,tSvak,tIgr,tPo,tInter,tUklj,tBuk,tPauz,tCak,tKuci,tVama,tNista,tOrg,tPrep,tFeed,tSav,tPrez,tMisl};
 const segStart=b=>SEGS.find(g=>g.beat===b).t0, segEnd=b=>{const s=SEGS.filter(g=>g.beat===b);return s[s.length-1].t1};
 A.q1=[segStart('q1'),segEnd('q1')];A.a1=[segStart('a1'),segEnd('a1')];A.q2=[segStart('q2'),segEnd('q2')];A.a2=[segStart('a2'),segEnd('a2')];
 A.q3=[segStart('q3'),segEnd('q3')];A.a3=[segStart('a3'),segEnd('a3')];A.end=segStart('end');
@@ -144,6 +154,13 @@ mk('bar',`<div class="glass" style="padding:32px 44px;min-width:700px">
 mk('chip',`<div style="display:flex;gap:18px;justify-content:center">
   <div class="pill glass" style="letter-spacing:.04em;text-transform:none;font-size:36px">🧃 pauza za sokiće?</div>
   <div class="pill pillN" style="letter-spacing:.04em;text-transform:none;font-size:36px">ne stižu 😄</div></div>`,'left:0;right:0;top:480px');
+mk('whistle',`<div class="glass" style="width:250px;height:250px;border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative">
+  <svg id="whSvg" width="190" height="150" viewBox="0 0 190 150">
+   <g id="waves" fill="none" stroke="#1b263a" stroke-width="7" stroke-linecap="round"><path class="wv" d="M150 40 q14 -14 10 -34"/><path class="wv" d="M162 58 q22 -8 26 -30"/><path class="wv" d="M166 80 q20 4 22 -6"/></g>
+   <circle cx="62" cy="88" r="46" fill="#1b263a"/><path d="M62 42 L150 52 Q160 54 160 64 L160 76 Q160 84 150 84 L100 84 Z" fill="#1b263a"/>
+   <circle cx="62" cy="88" r="20" fill="#fff" opacity=".9"/><circle cx="48" cy="72" r="8" fill="#fff" opacity=".35"/>
+   <circle cx="20" cy="58" r="13" fill="none" stroke="#1b263a" stroke-width="7"/></svg>
+  <div style="position:absolute;bottom:-58px;left:50%;transform:translateX(-50%)" class="pill pillN"><span style="font-size:26px;letter-spacing:.14em">kraj igre!</span></div></div>`,'left:0;right:0;top:250px;display:flex;justify-content:center');
 mk('kuci',`<div style="font-weight:700;font-size:44px;letter-spacing:.28em;text-transform:uppercase;opacity:.9">i na kraju</div>
   <div style="font-weight:800;font-size:132px;line-height:1;letter-spacing:-.02em;margin-top:14px">neće da idu</div>
   <div class="it" style="font-size:190px;line-height:.95">kući.</div>`,'left:0;right:0;top:1250px;text-align:center;text-shadow:0 8px 40px rgba(0,0,0,.35)');
@@ -156,7 +173,6 @@ mk('rev',`<div class="glass" style="padding:30px 44px;min-width:640px">
   <div style="font-weight:700;font-size:28px;letter-spacing:.22em;text-transform:uppercase;opacity:.7">Utisci roditelja</div>
   <div id="stars" style="font-size:78px;letter-spacing:6px;margin-top:8px;color:#1b263a">${'<span>★</span>'.repeat(5)}</div>
   <div id="revT" class="it" style="font-size:52px;margin-top:2px">„zaista savršeno”</div></div>`,'left:0;right:0;top:215px;display:flex;justify-content:center');
-mk('prez',`<div class="pill pillN" style="letter-spacing:.04em;text-transform:none;font-size:38px">😊 svi su prezadovoljni</div>`,'left:0;right:0;top:545px;text-align:center');
 mk('endP',`<div class="pill glass"><span class="dot"></span>Preporuka vlasnika</div>`,'left:0;right:0;top:235px;text-align:center');
 mk('cardIgr',`<div class="card"><div class="grid"></div>
   <div class="abs" style="left:0;right:0;top:330px;text-align:center;color:#1b263a">
@@ -202,7 +218,7 @@ buildCaps();
 })();
 // ---------- captions ----------
 const KW=new Set(['drugačije','modernije','prevaziđene','interakcija','uživaju','organizacije','prepustio','savršen','prezadovoljni','preporuka','balonu','rođendana','kafu','priču']);
-const NOCAP=t=>t<4.05||(t>=A.cardIgr[0]&&t<A.cardIgr[1])||(t>=A.cardOrg[0]&&t<A.cardOrg[1])||(t>=A.tCak-0.1&&t<A.q3[0])||t>=BODY+0.05;
+const NOCAP=t=>t<4.05||(t>=A.tSvi-0.1&&t<A.a3[1])||(t>=A.cardIgr[0]&&t<A.cardIgr[1])||(t>=A.cardOrg[0]&&t<A.cardOrg[1])||(t>=A.tCak-0.1&&t<A.q3[0])||t>=BODY+0.05;
 let PH=[];
 function buildCaps(){let cur=null;const qb=new Set(['q1','q2','q3']);
   WORDS.forEach((w,i)=>{const clean=w.w.toLowerCase().replace(/[.,?!„”]/g,'');const kw=KW.has(clean);
@@ -227,6 +243,7 @@ function caps(t){if(NOCAP(t)){CAP.innerHTML='';lastPh=null;return}
 }
 // ---------- per-frame ----------
 const vid=document.getElementById('vid'),stage=document.getElementById('stage'),endc=document.getElementById('endc'),grad=document.getElementById('grad'),gradT=document.getElementById('gradT');
+window.needMask=t=>t>=A.tSvi-0.4&&t<A.a3[1]+0.05;
 window.render=function(t){
   // video framing
   const fp=frameParams(Math.min(t,BODY-0.001));vid.style.transform=`translate(${fp.x}px,${fp.y}px) scale(${fp.s})`;
@@ -262,7 +279,6 @@ window.render=function(t){
   {const a=A.cardOrg[1]-0.1;if(show(EL.hand,t,a,A.tFeed-0.4)){sub(EL.hand,'#h1',t,a+0.25);sub(EL.hand,'#h2',t,a+0.5);sub(EL.hand,'#h3',t,a+0.75)}}
   if(show(EL.rev,t,A.tFeed-0.15,A.a3[1]-0.2)){document.querySelectorAll('#stars span').forEach((n,j)=>{const i=cl((t-(A.tFeed+0.25+j*0.12))/.3);n.style.display='inline-block';n.style.opacity=.15+.85*eo(i);n.style.transform=`scale(${lerp(.4,1,bo(i))})`});
     sub(EL.rev,'#revT',t,A.tSav-0.05,{dx:0})}
-  show(EL.prez,t,A.tPrez-0.1,A.a3[1]-0.2);
   // ---- end ----
   show(EL.endP,t,A.end+0.05,BODY-0.2);
   for(const [id,[a,b]] of [['cardIgr',A.cardIgr],['cardOrg',A.cardOrg]]){const c=EL[id];if(t<a||t>b+0.25){c.style.visibility='hidden';continue}
@@ -272,6 +288,15 @@ window.render=function(t){
    if(id==='cardIgr'){w('ci1',a+.03);w('ci2',a+.12,.3,0);document.getElementById('ciS').style.width=`${eo(cl((t-(a+.75))/.3))*108}%`;w('ci3',a+.9);pop('ciI',a+.2)}
    else{w('co1',a+.03);w('co2',a+.2,.3,0);w('co3',a+.9);pop('coI',a+.3);
     [0,1,2].forEach(j=>{const n=c.querySelector('.ck'+j),k=cl((t-(a+.7+j*.28))/.3);n.style.opacity=.15+.85*eo(k);n.style.transformOrigin='395px '+(230+j*105)+'px';n.style.transform=`scale(${lerp(.6,1,bo(k))})`})}}
+  // floor text (perspective on the turf, people occlude it)
+  {const a=A.tSvi-0.1,b=A.a3[1]-0.05,fl=document.getElementById('floor');const vis=t>=a&&t<b+0.3;fl.style.opacity=vis?1-cl((t-b)/.3):0;
+   const P=document.getElementById('person');P.style.display=vis?'block':'none';P.style.transform=vid.style.transform;
+   if(vis){const i1=cl((t-a)/.35),i2=cl((t-(A.tPrez-0.08))/.45);const f1=document.getElementById('fl1'),f2=document.getElementById('fl2');
+    f1.style.opacity=eo(i1);f1.style.filter=`blur(${(1-eo(i1))*10}px)`;f2.style.opacity=eo(i2);f2.style.transform=`translate(0,${(1-eo(i2))*-60}px) scale(${lerp(1.15,1,eo(i2))})`;f2.style.filter=`blur(${(1-eo(i2))*14}px)`;
+    document.getElementById('floorIn').style.transform=`rotateX(66deg) translate(${-(t-a)*6}px,0)`}}
+  // whistle
+  if(show(EL.whistle,t,A.tSvir-0.12,A.tKuci-0.35)){const k=t-A.tSvir;const sh=k>0&&k<0.9?Math.sin(k*70)*4*(1-k/0.9):0;document.getElementById('whSvg').style.transform=`rotate(${sh}deg)`;
+   document.querySelectorAll('#waves .wv').forEach((w,j)=>{const ph=((k*2.2-j*0.18)%1+1)%1;w.style.opacity=k>0?(1-ph):0;w.style.transform=`translate(${ph*10}px,${-ph*6}px)`})}
   caps(t);
 };
 </script></body></html>

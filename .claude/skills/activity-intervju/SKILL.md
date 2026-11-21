@@ -14,13 +14,15 @@ Two audiences in every edit: **parents** (bez brige, deca uživaju) and **owners
 
 ## Approved look = "verzija 1" (+ client corrections, Nov 2026)
 `scripts/overlay.html`. (`overlay_v2_alt.html` = the rejected editorial variant with small centred captions / text-behind-subject / cut-outs — only if the client asks for it.)
-- **Colours of the footage must stay original.** iPhone clips are HDR (HEVC 10-bit, BT.2020, HLG `arib-std-b67`). Never convert naively (looks washed-out/"izbeljeno"). `build.py` uses: `zscale=t=linear:npl=203,format=gbrpf32le,zscale=p=bt709,tonemap=mobius:desat=0,zscale=t=bt709:m=bt709:r=tv,format=yuv420p`. Check `ffprobe ... color_transfer` on every new clip.
-- Palette white + navy `#1b263a`; fonts Montserrat 500–800 + Playfair Display italic.
+- **Colours of the footage must look exactly like the originals on Drive** (client is strict about this). iPhone clips are HDR (HEVC 10-bit, BT.2020, HLG `arib-std-b67`). Never convert naively (washed-out/"izbeljeno"). The client picked this conversion as "original": `zscale=t=linear:npl=100,format=gbrpf32le,zscale=p=bt709,tonemap=hable:desat=0,zscale=t=bt709:m=bt709:r=tv,format=yuv420p` (in `build.py`). Keep full 1080×1920, intermediate segments CRF 8, frames JPEG q1. If in doubt, show the client 2–3 stills side by side before rendering. Check `ffprobe ... color_transfer` on every new clip.
+- Palette white + navy `#1b263a`; fonts Montserrat 500–800 + Playfair Display italic. **Italic must be bold and readable**: Playfair 800/900 italic everywhere; on video add a navy stroke behind the fill (`-webkit-text-stroke:12px rgba(27,38,58,.9); paint-order:stroke fill`) + soft shadow.
 - **Bottom overlay**: soft navy gradient from the bottom at reduced opacity (client liked it) — stronger only on text-only moments (hook, "neće da idu kući.").
 - **Captions**: bottom (`top:1395px`), Montserrat 700 54 px white with shadow, key word on its own line in big Playfair italic; questions in Playfair italic. Off during hook, text moments and cards.
 - **Glass widgets** (light frosted glass, navy text) ABOVE the heads only (top 190–560 px), counting/animated: hook timer ring 0:00→2:30 + "☕ kafa na miru", name card, "3 školice fudbala" + check row, "Klasična igraonica ✕ → ✓ Sportski rođendan", checklist "na rođendanu", bar 0→2,5h "čistog uživanja", chips "🧃 pauza za sokiće? / ne stižu 😄", "Activity preuzima" checklist, "Utisci roditelja ★★★★★", "😊 svi su prezadovoljni", "Preporuka vlasnika".
 - **NO labels above questions** ("PITANJE", "ZA VLASNIKE PROSTORA" pills were rejected). Questions must be heard **in full** (don't trim a question mid-sentence).
 - **White full-screen cards** (`#f5f5f3` + faint 90 px grid): navy text (small Montserrat line → huge Montserrat 800 word → Playfair italic line) and a **flat navy illustration of the thing being talked about** (`assets/illustrations/`: classic playroom with ball pit/slide/blocks for "igraonice su prevaziđene", clipboard checklist + calendar + balloons for "ništa ne radim oko organizacije"). **Never cut out the people** for these cards. Draw new SVG illustrations in the same style (navy `#1b263a`, tints `#c9d1de #8f9bb3 #e3e7ee`, 6–9 px strokes, round caps) for new topics; inline them in the HTML so Montserrat applies. ~1.8–3 s, quick blur-scale in/out, elements pop/stagger, speech continues underneath.
+- **Text on the floor** (client loved it, from ref2 "about perfectionism"): one key word lying on the turf in perspective (`#floor` → `rotateX(66deg)`, perspective 760px), white Montserrat small line + big Playfair 900 italic with a soft white glow, people's legs in FRONT of the letters (person cut-outs layer `#person` above it; `seg.py` masks → `cuts.py` RGBA PNGs for that frame range). Use a wide-ish framing (`flr` preset) so feet/floor are visible and the word fits the width. Used for "svi su *prezadovoljni*".
+- **Illustrated moments**: e.g. on "kad sviramo kraj" a glass circle with a navy referee whistle (shake + sound waves) and pill "kraj igre!" + a whistle sound.
 - **Camera**: framing presets per segment (`SHOT`: tight/own/own2/qwide/wide/c1/c2) with slow drift; **pullback reveal** from the tight hook into the wide two-shot (t 3.25→5.0 s). Nothing over faces.
 - **End card**: video shrinks into a rounded card (pullback), white card with logo, "Sportski rođendani / za decu od 3 do 12 godina", buttons "Roditelji · rezervišite termin" / "Vlasnici prostora · sarađujmo", `@activityskolica · activitycentar.com`.
 
@@ -32,16 +34,17 @@ Two audiences in every edit: **parents** (bez brige, deca uživaju) and **owners
 ## Sound
 - **Background voices/noise must be reduced**: `denoise.py <clips>` → `src/<clip>_dn.wav` (noisereduce non-stationary, prop 0.8, thresh 2.2 + soft gate −14 dB between words; the stronger setting made speech watery). Then speech chain in `build.py` (HPF, light afftdn, EQ, compressor, loudnorm −16).
 - **Music: dynamic, hype, sporty**, but under the speech. `music_hype.py <seconds> audio/music.wav <drop2> "<light ranges>"` composes an original 128 BPM house/pop track (Am–F–C–G: kick, claps, hats, offbeat bass, supersaw stabs, 16th arp, risers, impacts): drop on the hook pullback (bar 2), lighter under questions, breakdown + riser into a second drop on the venue-owner answer, final hit on the end card. Alternative: Higgsfield `elevenlabs_music_v2_5` if the client has credits (~0.145 credits/s; host `d8j0ntlcm91z4.cloudfront.net` allowed).
-- `mix.sh`: speech + sidechain-ducked music (bed volume 0.42, rises on end card) + SFX (`sfx.py`: pops on widgets, ticks on checks, whooshes on cards/pullback, shimmer on logo).
+- `mix.sh`: speech + sidechain-ducked music (bed volume 0.42, rises on end card) + SFX at volume 0.6.
+- **SFX must be crisp CapCut-style** (dull thuds were rejected): `sfx.py build/A.json build/timeline.json build/sfx.wav` synthesizes bright bell *ding*, high *ping*, bubbly *pop*, airy panned *whoosh*/*swoosh*, *sparkle* on the logo, rising star pings, referee *whistle* (2.9 kHz pea trill, short + long blast, kept moderate). Edit the event list per video.
 
 ## Pipeline (`/home/user/work/act`)
 1. Download clips: `curl -L "https://drive.usercontent.google.com/download?id=ID&export=download&confirm=t"` (Drive connector refuses > 10 MB). `ffmpeg -i X.MOV -vn -ac 1 -ar 48000 src/X.wav`, then `python3 denoise.py X ...`.
 2. Whisper medium `language='sr'`, word timestamps → `src/<clip>.MOV.json`.
 3. `build.py` (edit `EDL`) → `build/base.mp4` (tone-mapped), `build/speech.wav`, `build/timeline.json`; `ffmpeg -i build/base.mp4 -q:v 2 frames/f%05d.jpg`.
 4. `overlay.html`: timings anchored to words with `T('word', after)` (pass `after` when a word repeats). Test frames `node render.js 0 0 test 15 300 ...`, look at them, then render all frames (4 workers) into `out/`. Total frames = (body + 3.47 s) × 30.
-5. `node dumpA.js > build/A.json`; `python3 sfx.py`; `python3 music_hype.py ...`; `bash mix.sh`.
+5. `node dumpA.js > build/A.json`; `python3 sfx.py build/A.json build/timeline.json build/sfx.wav`; `python3 music_hype.py ...`; `bash mix.sh`.
 6. Encode video and audio separately, then mux (`-c:v copy -shortest`). 1080×1920, 30 fps, CRF 18, AAC 192k.
-(`seg.py` + mediapipe model remain available for person masks if a future edit needs them.)
+Person masks for floor/behind text: `python3 seg.py a b` (frame range, 4 in parallel) → `python3 cuts.py`; `render.js` loads `cuts/cNNNNN.png` whenever `window.needMask(t)` is true.
 
 ## References (Drive ids)
 ref1 `1z5oU3reZ3ibBtQXXxBm99WZANB-qKRxl`, ref2 `1vFsF1EgQ-1cXhAWPz-OXpPSxqao9qll4`, ref3 `1CqzV6kmLMzFhd-MmGUjGpuiVb4BnETMg`, ref4 `1yk9-dTDI_x0O4CMC1Wpw1sRLfmxFyQQy` — white cards with an object/illustration, stat pop-ups, italic-serif accents, outro search bar.
