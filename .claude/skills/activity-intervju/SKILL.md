@@ -35,6 +35,12 @@ Two audiences in every edit: **parents** (bez brige, deca uživaju) and **owners
 - Spelling fixes in `build.py` `FIX` (ijekavica → ekavica; "i devojčice i dečaci", "bukvalno ništa"…).
 
 ## Sound
+- **Background kids/voices must be gone — only the owner (and the interviewer's questions) + music.** Chain used for v7 (client-approved direction):
+  1. `IMG_8640b` (wide shot, kids around): noisereduce *stationary* with a **noise profile from kids-only moments** (`y_noise` = before "Dobar dan" + pauses), prop 1.0, then non-stationary 0.7 → `src/<clip>_dn3.wav`; other clips `denoise.py`.
+  2. `speech.py` assembles the speech from `build/timeline.json` with the clean sources.
+  3. `harmonic.py` on every **owner** range (not on the female interviewer): pYIN F0 75–230 Hz + harmonic comb mask in the STFT (unvoiced frames ×0.45) — removes higher-pitched kids' voices under his speech without hurting intelligibility (check with Whisper avg_logprob).
+  4. EQ/compressor/loudnorm −11, then a gate (−40 dB, 20 dB below speech p90, 220 ms hold) so pauses are silent. Final mix pushed to ≈ −11.5 LUFS.
+  (RNNoise and an extra gate on the raw clip made speech choppy; DeepFilterNet/Demucs weights are not downloadable here.)
 - **Background voices/noise must be reduced**: `denoise.py <clips>` → `src/<clip>_dn.wav` (noisereduce non-stationary, prop 0.8, thresh 2.2 + soft gate −14 dB between words; the stronger setting made speech watery). Then speech chain in `build.py` (HPF, light afftdn, EQ, compressor, loudnorm −16).
 - **Music: dynamic, hype, sporty**, but under the speech. `music_hype.py <seconds> audio/music.wav <drop2_time> "<light ranges>" <drop1_bar>` composes an original 128 BPM house/pop track (Am–F–C–G: kick, claps, hats, offbeat bass, supersaw stabs, 16th arp, risers, impacts): drop on the hook pullback (bar 2), lighter under questions, breakdown + riser into a second drop on the venue-owner answer, final hit on the end card. Alternative: Higgsfield `elevenlabs_music_v2_5` if the client has credits (~0.145 credits/s; host `d8j0ntlcm91z4.cloudfront.net` allowed).
 - `mix.sh`: speech + sidechain-ducked music (bed volume 0.42, rises on end card) + SFX at volume 0.6.
