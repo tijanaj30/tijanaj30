@@ -87,7 +87,7 @@ const SHOT={tight:{s:1.8,f:[.70,.40],p:[.5,.40],d:.04},wide:{s:1.0,f:[.5,.5],p:[
 function frameParams(t){const g=segAt(t),S=(g.beat==='a3'&&g.t0>59)?SHOT.flr:SHOT[g.shot],k=cl((t-g.t0)/(g.t1-g.t0));
   let s=S.s*(1+S.d*k),f=S.f,p=S.p;
   // pullback reveal: hook tight -> wide, across the first cut
-  const P0=3.25,P1=5.0; if(t>=P0&&t<P1){const W0=SHOT.tight,W1=SHOT.wide,e=eio((t-P0)/(P1-P0));
+  const P0=A.hkEnd-0.85,P1=A.hkEnd+0.9; if(t>=P0&&t<P1){const W0=SHOT.tight,W1=SHOT.wide,e=eio((t-P0)/(P1-P0));
     s=lerp(W0.s*1.04,W1.s,e);f=[lerp(W0.f[0],W1.f[0],e),lerp(W0.f[1],W1.f[1],e)];p=[lerp(W0.p[0],W1.p[0],e),lerp(W0.p[1],W1.p[1],e)];}
   let x=p[0]*W-f[0]*W*s,y=p[1]*H-f[1]*H*s; x=cl(x,W-W*s,0); y=cl(y,H-H*s,0); return {s,x,y}}
 // ---------- element helpers ----------
@@ -111,7 +111,7 @@ const tKafu=T('kafu'),tNem=T('nemanja'),tInt=T('interesuje'),tTri=T('tri'),tSvak
 A={tSvir,tSvi,tKafu,tNem,tInt,tTri,tSvak,tIgr,tPo,tInter,tUklj,tBuk,tPauz,tCak,tKuci,tVama,tNista,tOrg,tPrep,tFeed,tSav,tPrez,tMisl};
 const segStart=b=>SEGS.find(g=>g.beat===b).t0, segEnd=b=>{const s=SEGS.filter(g=>g.beat===b);return s[s.length-1].t1};
 A.q1=[segStart('q1'),segEnd('q1')];A.a1=[segStart('a1'),segEnd('a1')];A.q2=[segStart('q2'),segEnd('q2')];A.a2=[segStart('a2'),segEnd('a2')];
-A.q3=[segStart('q3'),segEnd('q3')];A.a3=[segStart('a3'),segEnd('a3')];A.end=segStart('end');
+A.q3=[segStart('q3'),segEnd('q3')];A.a3=[segStart('a3'),segEnd('a3')];A.end=segStart('end');A.hk0=T('bukvalno');A.hkEnd=segEnd('hook');
 A.cardIgr=[tIgr-0.08,tIgr+1.75];A.cardOrg=[tNista-0.08,tPrep+0.55];
 // ===== elements =====
 // hook
@@ -195,10 +195,11 @@ mk('cardIgr',`<div class="card"><div class="grid"></div>
 </svg></div></div>`,'left:0;top:0;width:1080px;height:1920px');
 mk('cardOrg',`<div class="card"><div class="grid"></div>
   <div class="abs" style="left:0;right:0;top:330px;text-align:center;color:#1b263a">
-   <div id="co1" style="font-weight:600;font-size:50px">bukvalno ništa oko</div>
-   <div id="co2" style="font-weight:800;font-size:150px;line-height:1;letter-spacing:-.035em;margin-top:6px">organizacije</div>
-   <div id="co3" class="it" style="font-size:80px;margin-top:14px">sve prepušteno Activity timu.</div></div>
-  <div id="coI" class="abs" style="left:130px;top:930px"><svg viewBox="0 0 800 640" width="820" height="656">
+   <div id="co1" style="font-weight:800;font-size:170px;line-height:1;letter-spacing:-.035em">čitava</div>
+   <div id="co2" style="font-weight:800;font-size:150px;line-height:1;letter-spacing:-.035em;margin-top:4px">organizacija</div>
+   <div id="co3" class="it" style="font-size:66px;margin-top:22px">u rukama</div>
+   <div id="co4" class="it" style="font-size:92px;margin-top:2px">Activity tima</div></div>
+  <div id="coI" class="abs" style="left:130px;top:1000px"><svg viewBox="0 0 800 640" width="820" height="656">
 <ellipse cx="400" cy="605" rx="360" ry="28" fill="#e3e7ee"/>
 <g id="cal" transform="rotate(-9 230 360)"><rect x="90" y="190" width="290" height="300" rx="26" fill="#fff" stroke="#1b263a" stroke-width="7"/>
 <path d="M90 216 Q90 190 116 190 H354 Q380 190 380 216 V250 H90 Z" fill="#1b263a"/><circle cx="130" cy="285" r="8" fill="#c9d1de"/><circle cx="178" cy="285" r="8" fill="#c9d1de"/><circle cx="226" cy="285" r="8" fill="#c9d1de"/><circle cx="274" cy="285" r="8" fill="#c9d1de"/><circle cx="322" cy="285" r="8" fill="#c9d1de"/><circle cx="130" cy="330" r="8" fill="#c9d1de"/><circle cx="178" cy="330" r="8" fill="#c9d1de"/><circle cx="226" cy="330" r="8" fill="#c9d1de"/><circle cx="274" cy="330" r="8" fill="#c9d1de"/><circle cx="322" cy="330" r="8" fill="#c9d1de"/><circle cx="130" cy="375" r="8" fill="#c9d1de"/><circle cx="178" cy="375" r="8" fill="#c9d1de"/><circle cx="226" cy="375" r="8" fill="#c9d1de"/><circle cx="274" cy="375" r="8" fill="#c9d1de"/><circle cx="322" cy="375" r="8" fill="#c9d1de"/><circle cx="130" cy="420" r="8" fill="#c9d1de"/><circle cx="178" cy="420" r="8" fill="#c9d1de"/><circle cx="226" cy="420" r="8" fill="#c9d1de"/><circle cx="274" cy="420" r="8" fill="#c9d1de"/><circle cx="322" cy="420" r="8" fill="#c9d1de"/>
@@ -217,8 +218,8 @@ mk('cardOrg',`<div class="card"><div class="grid"></div>
 buildCaps();
 })();
 // ---------- captions ----------
-const KW=new Set(['drugačije','modernije','prevaziđene','interakcija','uživaju','organizacije','prepustio','savršen','prezadovoljni','preporuka','balonu','rođendana','kafu','priču']);
-const NOCAP=t=>t<4.05||(t>=A.tSvi-0.1&&t<A.a3[1])||(t>=A.cardIgr[0]&&t<A.cardIgr[1])||(t>=A.cardOrg[0]&&t<A.cardOrg[1])||(t>=A.tCak-0.1&&t<A.q3[0])||t>=BODY+0.05;
+const KW=new Set(['roditelj','drugačije','modernije','prevaziđene','interakcija','uživaju','organizacije','prepustio','savršen','prezadovoljni','preporuka','balonu','rođendana','kafu','priču']);
+const NOCAP=t=>(t>=A.hk0-0.15&&t<A.hkEnd+0.05)||(t>=A.tSvi-0.1&&t<A.a3[1])||(t>=A.cardIgr[0]&&t<A.cardIgr[1])||(t>=A.cardOrg[0]&&t<A.cardOrg[1])||(t>=A.tCak-0.1&&t<A.q3[0])||t>=BODY+0.05;
 let PH=[];
 function buildCaps(){let cur=null;const qb=new Set(['q1','q2','q3']);
   WORDS.forEach((w,i)=>{const clean=w.w.toLowerCase().replace(/[.,?!„”]/g,'');const kw=KW.has(clean);
@@ -249,21 +250,21 @@ window.render=function(t){
   const fp=frameParams(Math.min(t,BODY-0.001));vid.style.transform=`translate(${fp.x}px,${fp.y}px) scale(${fp.s})`;
   // text-only moments: stronger navy overlay from the bottom
   const tm=(a,b)=>cl((t-a)/.35)*(1-cl((t-b)/.35));
-  gradT.style.opacity=Math.max(tm(-1,3.35)*.95,tm(A.tCak-0.1,A.q3[0]-0.35)*.95);
+  gradT.style.opacity=Math.max(tm(A.hk0-0.2,A.hkEnd-0.8)*.95,tm(-1,A.hk0-0.1)*.35,tm(A.tCak-0.1,A.q3[0]-0.35)*.95);
   // end card: pullback reveal (video shrinks into a rounded card)
-  const E0=BODY-0.15,ep=eio((t-E0)/1.1);
+  const E0=BODY-0.15,ep=eio((t-E0)/0.9);
   if(t>=E0){const sc=lerp(1,.40,ep),ty=lerp(0,-560,ep);stage.style.transform=`translate(0,${ty}px) scale(${sc})`;stage.style.borderRadius=`${lerp(0,90,ep)}px`;
     stage.style.boxShadow=`0 40px 120px rgba(27,38,58,${.35*ep})`;endc.style.opacity=1;}else{stage.style.transform='';stage.style.borderRadius='0';stage.style.boxShadow='none';endc.style.opacity=0}
   // end-card contents
-  const lg=document.getElementById('logo');{const i=cl((t-(E0+0.75))/.6);lg.style.opacity=eo(i);lg.style.transform=`translate(0,${lerp(870,900,0)}px) scale(${lerp(.85,1,bo(i))})`;lg.style.top='330px';
-    const st=cl((t-(E0+0.75))/1.2);stage.style.opacity=1-eo(cl((t-(E0+1.3))/.5));
+  const lg=document.getElementById('logo');{const i=cl((t-(E0+1.05))/.6);lg.style.opacity=eo(i);lg.style.transform=`translate(0,${lerp(870,900,0)}px) scale(${lerp(.85,1,bo(i))})`;lg.style.top='330px';
+    const st=cl((t-(E0+0.75))/1.2);stage.style.opacity=1-eo(cl((t-(E0+0.5))/.4));
     lg.style.transform=`translate(0,${lerp(40,0,eo(i))}px) scale(${lerp(.85,1,bo(i))})`;}
-  [['e1',1.25],['e2',1.6],['e3',1.95]].forEach(([id,d])=>{const n=document.getElementById(id),i=cl((t-(E0+d))/.5);n.style.opacity=eo(i);n.style.transform=`translate(0,${(1-eo(i))*40}px)`;n.style.filter=`blur(${(1-eo(i))*10}px)`});
+  [['e1',1.45],['e2',1.8],['e3',2.15]].forEach(([id,d])=>{const n=document.getElementById(id),i=cl((t-(E0+d))/.5);n.style.opacity=eo(i);n.style.transform=`translate(0,${(1-eo(i))*40}px)`;n.style.filter=`blur(${(1-eo(i))*10}px)`});
   // ---- hook ----
-  show(EL.hkTop,t,0,3.3,{dy:0,sc:1});show(EL.hkTitle,t,0,3.3,{dy:0,sc:1});
-  if(show(EL.hkTimer,t,0.15,3.3)){const k=eo(cl(t/3.2));document.getElementById('ring').setAttribute('stroke-dashoffset',314.16*(1-k));
+  show(EL.hkTop,t,0,A.hkEnd-0.85,{dy:0,sc:1});show(EL.hkTitle,t,A.hk0-0.1,A.hkEnd-0.85,{dy:30,sc:.94});
+  if(show(EL.hkTimer,t,A.hk0-0.05,A.hkEnd-0.85)){const k=eo(cl((t-A.hk0)/(A.hkEnd-0.95-A.hk0)));document.getElementById('ring').setAttribute('stroke-dashoffset',314.16*(1-k));
     const mins=Math.round(150*k);document.getElementById('clock').textContent=`${Math.floor(mins/60)}:${String(mins%60).padStart(2,'0')}`;}
-  show(EL.hkCoffee,t,A.tKafu-0.15,3.3);
+  show(EL.hkCoffee,t,A.tKafu-0.15,A.hkEnd-0.85);
   // ---- intro ----
   show(EL.name,t,A.tNem-0.3,A.q1[0]-0.1);
   // ---- questions ----
@@ -286,10 +287,10 @@ window.render=function(t){
    const w=(id2,a0,d=.28,dy=24)=>{const n=document.getElementById(id2),k=cl((t-a0)/d);n.style.opacity=eo(k);n.style.transform=`translate(0,${(1-eo(k))*dy}px)`;n.style.filter=`blur(${(1-eo(k))*10}px)`};
    const pop=(id2,a0)=>{const n=document.getElementById(id2),k=cl((t-a0)/.5);n.style.opacity=eo(k*1.5);n.style.transform=`translate(0,${(1-eo(k))*60}px) scale(${lerp(.86,1,bo(k))})`};
    if(id==='cardIgr'){w('ci1',a+.03);w('ci2',a+.12,.3,0);document.getElementById('ciS').style.width=`${eo(cl((t-(a+.75))/.3))*108}%`;w('ci3',a+.9);pop('ciI',a+.2)}
-   else{w('co1',a+.03);w('co2',a+.2,.3,0);w('co3',a+.9);pop('coI',a+.3);
+   else{w('co1',a+.03,.3,0);w('co2',a+.3,.3,0);w('co3',a+.75);w('co4',a+1.0);pop('coI',a+.3);
     [0,1,2].forEach(j=>{const n=c.querySelector('.ck'+j),k=cl((t-(a+.7+j*.28))/.3);n.style.opacity=.15+.85*eo(k);n.style.transformOrigin='395px '+(230+j*105)+'px';n.style.transform=`scale(${lerp(.6,1,bo(k))})`})}}
   // floor text (perspective on the turf, people occlude it)
-  {const a=A.tSvi-0.1,b=A.a3[1]-0.05,fl=document.getElementById('floor');const vis=t>=a&&t<b+0.3;fl.style.opacity=vis?1-cl((t-b)/.3):0;
+  {const a=A.tSvi-0.1,b=A.a3[1]-0.05,fl=document.getElementById('floor');const vis=t>=a&&t<b;fl.style.opacity=vis?1-cl((t-(b-0.3))/.3):0;
    const P=document.getElementById('person');P.style.display=vis?'block':'none';P.style.transform=vid.style.transform;
    if(vis){const i1=cl((t-a)/.35),i2=cl((t-(A.tPrez-0.08))/.45);const f1=document.getElementById('fl1'),f2=document.getElementById('fl2');
     f1.style.opacity=eo(i1);f1.style.filter=`blur(${(1-eo(i1))*10}px)`;f2.style.opacity=eo(i2);f2.style.transform=`translate(0,${(1-eo(i2))*-60}px) scale(${lerp(1.15,1,eo(i2))})`;f2.style.filter=`blur(${(1-eo(i2))*14}px)`;

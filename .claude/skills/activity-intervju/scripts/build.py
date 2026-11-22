@@ -12,7 +12,7 @@ def run(c):
 B, Q, C = 'IMG_8640b', 'IMG_8641', 'IMG_8642'
 # (src, start, end, beat, shot)  shot = framing preset used in the overlay
 EDL = [
-    (B, 64.86, 68.95, 'hook', 'tight'),
+    (B, 60.62, 68.80, 'hook', 'tight'),
     (B, 4.62, 8.55, 'intro', 'wide'),
     (B, 10.16, 15.36, 'q1', 'qwide'),
     (B, 15.46, 20.22, 'a1', 'own'),
@@ -21,8 +21,10 @@ EDL = [
     (C, 6.68, 11.86, 'a2', 'c1'),
     (C, 11.94, 14.02, 'a2', 'c2'),
     (C, 14.58, 19.56, 'a2', 'c1'),
-    (C, 20.08, 24.82, 'a2', 'c2'),
-    (B, 74.18, 80.32, 'q3', 'qwide'),
+    (C, 20.08, 24.71, 'a2', 'c2'),
+    (B, 74.18, 74.95, 'q3', 'qwide'),
+    (B, 75.21, 76.11, 'q3', 'qwide'),
+    (B, 76.21, 80.32, 'q3', 'qwide'),
     (B, 80.26, 86.16, 'a3', 'own'),
     (B, 86.18, 93.86, 'a3', 'own2'),
     (B, 69.50, 72.06, 'end', 'wide'),
@@ -110,5 +112,5 @@ for g in segs:
     p *= {B: 1.0, Q: 1.0, C: 1.0}[g['src']]; parts.append(p)
 wavfile.write(f'{W}/build/speech_raw.wav', SR, np.concatenate(parts))
 run(f"ffmpeg -v error -y -i {W}/build/speech_raw.wav -af \"highpass=f=90,afftdn=nf=-28,equalizer=f=300:t=q:w=1.2:g=-2.5,equalizer=f=4000:t=q:w=1.5:g=2,"
-    f"acompressor=threshold=0.08:ratio=3:attack=6:release=120,loudnorm=I=-16:TP=-1.5:LRA=7\" -ar 48000 {W}/build/speech.wav")
+    f"acompressor=threshold=0.06:ratio=3.5:attack=5:release=110:makeup=2,loudnorm=I=-13:TP=-1.0:LRA=6\" -ar 48000 {W}/build/speech.wav")
 print('done')

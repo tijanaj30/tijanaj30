@@ -13,7 +13,7 @@ LIGHT = [tuple(map(float, r.split('-'))) for r in sys.argv[4].split(',')] if len
 N = int((TOT + 2) * SR); rng = np.random.default_rng(7)
 L = np.zeros(N); R = np.zeros(N)
 def bars(b): return b * BAR
-DROP1 = bars(2); END_HIT = bars(int(TOT / BAR - 0.75))
+DROP1 = bars(int(sys.argv[5])) if len(sys.argv) > 5 else bars(2); END_HIT = bars(int(TOT / BAR - 0.75))
 def in_light(t): return any(a <= t < b for a, b in LIGHT)
 def breakdown(t): return DROP2 - bars(4) <= t < DROP2
 def lp(x, fc, o=2): return sosfilt(butter(o, fc, 'low', fs=SR, output='sos'), x)
@@ -118,7 +118,7 @@ for b in range(nb):
             idx = (q * 4 + e) % 8 if step < BEAT / 3 else (q * 2 + e) % 8
             nte = ch[ARP[idx] % 3] + 12 * (ARP[idx] // 3) + 12
             add(tb + e * step, pluck(nte), .16 if not pre else .1, .35 if e % 2 else -.35)
-    if b == 1: add(DROP1 - 1.8, riser(1.8), .5)
+    if abs(t0 + BAR - DROP1) < 1e-6: add(DROP1 - 1.8, riser(1.8), .5)
 # breakdown riser + snare roll into drop 2, impacts on drops
 add(DROP2 - 3.6, riser(3.6), .55)
 for k in range(16):
