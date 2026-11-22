@@ -112,7 +112,7 @@ A={tSvir,tSvi,tKafu,tNem,tInt,tTri,tSvak,tIgr,tPo,tInter,tUklj,tBuk,tPauz,tCak,t
 const segStart=b=>SEGS.find(g=>g.beat===b).t0, segEnd=b=>{const s=SEGS.filter(g=>g.beat===b);return s[s.length-1].t1};
 A.q1=[segStart('q1'),segEnd('q1')];A.a1=[segStart('a1'),segEnd('a1')];A.q2=[segStart('q2'),segEnd('q2')];A.a2=[segStart('a2'),segEnd('a2')];
 A.q3=[segStart('q3'),segEnd('q3')];A.a3=[segStart('a3'),segEnd('a3')];A.end=segStart('end');A.hk0=T('bukvalno');A.hkEnd=segEnd('hook');
-A.cardIgr=[tIgr-0.08,tIgr+1.75];A.cardOrg=[tNista-0.08,tPrep+0.55];
+A.cardIgr=[tIgr-0.08,tIgr+2.15];A.cardOrg=[tNista-0.08,tPrep+0.55];
 // ===== elements =====
 // hook
 mk('hkTop',`<div class="pill glass"><span class="dot"></span>Sportski rođendani</div>`,'left:0;right:0;top:215px;text-align:center');
@@ -178,7 +178,8 @@ mk('cardIgr',`<div class="card"><div class="grid"></div>
   <div class="abs" style="left:0;right:0;top:330px;text-align:center;color:#1b263a">
    <div id="ci1" style="font-weight:600;font-size:50px">klasične</div>
    <div style="font-weight:800;font-size:176px;line-height:1;letter-spacing:-.03em;position:relative;display:inline-block;margin-top:6px"><span id="ci2" style="display:inline-block">igraonice</span><span id="ciS" style="position:absolute;left:-12px;top:52%;height:13px;border-radius:7px;background:#1b263a;width:0"></span></div>
-   <div id="ci3" class="it" style="font-size:96px;margin-top:10px">su prevaziđene.</div></div>
+   <div id="ci3" class="it" style="font-size:96px;margin-top:10px">su prevaziđene.</div>
+   <div id="ci4" style="font-weight:700;font-size:46px;letter-spacing:.2em;text-transform:uppercase;margin-top:26px;opacity:.85">za stariju decu</div></div>
   <div id="ciI" class="abs" style="left:130px;top:930px"><svg viewBox="0 0 800 640" width="820" height="656">
 <ellipse cx="400" cy="600" rx="380" ry="30" fill="#e3e7ee"/>
 <g id="slide"><path d="M560 210 C640 230 650 420 770 560 L770 590 L735 590 C620 450 610 280 540 262 Z" fill="#c9d1de" stroke="#1b263a" stroke-width="7" stroke-linejoin="round"/>
@@ -286,7 +287,7 @@ window.render=function(t){
    c.style.visibility='visible';const i=cl((t-a)/.25),o=cl((t-b)/.25);c.style.opacity=eo(i)*(1-o);c.style.transform=`scale(${lerp(1.06,1,eo(i))*(1+.05*o)})`;c.style.filter=`blur(${(1-eo(i))*16+o*16}px)`;
    const w=(id2,a0,d=.28,dy=24)=>{const n=document.getElementById(id2),k=cl((t-a0)/d);n.style.opacity=eo(k);n.style.transform=`translate(0,${(1-eo(k))*dy}px)`;n.style.filter=`blur(${(1-eo(k))*10}px)`};
    const pop=(id2,a0)=>{const n=document.getElementById(id2),k=cl((t-a0)/.5);n.style.opacity=eo(k*1.5);n.style.transform=`translate(0,${(1-eo(k))*60}px) scale(${lerp(.86,1,bo(k))})`};
-   if(id==='cardIgr'){w('ci1',a+.03);w('ci2',a+.12,.3,0);document.getElementById('ciS').style.width=`${eo(cl((t-(a+.75))/.3))*108}%`;w('ci3',a+.9);pop('ciI',a+.2)}
+   if(id==='cardIgr'){w('ci1',a+.03);w('ci2',a+.12,.3,0);document.getElementById('ciS').style.width=`${eo(cl((t-(a+.75))/.3))*108}%`;w('ci3',a+.9);w('ci4',a+1.25);pop('ciI',a+.2)}
    else{w('co1',a+.03,.3,0);w('co2',a+.3,.3,0);w('co3',a+.75);w('co4',a+1.0);pop('coI',a+.3);
     [0,1,2].forEach(j=>{const n=c.querySelector('.ck'+j),k=cl((t-(a+.7+j*.28))/.3);n.style.opacity=.15+.85*eo(k);n.style.transformOrigin='395px '+(230+j*105)+'px';n.style.transform=`scale(${lerp(.6,1,bo(k))})`})}}
   // floor text (perspective on the turf, people occlude it)
