@@ -56,7 +56,7 @@ def whistle(d=1.0):                # referee pea whistle: ~2.9 kHz with fast tri
 fx = []
 def ev(t, s, g=1.0, pan=0.0): add(t, s, g, pan)
 # hook
-ev(0.10, pop(), .7); ev(A['tKafu'] - .15, ping(2349), .8, .3)
+ev(0.10, pop(), .7); ev(A['tKafu'] - .75, pop(), .7, .4); ev(A['tKafu'] - .7, ping(2349), .6, .4)
 ev(3.2, whoosh(1.2, True, 1.0), .8)
 # widgets in
 for t in [A['tNem'] - .3, A['tTri'] - .1, A['cardIgr'][1] - .1, A['tInter'] - .1, A['tBuk'] - .05, A['tPauz'] - .15, A['cardOrg'][1] - .1, A['tFeed'] - .15]:
@@ -71,6 +71,8 @@ for c in ['cardIgr', 'cardOrg']:
     ev(A[c][0] - .18, swoosh(), .9); ev(A[c][1] - .1, whoosh(.35, False, .6), .6)
 ev(A['cardIgr'][0] + .75, whoosh(.25, True, .7), .6)
 for j in range(3): ev(A['cardOrg'][0] + .7 + j * .28, ding(1976 + j * 220, .5), .4)
+if 'tKids' in A:
+    ev(A['tKids'] - .1, pop(), .7, -.5); ev(A['tKids'] + .08, pop(), .7, .5)
 # whistle on "sviramo kraj" (short + long blast)
 ev(A['tSvir'] - .05, whistle(.22), .5); ev(A['tSvir'] + .28, whistle(.75), .5)
 # text moment + floor word

@@ -108,7 +108,7 @@ window.ready=(async()=>{await document.fonts.ready;
 const tKafu=T('kafu'),tNem=T('nemanja'),tInt=T('interesuje'),tTri=T('tri'),tSvak=T('svakodnevno'),tIgr=T('igraonice'),tPo=T('po'),
   tInter=T('interakcija'),tUklj=T('uključeni'),tBuk=T('bukvalno',20),tPauz=T('pauzicu'),tCak=T('čak'),tKuci=T('kući'),tVama=T('vama',40),
   tNista=T('bukvalno ništa'),tOrg=T('organizacije'),tPrep=T('prepustio'),tFeed=T('feedback'),tSav=T('savršen'),tPrez=T('prezadovoljni'),tSvir=T('sviramo'),tSvi=T('svi',60),tMisl=T('mislim',60);
-A={tSvir,tSvi,tKafu,tNem,tInt,tTri,tSvak,tIgr,tPo,tInter,tUklj,tBuk,tPauz,tCak,tKuci,tVama,tNista,tOrg,tPrep,tFeed,tSav,tPrez,tMisl};
+A={tKids:T('devojčice i dečaci'),tSvir,tSvi,tKafu,tNem,tInt,tTri,tSvak,tIgr,tPo,tInter,tUklj,tBuk,tPauz,tCak,tKuci,tVama,tNista,tOrg,tPrep,tFeed,tSav,tPrez,tMisl};
 const segStart=b=>SEGS.find(g=>g.beat===b).t0, segEnd=b=>{const s=SEGS.filter(g=>g.beat===b);return s[s.length-1].t1};
 A.q1=[segStart('q1'),segEnd('q1')];A.a1=[segStart('a1'),segEnd('a1')];A.q2=[segStart('q2'),segEnd('q2')];A.a2=[segStart('a2'),segEnd('a2')];
 A.q3=[segStart('q3'),segEnd('q3')];A.a3=[segStart('a3'),segEnd('a3')];A.end=segStart('end');A.hk0=T('bukvalno');A.hkEnd=segEnd('hook');
@@ -121,7 +121,9 @@ mk('hkTimer',`<div class="glass" style="display:flex;align-items:center;gap:26px
   <circle id="ring" cx="60" cy="60" r="50" fill="none" stroke="#1b263a" stroke-width="12" stroke-linecap="round" stroke-dasharray="314.16" stroke-dashoffset="314.16" transform="rotate(-90 60 60)"/></svg>
   <div><div id="clock" style="font-weight:800;font-size:76px;line-height:1;letter-spacing:-.01em">0:00</div><div style="font-weight:600;font-size:30px;opacity:.75;margin-top:6px">deca u igri</div></div></div>`,
   'left:0;right:0;top:330px;display:flex;justify-content:center');
-mk('hkCoffee',`<div class="pill glass" style="letter-spacing:.06em;text-transform:none;font-size:38px;padding:20px 34px">☕ kafa na miru</div>`,'left:0;right:0;top:545px;text-align:center');
+mk('hkCoffee',`<div style="width:290px;padding:24px 18px 20px;text-align:center;color:#1b263a"><svg width="150" height="150" viewBox="0 0 200 200"><g class="steam" fill="none" stroke="#1b263a" stroke-width="7" stroke-linecap="round"><path d="M70 72 q-12 -14 0 -28 q12 -14 0 -28"/><path d="M100 66 q-12 -14 0 -28 q12 -14 0 -28"/><path d="M130 72 q-12 -14 0 -28 q12 -14 0 -28"/></g><path d="M38 82 H162 V118 Q162 168 112 168 H88 Q38 168 38 118 Z" fill="#fff" stroke="#1b263a" stroke-width="8"/><path d="M162 96 h14 q18 0 18 18 q0 18 -18 18 h-16" fill="none" stroke="#1b263a" stroke-width="8"/><path d="M46 94 H154" stroke="#c9d1de" stroke-width="10"/><ellipse cx="100" cy="182" rx="80" ry="9" fill="#1b263a"/></svg><div style="font-weight:800;font-size:42px;line-height:1;margin-top:4px">kafa</div><div class="it" style="font-size:48px;line-height:1.05;white-space:nowrap">na miru</div></div>`,'left:750px;top:560px');
+mk('kidsG',`<img src="assets/kid_girl.png" style="height:300px;filter:drop-shadow(0 10px 20px rgba(0,0,0,.25))"><div style="font-weight:800;font-size:38px;color:#fff;text-shadow:0 3px 14px rgba(0,0,0,.5);margin-top:4px">devojčice</div>`,'left:40px;top:560px;text-align:center');
+mk('kidsB',`<img src="assets/kid_boy.png" style="height:330px;filter:drop-shadow(0 10px 20px rgba(0,0,0,.25))"><div style="font-weight:800;font-size:38px;color:#fff;text-shadow:0 3px 14px rgba(0,0,0,.5);margin-top:4px">dečaci</div>`,'left:780px;top:520px;text-align:center');
 mk('hkTitle',`<div style="font-weight:600;font-size:34px;letter-spacing:.3em;text-transform:uppercase;opacity:.9">iskustvo vlasnika</div>
   <div style="font-weight:800;font-size:200px;line-height:.95;letter-spacing:-.03em;margin-top:10px">2,5 sata</div>
   <div class="it" style="font-size:120px;line-height:1;margin-top:-4px">bez brige.</div>`,'left:0;right:0;top:1330px;text-align:center;text-shadow:0 8px 40px rgba(0,0,0,.35)');
@@ -265,7 +267,10 @@ window.render=function(t){
   show(EL.hkTop,t,0,A.hkEnd-0.85,{dy:0,sc:1});show(EL.hkTitle,t,A.hk0-0.1,A.hkEnd-0.85,{dy:30,sc:.94});
   if(show(EL.hkTimer,t,A.hk0-0.05,A.hkEnd-0.85)){const k=eo(cl((t-A.hk0)/(A.hkEnd-0.95-A.hk0)));document.getElementById('ring').setAttribute('stroke-dashoffset',314.16*(1-k));
     const mins=Math.round(150*k);document.getElementById('clock').textContent=`${Math.floor(mins/60)}:${String(mins%60).padStart(2,'0')}`;}
-  show(EL.hkCoffee,t,A.tKafu-0.15,A.hkEnd-0.85);
+  {const tk=A.tKids; for(const [el,d,r] of [[EL.kidsG,0,-6],[EL.kidsB,0.18,5]]){if(show(el,t,tk-0.1+d,A.tUklj+0.9,{dy:120,sc:.6})){const im=el.querySelector('img');im.style.transform=`rotate(${r+Math.sin((t-tk)*5+d*9)*4}deg) translate(0,${Math.sin((t-tk)*6.2+d*7)*-14}px)`}}}
+  {const st=EL.hkCoffee.querySelector('.steam');if(st){st.style.transform=`translate(0,${-((t*20)%10)}px)`;st.style.opacity=.6+.4*Math.sin(t*4)}}
+  {const k0=A.tKafu-0.75,k1=A.hkEnd-0.35;if(show(EL.hkCoffee,t,k0,k1,{dy:30,sc:.8})){const f=frameParams(t);const fx=f.x+0.70*1080*f.s,fy=f.y+0.36*1920*f.s;
+   EL.hkCoffee.style.left=Math.min(fx+125,1080-310)+'px';EL.hkCoffee.style.top=(fy-125)+'px'}}
   // ---- intro ----
   show(EL.name,t,A.tNem-0.3,A.q1[0]-0.1);
   // ---- questions ----
