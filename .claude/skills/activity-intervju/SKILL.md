@@ -27,7 +27,7 @@ Two audiences in every edit: **parents** (bez brige, deca uživaju) and **owners
 - **End card**: video shrinks into a rounded card (pullback) and **fades out completely before the logo appears — no overlap** (video gone at E0+0.9 s, logo from E0+1.05 s); white card with logo, "Sportski rođendani / za decu od 3 do 12 godina", buttons "Roditelji · rezervišite termin" / "Vlasnici prostora · sarađujmo", `@activityskolica · activitycentar.com`.
 
 ## Content rules
-- **Speech first**: owner and interviewer must be heard loud and clear — speech loudnorm −13 LUFS with makeup compression, music bed 0.30, SFX only 0.28 (client asked for quieter effects).
+- **Speech first**: owner and interviewer must be heard loud and clear — speech pushed to loudnorm −10.5 LUFS (`build/speech_loud.wav`), music bed 0.55 with light ducking (ratio 1.8), SFX only 0.12 — voices loudest, music clearly audible, effects subtle (final mix ≈ −11 LUFS).
 - Remove filler/extra words the speaker says that are not in the caption (e.g. "vlasnik **u** prostora gde se **i** slave"): split the EDL segment around them; find the exact boundaries with a 20 ms spectral scan (fricatives have a high centroid) and re-check with Whisper — be careful not to clip the first consonant of the next word.
 - Opening used: "prvi put sam se susreo sa vašom školicom kao roditelj" → "bukvalno 2,5 sata nisam osetio decu…"; the hook title/timer appear on "bukvalno" (`A.hk0`), captions run before it, pullback at the end of the hook (`A.hkEnd`).
 - Keep ONLY the owner talking and the interviewer's questions; cut everything else (child running in, ball kicking, "Bravo!"…).
