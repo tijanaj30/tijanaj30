@@ -50,6 +50,14 @@ body{background:#999;font-family:Jost}
 #s4 .caps,#s4 .cnt{color:#A9846C}
 #s4.paper::before{background:radial-gradient(80% 60% at 50% 45%,rgba(90,55,35,.55),rgba(0,0,0,0) 70%)}
 .step{width:260px;margin-left:-130px}
+.sun{position:absolute;z-index:1;border-radius:50%;
+  background:radial-gradient(circle at 50% 60%,#EAD7B8 0%,#E6D2B2 45%,rgba(230,210,178,.35) 70%,rgba(230,210,178,0) 72%);
+  -webkit-mask-image:linear-gradient(180deg,#000 52%,transparent 64%);mask-image:linear-gradient(180deg,#000 52%,transparent 64%)}
+.halo{position:absolute;z-index:1;border-radius:50%;border:1.3px solid rgba(43,33,27,.55);
+  -webkit-mask-image:linear-gradient(180deg,#000 50%,transparent 52%);mask-image:linear-gradient(180deg,#000 50%,transparent 52%)}
+.halo.d{border-style:dashed;border-color:rgba(43,33,27,.28)}
+.mini{position:absolute;z-index:4;border-radius:50%}
+.lab{position:absolute;z-index:4;font-family:Cor;font-style:italic;font-size:40px;color:var(--taupe);transform:translateX(-50%)}
 </style></head><body>
 </head><body>
 
@@ -59,62 +67,55 @@ body{background:#999;font-family:Jost}
   <div class="abs caps z" style="left:86px;top:92px;color:#7A6656">Laboratorija Olujić</div>
   <div class="abs disp z" style="left:80px;top:150px;font-size:128px">Najtiše<br>promene</div>
   <div class="abs disp z" style="left:84px;top:410px;font-size:64px"><i>ostavljaju najdublje posledice.</i></div>
-  <div class="cnt" style="color:#6F5C4D">01 — 08 &nbsp;→</div>
 </div>
 
 <!-- 2 NAVIKAVANJE -->
 <div class="s paper" id="s2">
-  <div class="abs caps z" style="left:86px;top:110px">01 · Navikavanje</div>
+  <div class="abs caps z" style="left:86px;top:110px">Navikavanje</div>
   <div class="abs disp z" style="left:80px;top:180px;font-size:118px">Čovek se lako<br>navikne <i>na ono<br>što mu nedostaje.</i></div>
   <div class="abs rule z" style="left:86px;top:560px;width:120px"></div>
   <div class="abs body z" style="left:86px;top:600px;width:820px">Prvo jedna sitnica. Pa još jedna. Vremenom prestanemo da primećujemo koliko se prilagođavamo – i problem postane svakodnevica.</div>
-  <div class="cnt">02 — 08</div>
 </div>
 
 <!-- 3 STRAH -->
 <div class="s paper" id="s3">
   <div class="arch z" style="left:86px;top:120px;width:440px;height:690px"><img src="pesak.jpg" style="object-position:40% 85%;transform:scale(1.7);transform-origin:40% 82%"></div>
-  <div class="abs caps z" style="left:600px;top:150px">02 · Strah</div>
+  <div class="abs caps z" style="left:600px;top:150px">Strah</div>
   <div class="abs disp z" style="left:596px;top:215px;font-size:80px;width:420px">Poznata nelagodnost <i>deluje sigurnije</i> od nepoznate promene.</div>
   <div class="abs body z" style="left:86px;top:880px;width:860px">Zato odlažemo. Ne odjednom, već sitnicu po sitnicu – baš kao što se i problem stvorio.</div>
-  <div class="cnt">03 — 08</div>
 </div>
 
 <!-- 4 PITANJE (dark) -->
 <div class="s paper" id="s4">
-  <div class="abs caps z" style="left:0;width:1080px;text-align:center;top:250px">03 · Pitanje</div>
-  <div class="abs disp z" style="left:0;width:1080px;text-align:center;top:330px;font-size:118px;color:var(--bakar);line-height:1">Čega se zapravo<br><i>plašimo?</i></div>
-  <div class="abs body z" style="left:140px;width:800px;text-align:center;top:620px;color:#C7A68E">Kratkog bola? Ili istine da smo godinama birali da ne uradimo ništa?</div>
+  <div class="abs disp z" style="left:0;width:1080px;text-align:center;top:250px;font-size:124px;color:var(--bakar);line-height:1">Čega se zapravo<br><i>plašimo?</i></div>
+  <div class="abs body z" style="left:110px;width:860px;text-align:center;top:560px;color:#DDBDA5;font-size:42px;font-weight:400;line-height:1.45">Kratkog bola? Ili istine da smo godinama birali da ne uradimo ništa?</div>
   <div class="abs disp z" style="left:150px;width:780px;text-align:center;top:800px;font-size:44px;line-height:1.25;color:#B8957C"><i>Iz straha od bola koji možda nikada neće biti onakav kakvim ga zamišljamo, pristajemo na onaj koji već osećamo.</i></div>
-  <div class="cnt">04 — 08</div>
 </div>
 
 <!-- 5 PERSPEKTIVA -->
 <div class="s paper" id="s5">
-  <div class="abs caps z" style="left:86px;top:110px">04 · Perspektiva</div>
-  <div class="abs disp z" style="left:70px;top:150px;font-size:470px;color:var(--bordo);line-height:.85"><i>1</i></div>
-  <div class="abs disp z" style="left:400px;top:230px;font-size:86px;width:600px">Da imamo samo jedan zub, <i>čuvali bismo ga kao srce.</i></div>
-  <div class="abs rule z" style="left:86px;top:580px;width:120px"></div>
-  <div class="abs body z" style="left:86px;top:620px;width:880px">Kad ih imamo mnogo, gubitak jednog deluje podnošljivo – dok ne primetimo koliko nam nedostaje. Ne samo u osmehu, već u svim malim trenucima u kojima više nismo opušteni.</div>
-  <div class="cnt">05 — 08</div>
+  <div class="abs z fit" style="left:60px;right:60px;top:96px;text-align:center;white-space:nowrap;font-family:Jost;font-weight:300;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);line-height:1">Perspektiva</div>
+  <div class="abs disp z" style="left:70px;top:260px;font-size:440px;color:var(--bordo);line-height:.85"><i>1</i></div>
+  <div class="abs disp z" style="left:400px;top:330px;font-size:86px;width:600px">Da imamo samo jedan zub, <i>čuvali bismo ga kao srce.</i></div>
+  <div class="abs rule z" style="left:86px;top:670px;width:120px"></div>
+  <div class="abs body z" style="left:86px;top:710px;width:880px">Kad ih imamo mnogo, gubitak jednog deluje podnošljivo – dok ne primetimo koliko nam nedostaje. Ne samo u osmehu, već u svim malim trenucima u kojima više nismo opušteni.</div>
 </div>
 
 <!-- 6 PREOKRET -->
 <div class="s paper" id="s6">
-  <div class="abs caps z" style="left:86px;top:110px">05 · Preokret</div>
+  <div class="abs caps z" style="left:86px;top:110px">Preokret</div>
   <div class="abs disp z" style="left:80px;top:180px;font-size:104px">Ono što danas skrivamo,<br><i>sutra više ne primećujemo.</i></div>
-  <div class="abs body z" style="left:86px;top:440px;width:860px">Osmeh ponovo postane spontan. A promena od koje smo zazirali – ona za koju nam je žao što je nismo napravili ranije.</div>
+  <div class="abs body z" style="left:86px;top:450px;width:900px;font-size:46px;line-height:1.42;color:var(--ink)">Osmeh ponovo postane spontan.<br>A promena od koje smo zazirali<br>postane ona za koju nam je žao<br>što je nismo napravili ranije.</div>
   <div id="marks"></div>
-  <div class="cnt">06 — 08</div>
 </div>
 
 <!-- 7 ZAVRSNICA -->
 <div class="s paper" id="s7">
-  <div class="abs caps z" style="left:86px;top:110px">06 · Završnica</div>
+  <div class="abs caps z" style="left:86px;top:110px">Završnica</div>
   <div class="abs disp z" style="left:80px;top:180px;font-size:112px">Najbolji dan<br>bio je juče.<br><i>Drugi najbolji<br>je danas.</i></div>
   <div class="abs rule z" style="left:86px;top:665px;width:120px"></div>
+  <div id="sun"></div>
   <div class="abs body z" style="left:86px;top:705px;width:860px">Vreme će proći svakako. Pitanje je samo da li ćemo ga provesti prilagođavajući se problemu – ili krenuti ka rešenju.</div>
-  <div class="cnt">07 — 08</div>
 </div>
 
 <!-- 8 CTA -->
@@ -125,7 +126,6 @@ body{background:#999;font-family:Jost}
   <div class="abs disp z" style="left:84px;top:550px;font-size:54px;width:430px;line-height:1.08"><i>Vraćaju slobodu da o njemu više ne razmišljamo.</i></div>
   <div class="abs body z" style="left:86px;top:860px;width:880px">Ako ste dugo odlagali – pišite nam. Zajedno ćemo pronaći rešenje.</div>
   <div class="abs z" style="left:86px;top:1150px"><span class="pill">Pišite nam</span></div>
-  <div class="cnt">08 — 08</div>
 </div>
 
 <script>
@@ -174,5 +174,26 @@ const mk=document.getElementById('marks');
   if(k===0){e.style.top=(y+34)+'px';} else {e.style.top=(y-40)+'px'; e.style.transform='translateY(-100%)';}
   mk.appendChild(e);
 });
+
+// fit PERSPEKTIVA edge to edge
+document.fonts.ready.then(()=>document.querySelectorAll('.fit').forEach(el=>{let s=40;el.style.fontSize=s+'px';const W=el.clientWidth;
+  while(el.scrollWidth<=W && s<400){s+=2;el.style.fontSize=s+'px'} el.style.fontSize=(s-2)+'px';
+  // letter-spacing adds trailing space; recentre
+  el.style.paddingLeft='0.14em';}));
+// slide 3: dots "sitnicu po sitnicu" along the line
+{const s3=document.getElementById('s3'); const xs=[130,240,350,460,570,680,790,900];
+ xs.forEach((x,k)=>{const y=yAt(2160+x); const r=5+k*2.1; const d=document.createElement('div'); d.className='mini';
+  const t=k/(xs.length-1); const c=k===xs.length-1?'#5C1A1B':`rgba(${Math.round(140-60*t)},${Math.round(123-90*t)},${Math.round(107-80*t)},${.55+.45*t})`;
+  d.style.cssText+=`left:${x-r}px;top:${y-r}px;width:${2*r}px;height:${2*r}px;background:${k%2?'#F3ECE2':c};border:1.6px solid ${c}`;
+  s3.appendChild(d);});}
+// slide 7: rising sun on the horizon line
+{const s7=document.getElementById('s7'); const cx=780, cy=yAt(6480+cx), R=150;
+ const add=(cls,r)=>{const e=document.createElement('div');e.className=cls;e.style.left=(cx-r)+'px';e.style.top=(cy-r)+'px';e.style.width=e.style.height=(2*r)+'px';s7.appendChild(e)};
+ add('sun',R); add('halo',R); add('halo d',R+34); add('halo d',R+70);
+ const jx=190, jy=yAt(6480+jx); const j=document.createElement('div'); j.className='mini';
+ j.style.cssText+=`left:${jx-6}px;top:${jy-6}px;width:12px;height:12px;background:#F3ECE2;border:1.6px solid #8C7B6B`; s7.appendChild(j);
+ const l1=document.createElement('div'); l1.className='lab'; l1.textContent='juče'; l1.style.left=jx+'px'; l1.style.top=(jy+22)+'px'; s7.appendChild(l1);
+ const d2=document.createElement('div'); d2.className='mini'; d2.style.cssText+=`left:${cx-9}px;top:${cy-9}px;width:18px;height:18px;background:#5C1A1B;border:2px solid #F3ECE2;box-shadow:0 0 0 1.6px #5C1A1B`; s7.appendChild(d2);
+ const l2=document.createElement('div'); l2.className='lab'; l2.textContent='danas'; l2.style.color='#5C1A1B'; l2.style.left=cx+'px'; l2.style.top=(cy+26)+'px'; s7.appendChild(l2);}
 </script>
 </body></html>
