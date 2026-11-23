@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="sr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts.css">
+<style>
+@font-face{font-family:CorB;src:url(fonts/CormorantGaramond-600.ttf);font-weight:600}
+@font-face{font-family:CorB;src:url(fonts/CormorantGaramond-700.ttf);font-weight:700}
+@font-face{font-family:CorB;src:url(fonts/CormorantGaramond-700i.ttf);font-weight:700;font-style:italic}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#888}
+.s{width:1080px;height:1350px;position:relative;overflow:hidden;background:#F3ECE2;padding:80px 80px}
+.s::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .55  0 0 0 0 .47  0 0 0 0 .38  0 0 0 .16 0'/></filter><rect width='400' height='400' filter='url(%23n)'/></svg>");}
+.caps{font-family:Jost;font-weight:500;font-size:20px;letter-spacing:.4em;text-transform:uppercase;color:#9C7A45}
+h1{font-family:Cor;font-weight:300;font-size:92px;line-height:1;color:#2F2119;margin-top:14px}
+h1 i{font-weight:400}
+.sec{font-family:Jost;font-weight:500;font-size:18px;letter-spacing:.36em;text-transform:uppercase;color:#8C7B6B;margin:44px 0 18px;display:flex;align-items:center;gap:18px}
+.sec::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,#B8935A,rgba(184,147,90,0))}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.sw{border-radius:22px;overflow:hidden;background:#fff;box-shadow:0 14px 30px -20px rgba(60,40,25,.5)}
+.sw .c{height:120px}
+.sw .t{padding:12px 14px 14px}
+.sw .n{font-family:Cor;font-style:italic;font-weight:500;font-size:28px;color:#2F2119;line-height:1}
+.sw .h{font-family:Jost;font-size:15px;letter-spacing:.12em;color:#6F5C4D;margin-top:6px}
+.sw .u{font-family:Jost;font-weight:300;font-size:14px;color:#8C7B6B;margin-top:2px}
+.fonts{display:grid;grid-template-columns:1.25fr 1fr;gap:22px}
+.fc{background:#fff;border-radius:22px;padding:26px 30px;box-shadow:0 14px 30px -20px rgba(60,40,25,.5);position:relative}
+.fc .lab{font-family:Jost;font-size:15px;letter-spacing:.3em;text-transform:uppercase;color:#9C7A45}
+.fc .nm{font-family:Jost;font-weight:500;font-size:22px;color:#2F2119;margin-top:6px}
+.el{display:flex;align-items:center;gap:40px;margin-top:6px}
+</style></head><body>
+<div class="s">
+  <div class="caps">Laboratorija Olujić · Vizuelni identitet</div>
+  <h1>Paleta <i>&amp;</i> tipografija</h1>
+
+  <div class="sec">Boje</div>
+  <div class="grid">
+    <div class="sw"><div class="c" style="background:#F3ECE2;box-shadow:inset 0 0 0 1px #E3D6C4"></div><div class="t"><div class="n">Slonovača</div><div class="h">#F3ECE2</div><div class="u">pozadina</div></div></div>
+    <div class="sw"><div class="c" style="background:#E8DCCB"></div><div class="t"><div class="n">Krem</div><div class="h">#E8DCCB</div><div class="u">površine</div></div></div>
+    <div class="sw"><div class="c" style="background:#CDB89C"></div><div class="t"><div class="n">Pesak</div><div class="h">#CDB89C</div><div class="u">fotografije</div></div></div>
+    <div class="sw"><div class="c" style="background:#8C7B6B"></div><div class="t"><div class="n">Taupe</div><div class="h">#8C7B6B</div><div class="u">oznake</div></div></div>
+    <div class="sw"><div class="c" style="background:#2F2119"></div><div class="t"><div class="n">Mastilo</div><div class="h">#2F2119</div><div class="u">tekst</div></div></div>
+    <div class="sw"><div class="c" style="background:#2E1A12"></div><div class="t"><div class="n">Espresso</div><div class="h">#2E1A12</div><div class="u">tamni slajd</div></div></div>
+    <div class="sw"><div class="c" style="background:#5C1A1B"></div><div class="t"><div class="n">Bordo</div><div class="h">#5C1A1B</div><div class="u">naglasak, CTA</div></div></div>
+    <div class="sw"><div class="c" style="background:#D2AE95"></div><div class="t"><div class="n">Bakar</div><div class="h">#D2AE95</div><div class="u">tekst na tamnom</div></div></div>
+    <div class="sw"><div class="c" style="background:linear-gradient(135deg,#D6B276,#B8935A 55%,#9C7A45)"></div><div class="t"><div class="n">Zlato</div><div class="h">#B8935A</div><div class="u">detalji, linije</div></div></div>
+    <div class="sw"><div class="c" style="background:#FFFFFF;border-bottom:1px solid #EEE4D6"></div><div class="t"><div class="n">Bela</div><div class="h">#FFFFFF</div><div class="u">kartice</div></div></div>
+  </div>
+
+  <div class="sec">Fontovi</div>
+  <div class="fonts">
+    <div class="fc">
+      <div class="lab">Naslovi i naglasci</div><div class="nm">Cormorant Garamond</div>
+      <div style="font-family:Cor;font-weight:300;font-size:62px;color:#2F2119;line-height:1.05;margin-top:14px">Najtiše promene</div>
+      <div style="font-family:CorB;font-weight:700;font-style:italic;font-size:70px;color:#5C1A1B;line-height:1">To se oseti.</div>
+      <div style="font-family:Jost;font-weight:300;font-size:16px;color:#8C7B6B;margin-top:12px;letter-spacing:.06em">Light 300 · Italic 400 · Bold Italic 700</div>
+    </div>
+    <div class="fc">
+      <div class="lab">Tekst i oznake</div><div class="nm">Jost</div>
+      <div style="font-family:Jost;font-weight:500;font-size:30px;color:#3A2A20;line-height:1.35;margin-top:14px">Tekst je krupan i jasno čitljiv.</div>
+      <div style="font-family:Jost;font-weight:500;font-size:18px;letter-spacing:.4em;color:#9C7A45;margin-top:18px">RAZMAKNUT VERZAL</div>
+      <div style="font-family:Jost;font-weight:300;font-size:16px;color:#8C7B6B;margin-top:14px;letter-spacing:.06em">Medium 500 tekst · 400 oznake</div>
+    </div>
+  </div>
+
+  <div class="sec">Elementi</div>
+  <div class="el">
+    <svg width="330" height="70" viewBox="0 0 330 70"><path d="M5 40 C 80 10 150 70 220 40 S 300 20 325 35" fill="none" stroke="#2B211B" stroke-width="2.2"/><path d="M5 31 C 80 1 150 61 220 31 S 300 11 325 26" fill="none" stroke="#B8935A" stroke-width="1.2"/></svg>
+    <svg width="54" height="54" viewBox="-10 -10 20 20"><path d="M0 -10 C1 -2 2 -1 10 0 C2 1 1 2 0 10 C-1 2 -2 1 -10 0 C-2 -1 -1 -2 0 -10Z" fill="#B8935A"/></svg>
+    <div style="width:26px;height:26px;border-radius:50%;background:#5C1A1B;box-shadow:0 0 0 4px #F3ECE2,0 0 0 6px #5C1A1B"></div>
+    <div style="font-family:Jost;font-weight:300;font-size:24px;letter-spacing:.32em;text-transform:uppercase;color:#F3E6DA;background:#5C1A1B;border-radius:60px;padding:18px 34px">Pišite mi →</div>
+  </div>
+</div>
+</body></html>

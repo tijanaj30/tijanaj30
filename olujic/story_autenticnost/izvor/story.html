@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="sr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts.css">
+<style>
+@font-face{font-family:CorB;src:url(fonts/CormorantGaramond-600.ttf);font-weight:600}
+@font-face{font-family:CorB;src:url(fonts/CormorantGaramond-700.ttf);font-weight:700}
+@font-face{font-family:CorB;src:url(fonts/CormorantGaramond-600i.ttf);font-weight:600;font-style:italic}
+@font-face{font-family:CorB;src:url(fonts/CormorantGaramond-700i.ttf);font-weight:700;font-style:italic}
+:root{--ivory:#F3ECE2;--ink:#2F2119;--body:#3A2A20;--taupe:#8C7B6B;--espresso:#2E1A12;--bordo:#5C1A1B;--bakar:#D2AE95;
+  --gold:#B8935A;--gold2:#9C7A45;--goldL:#D6B276;}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#888}
+.s{width:1080px;height:1920px;position:relative;overflow:hidden;background:var(--ivory);margin-bottom:20px}
+.paper::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.55;mix-blend-mode:multiply;z-index:1;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .55  0 0 0 0 .47  0 0 0 0 .38  0 0 0 .16 0'/></filter><rect width='400' height='400' filter='url(%23n)'/></svg>");}
+.paper::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(120% 70% at 30% 15%,rgba(255,255,255,.6),rgba(255,255,255,0) 60%),radial-gradient(90% 50% at 100% 100%,rgba(176,150,120,.18),rgba(0,0,0,0) 70%)}
+.dark{background:var(--espresso)}
+.dark.paper::after{opacity:.35;mix-blend-mode:screen}
+.dark.paper::before{background:radial-gradient(80% 50% at 50% 30%,rgba(110,70,45,.55),rgba(0,0,0,0) 70%)}
+.a{position:absolute;z-index:4}
+.c{left:0;width:1080px;text-align:center}
+.caps{font-family:Jost;font-weight:500;font-size:28px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold2)}
+.sr{font-family:CorB;font-weight:600;color:var(--ink);line-height:1.04}
+.em{font-family:CorB;font-weight:700;font-style:italic;color:var(--bordo);line-height:.95}
+.tx{font-family:Jost;font-weight:500;font-size:48px;line-height:1.38;color:var(--body)}
+.grule{height:2px;background:linear-gradient(90deg,rgba(184,147,90,0),var(--gold),rgba(184,147,90,0))}
+.line{position:absolute;top:0;height:1920px;z-index:2;pointer-events:none}
+.spark{position:absolute;z-index:5}
+/* phone */
+.phone{position:absolute;z-index:4;border-radius:58px;border:3px solid var(--gold);padding:14px;background:linear-gradient(160deg,#FFFFFF,#F4ECE0);
+  box-shadow:0 40px 70px -40px rgba(70,45,25,.55)}
+.phone .scr{position:relative;width:100%;height:100%;border-radius:44px;overflow:hidden;background:url(kruna.jpg) 60% 75%/cover}
+.phone .bars{position:absolute;left:22px;right:22px;top:20px;display:flex;gap:8px}
+.phone .bars i{flex:1;height:5px;border-radius:3px;background:rgba(255,255,255,.95)}
+.phone .bars i.o{background:rgba(255,255,255,.45)}
+.play{position:absolute;left:50%;top:50%;width:130px;height:130px;margin:-65px 0 0 -65px;border-radius:50%;background:rgba(255,255,255,.92);
+  box-shadow:0 12px 30px rgba(60,35,20,.25)}
+.play::after{content:"";position:absolute;left:52px;top:38px;border-left:40px solid var(--bordo);border-top:27px solid transparent;border-bottom:27px solid transparent}
+/* white card */
+.card{position:absolute;z-index:3;background:#FFFFFF;border-radius:40px;border:2px solid var(--gold);
+  box-shadow:0 40px 80px -40px rgba(80,50,30,.45)}
+.ring{position:absolute;z-index:3;border-radius:50%;border:2px solid var(--gold)}
+.ring.d{border-style:dashed;border-color:rgba(184,147,90,.55);border-width:1.5px}
+.strike{position:absolute;z-index:6;height:5px;background:var(--gold);border-radius:3px;transform:rotate(-6deg)}
+</style></head><body>
+
+<!-- 1 -->
+<div class="s paper" id="s1">
+  <div class="ring" style="left:300px;top:250px;width:480px;height:480px;background:radial-gradient(circle,#FFFFFF 0%,rgba(255,255,255,.6) 55%,rgba(255,255,255,0) 72%)"></div>
+  <div class="ring d" style="left:270px;top:220px;width:540px;height:540px"></div>
+  <img class="a" src="zub_ink.png" style="left:410px;top:285px;width:240px">
+  <div class="a c caps" style="top:820px">Pitanje za vas</div>
+  <div class="a c sr" style="top:880px;font-size:76px">Da li mislite da mi je bilo</div>
+  <div class="a c em" style="top:955px;font-size:260px">teško</div>
+  <div class="a c sr" style="top:1205px;font-size:76px">da naučim da napravim zub?</div>
+  <div class="a grule" style="left:340px;width:400px;top:1330px"></div>
+  <div class="a c" style="top:1360px;font-family:CorB;font-weight:600;font-style:italic;font-size:66px;color:#84632F">Zavisi sa čim to upoređujemo.</div>
+</div>
+
+<!-- 2 -->
+<div class="s paper" id="s2">
+  <div class="phone" style="left:330px;top:230px;width:420px;height:720px"><div class="scr"><div class="bars"><i></i><i></i><i class="o"></i><i class="o"></i></div><div class="play"></div></div></div>
+  <div class="a c tx" style="top:1010px;left:90px;width:900px">Pogledali ste nekoliko mojih videa na Instagramu i odlučili da mi</div>
+  <div class="a c em" style="top:1150px;font-size:116px">poverite svoj osmeh.</div>
+  <div class="a grule" style="left:340px;width:400px;top:1320px"></div>
+  <div class="a c sr" style="top:1360px;font-size:72px">Znam da nije presudila</div>
+  <div class="a c sr" style="top:1440px;font-size:112px;font-weight:700">samo <span id="cena">cena</span>.</div>
+</div>
+
+<!-- 3 -->
+<div class="s paper dark" id="s3">
+  <img class="a" src="maska_zlato.png" style="left:220px;top:300px;width:640px">
+  <div class="a c sr" style="top:780px;left:90px;width:900px;font-size:66px;color:var(--bakar)">U svetu u kojem društvene mreže često služe kao maska,</div>
+  <div class="a c tx" style="top:1000px;color:#EAD5C3">mnogo je teže preneti</div>
+  <div class="a c em" style="top:1075px;font-size:168px;color:#FFFFFF">autentičnost</div>
+  <div class="a grule" style="left:290px;width:500px;top:1275px"></div>
+  <div class="a c sr" style="top:1305px;font-size:66px;color:var(--bakar)">nego pokazati znanje.</div>
+</div>
+
+<!-- 4 -->
+<div class="s paper" id="s4">
+  <div class="a c tx" style="top:250px;left:90px;width:900px">Upornost i godine učenja omogućile su mi da pravim</div>
+  <div class="a c em" style="top:385px;font-size:112px">lepe zube.</div>
+  <div class="a grule" style="left:340px;width:400px;top:540px"></div>
+  <div class="a c tx" style="top:580px;left:70px;width:940px">Ali iskrena želja da budete <span style="font-family:CorB;font-weight:700;font-style:italic;color:var(--bordo);font-size:66px">saslušani, shvaćeni i sigurni</span> da neću odustati od vas, kao i radost koju delim sa vama…</div>
+  <div class="card" style="left:90px;top:1000px;width:900px;height:620px"></div>
+  <img class="a" src="srce_bordo.png" style="left:458px;top:1035px;width:164px">
+  <div class="a c sr" style="top:1300px;font-size:66px">To nije nešto što se uči.</div>
+  <div class="a c em" style="top:1380px;font-size:170px">To se oseti.</div>
+</div>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+const D="M 0 1740 C 300 1740 520 1660 820 1700 S 1300 1800 1600 1740 S 2100 1660 2400 1720 S 2900 1800 3240 1730 S 3700 1650 4000 1700 S 4250 1740 4320 1720";
+const D2="M 0 1810 C 350 1860 650 1760 950 1790 S 1450 1870 1800 1830 S 2400 1760 2800 1820 S 3400 1880 3800 1820 S 4200 1790 4320 1800";
+document.querySelectorAll('.s').forEach((s,i)=>{
+  const dark=s.classList.contains('dark'); const ink=dark?'#D2AE95':'#2B211B';
+  const svg=document.createElementNS(NS,'svg'); svg.setAttribute('class','line'); svg.setAttribute('viewBox','0 0 4320 1920');
+  svg.style.width='4320px'; svg.style.left=(-i*1080)+'px';
+  svg.innerHTML=`<defs><filter id="p${i}" x="-5%" y="-50%" width="110%" height="200%"><feTurbulence type="fractalNoise" baseFrequency="1.6" numOctaves="2" seed="${i}" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="1.6"/></filter>
+  <filter id="f${i}" x="-5%" y="-50%" width="110%" height="200%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" seed="${i+7}" result="t"/><feColorMatrix in="t" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 2.2 -.6" result="g"/><feGaussianBlur in="SourceGraphic" stdDeviation="16" result="b"/><feComposite in="b" in2="g" operator="in"/></filter></defs>
+  <g opacity="${dark?.55:.9}"><path d="${D}" fill="none" stroke="${ink}" stroke-width="46" opacity=".13" transform="translate(0,26)" filter="url(#f${i})"/>
+  <path d="${D2}" fill="none" stroke="${ink}" stroke-width="1.3" opacity=".45" filter="url(#p${i})"/>
+  <path d="${D}" fill="none" stroke="${ink}" stroke-width="2.4" opacity=".85" filter="url(#p${i})" stroke-linecap="round"/>
+  <path d="${D}" fill="none" stroke="#B8935A" stroke-width="1.2" opacity=".9" transform="translate(0,-9)"/></g>`;
+  s.appendChild(svg);
+});
+// sparkles
+function spark(sid,x,y,r,col){const s=document.getElementById(sid);const e=document.createElementNS(NS,'svg');e.setAttribute('class','spark');
+  e.setAttribute('viewBox','-10 -10 20 20');e.style.cssText+=`left:${x-r}px;top:${y-r}px;width:${2*r}px;height:${2*r}px`;
+  e.innerHTML=`<path d="M0 -10 C1 -2 2 -1 10 0 C2 1 1 2 0 10 C-1 2 -2 1 -10 0 C-2 -1 -1 -2 0 -10Z" fill="${col||'#B8935A'}"/>`;s.appendChild(e)}
+spark('s1',845,1060,22);spark('s1',885,1105,11);spark('s1',255,1130,14);
+spark('s1',760,300,16);spark('s1',300,640,10);
+spark('s2',800,265,18);spark('s2',290,880,12);spark('s2',905,1180,16);
+spark('s3',930,1110,26,'#D6B276');spark('s3',140,1230,14,'#D6B276');spark('s3',960,1060,11,'#FFFFFF');
+spark('s4',880,1430,24);spark('s4',915,1395,12);spark('s4',180,1090,14);spark('s4',900,1080,10);
+// gold strike over "cena"
+document.fonts.ready.then(()=>{const c=document.getElementById('cena'),s2=document.getElementById('s2');
+  const r=c.getBoundingClientRect(),o=s2.getBoundingClientRect();const st=document.createElement('div');st.className='strike';
+  st.style.left=(r.left-o.left-8)+'px';st.style.width=(r.width+16)+'px';st.style.top=(r.top-o.top+r.height*0.56)+'px';s2.appendChild(st);window.READY=1;});
+</script>
+</body></html>
