@@ -197,10 +197,39 @@ document.fonts.ready.then(()=>document.querySelectorAll('.fit').forEach(el=>{let
  const d2=document.createElement('div'); d2.className='mini'; d2.style.cssText+=`left:${cx-9}px;top:${cy-9}px;width:18px;height:18px;background:#5C1A1B;border:2px solid #F3ECE2;box-shadow:0 0 0 1.6px #5C1A1B`; s7.appendChild(d2);
  const l2=document.createElement('div'); l2.className='lab'; l2.textContent='danas'; l2.style.color='#5C1A1B'; l2.style.left=cx+'px'; l2.style.top=(cy+26)+'px'; s7.appendChild(l2);}
 
-// calligraphic heart (broad-nib simulation)
-{const H="M 820 1300 C 700 1205 585 1105 605 985 C 622 895 760 870 822 972 C 875 872 1045 875 1070 985 C 1092 1105 935 1200 820 1300 C 770 1338 650 1352 575 1305 C 515 1268 532 1212 590 1222";
- const g=document.getElementById('heart'); let s='';
- const N=30; for(let i=0;i<N;i++){const t=i/(N-1)-.5; s+=`<path d="${H}" fill="none" stroke="#5C1A1B" stroke-width="2.2" stroke-linecap="round" transform="translate(${(t*26).toFixed(2)},${(-t*26).toFixed(2)})"/>`;}
- g.innerHTML=s;}
+// anatomical heart, thin line drawing
+{const g=document.getElementById('heart');
+ const main=[
+ // body
+ "M 150 172 C 95 192 62 262 80 332 C 98 402 168 442 232 456 C 262 463 292 440 312 400 C 346 330 360 250 331 190 C 316 161 292 151 266 156",
+ // right atrium bulge
+ "M 150 172 C 112 162 86 200 96 238",
+ // aorta arch outer + inner
+ "M 196 172 C 190 122 200 70 246 55 C 292 40 332 62 336 106 C 338 131 330 150 316 161",
+ "M 226 170 C 223 126 233 93 256 86 C 281 79 301 93 304 113 C 306 127 301 141 295 151",
+ // three branches
+ "M 228 62 C 226 42 224 26 221 9 M 242 57 C 242 39 241 23 240 7 M 221 9 C 225 2 236 1 240 7",
+ "M 262 50 C 263 32 264 18 266 4 M 276 49 C 277 32 279 19 281 6 M 266 4 C 270 -2 278 -1 281 6",
+ "M 300 52 C 305 36 310 24 316 12 M 313 60 C 318 44 323 32 329 20 M 316 12 C 321 7 328 12 329 20",
+ // superior vena cava
+ "M 120 178 C 118 132 120 92 122 52 M 150 168 C 148 128 150 94 152 54 M 122 52 C 128 45 146 45 152 54",
+ // pulmonary artery
+ "M 168 202 C 152 176 140 152 106 142 C 86 136 71 141 63 151 M 188 194 C 176 160 152 126 111 121 C 91 119 73 125 61 133 M 63 151 C 56 147 56 137 61 133"
+ ];
+ const fine=[
+ "M 216 232 C 226 292 241 352 263 430",
+ "M 229 287 C 256 302 281 302 306 292",
+ "M 242 344 C 221 362 201 381 171 392",
+ "M 221 252 C 191 262 161 282 131 302",
+ "M 300 230 C 312 260 318 300 314 340"
+ ];
+ let s='<defs><filter id="hpen" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="1.4" numOctaves="2" seed="5" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="1.4"/></filter></defs>';
+ s+='<g transform="translate(650 860) rotate(-10 200 260) scale(1.02)">';
+ s+='<path d="M 150 172 C 95 192 62 262 80 332 C 98 402 168 442 232 456 C 262 463 292 440 312 400 C 346 330 360 250 331 190 C 316 161 292 151 266 156 L 336 106 C 332 62 292 40 246 55 C 200 70 190 122 196 172 Z" fill="#F0E7DB"/>';
+ s+='<path d="M 120 178 L 122 52 L 152 54 L 150 168 Z M 168 202 C 152 176 140 152 106 142 C 86 136 71 141 63 151 L 61 133 C 73 125 91 119 111 121 C 152 126 176 160 188 194 Z M 221 9 L 240 7 L 242 57 L 228 62 Z M 266 4 L 281 6 L 276 49 L 262 50 Z M 316 12 L 329 20 L 313 60 L 300 52 Z" fill="#F0E7DB"/>';
+ s+='<g filter="url(#hpen)" fill="none" stroke="#5C1A1B" stroke-linecap="round" stroke-linejoin="round">';
+ main.forEach(d=>s+=`<path d="${d}" stroke-width="2.4"/>`);
+ fine.forEach(d=>s+=`<path d="${d}" stroke-width="1.3" opacity=".75"/>`);
+ s+='</g></g>'; g.innerHTML=s;}
 </script>
 </body></html>
