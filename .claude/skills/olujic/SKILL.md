@@ -47,8 +47,10 @@ For long talking-head interviews (sofa / window), split into separate reels. Scr
 - **Sound**: music = `music4.py` (original uplifting piano/strings ~92 BPM) at −12 dB (or −6 dB with sidechain ducking); soft "ka-ching" (`sfx.py kaching`) on "novac", quiet whooshes on cutaways.
 - **Render rule**: always render video (`-an`) and audio separately and mux with `-c:v copy -shortest` — a single ffmpeg graph with PNG sequences + audio drifts out of lip sync.
 
-## Instagram carousels (approved Nov 2026: `olujic/karusel_kruna`, `olujic/karusel_tihe_promene`)
+## Instagram carousels (approved Nov 2026: `olujic/karusel_kruna`, `olujic/karusel_tihe_promene`, `olujic/karusel_najskuplji_zubi`)
 - Style: cream paper slides (#F3ECE2 + paper grain), one continuous graphite pencil line running across all slides, Cormorant Garamond (300 display, italic accent) + Jost (spaced caps labels, 300 body), espresso #2E1A12 slide with copper #D2AE95 text for questions/quotes, bordo #5C1A1B only for details (dots, big numeral). Photos only crown/sand (`pozadine/01-okluzalni-pejzaz.png`, `pozadine/koncepti/01-okluzalni-pejzaz.png`) in full-bleed or arch frames. The client rejected ceramic vessels/objects as backgrounds ("nemaju smisla").
+- Audience is older: body text Jost 400 ≈45px in dark ink #43342A, headlines ≥ 90px; small caps labels 26px.
 - **Never put page numbers or numbered labels anywhere** (no "01 — 08", no "01 · Naslov") — in any deliverable.
 - Small illustrations are drawn on the graphite line: dots growing in size ("sitnicu po sitnicu"), labelled points (Danas → Sutra), rising sun on the line (juče → danas).
+- CTA: wide bordo pill button "Pišite mi" (Jost 300 light caps + thin arrow) with a bordo italic tagline under it.
 - Source: `olujic/karusel_tihe_promene/izvor/karusel3.html` (render with `render3.js`, Playwright, 1080×1350).

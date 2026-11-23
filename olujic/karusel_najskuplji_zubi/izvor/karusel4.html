@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="sr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts.css">
+<style>
+:root{
+  --ivory:#F3ECE2; --krem:#E8DCCB; --pesak:#CDB89C; --taupe:#8C7B6B;
+  --ink:#3A2A20; --body:#5E4E42; --espresso:#2E1A12; --bordo:#5C1A1B; --bakar:#D2AE95;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#999;font-family:Jost}
+.s{width:1080px;height:1350px;position:relative;overflow:hidden;background:var(--ivory);margin-bottom:20px}
+.paper::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.55;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .55  0 0 0 0 .47  0 0 0 0 .38  0 0 0 .16 0'/></filter><rect width='400' height='400' filter='url(%23n)'/></svg>");}
+.paper::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(120% 90% at 30% 20%,rgba(255,255,255,.55),rgba(255,255,255,0) 60%),radial-gradient(90% 70% at 100% 100%,rgba(176,150,120,.16),rgba(0,0,0,0) 70%)}
+.abs{position:absolute}
+.caps{font-family:Jost;font-weight:400;font-size:26px;letter-spacing:.38em;text-transform:uppercase;color:var(--taupe)}
+.disp{font-family:Cor;font-weight:300;color:var(--ink);line-height:.92;letter-spacing:-.01em}
+.disp i{font-weight:400;font-style:italic}
+.body{font-family:Jost;font-weight:400;font-size:45px;line-height:1.42;color:#43342A}
+
+.cnt{position:absolute;right:80px;bottom:62px;font-family:Jost;font-size:19px;letter-spacing:.35em;color:var(--taupe);z-index:5}
+.line{position:absolute;top:0;height:1350px;width:7560px;z-index:2;pointer-events:none}
+.z{z-index:4}
+/* slide 1 */
+#s1{background:url(pesak.jpg) center/cover}
+#s1 .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(243,236,226,.35),rgba(243,236,226,0) 45%)}
+/* arch frame */
+.arch{position:absolute;overflow:hidden;border-radius:300px 300px 6px 6px;box-shadow:0 30px 60px -30px rgba(70,50,35,.45)}
+.arch img{width:100%;height:100%;object-fit:cover}
+.rule{height:1px;background:var(--taupe);opacity:.5}
+/* steps */
+.step{position:absolute;z-index:4;width:200px;margin-left:-100px;text-align:center}
+.dot{position:absolute;z-index:4;width:22px;height:22px;margin:-11px 0 0 -11px;border-radius:50%;background:var(--ivory);border:2px solid var(--bordo)}
+.dot::after{content:"";position:absolute;inset:4px;border-radius:50%;background:var(--bordo)}
+.step .n{font-family:Cor;font-style:italic;font-weight:400;font-size:44px;color:var(--bordo);line-height:1}
+.step .t{font-family:Jost;font-weight:400;font-size:19px;letter-spacing:.28em;text-transform:uppercase;color:var(--ink);margin-top:8px;line-height:1.5}
+/* shade ribbons */
+.rib{position:absolute;bottom:0;width:108px;border-radius:54px 54px 40px 40px;
+  box-shadow:inset 0 -18px 30px rgba(150,110,70,.10),0 24px 40px -22px rgba(90,60,40,.45)}
+.rib::before{content:"";position:absolute;inset:0;border-radius:inherit;
+  background:linear-gradient(180deg,rgba(255,255,255,.75),rgba(255,255,255,0) 30%),linear-gradient(90deg,rgba(255,255,255,.35),rgba(255,255,255,0) 40%,rgba(120,90,60,.08))}
+.rlab{position:absolute;width:108px;text-align:center;font-family:Cor;font-style:italic;font-size:34px;color:var(--taupe)}
+/* dark */
+.pill{display:inline-block;border:1.5px solid var(--ink);border-radius:60px;padding:22px 46px;font-family:Jost;font-weight:400;font-size:21px;letter-spacing:.32em;text-transform:uppercase;color:var(--ink)}
+.abs,.arch{position:absolute}
+
+#s4{background:var(--espresso)}
+#s4.paper::after{opacity:.35;mix-blend-mode:screen}
+#s4 .caps,#s4 .cnt{color:#A9846C}
+#s4.paper::before{background:radial-gradient(80% 60% at 50% 45%,rgba(90,55,35,.55),rgba(0,0,0,0) 70%)}
+.step{width:260px;margin-left:-130px}
+.sun{position:absolute;z-index:1;border-radius:50%;
+  background:radial-gradient(circle at 50% 60%,#EAD7B8 0%,#E6D2B2 45%,rgba(230,210,178,.35) 70%,rgba(230,210,178,0) 72%);
+  -webkit-mask-image:linear-gradient(180deg,#000 52%,transparent 64%);mask-image:linear-gradient(180deg,#000 52%,transparent 64%)}
+.halo{position:absolute;z-index:1;border-radius:50%;border:1.3px solid rgba(43,33,27,.55);
+  -webkit-mask-image:linear-gradient(180deg,#000 50%,transparent 52%);mask-image:linear-gradient(180deg,#000 50%,transparent 52%)}
+.halo.d{border-style:dashed;border-color:rgba(43,33,27,.28)}
+.mini{position:absolute;z-index:4;border-radius:50%}
+.lab{position:absolute;z-index:4;font-family:Cor;font-style:italic;font-size:40px;color:var(--taupe);transform:translateX(-50%)}
+.cta{display:flex;align-items:center;justify-content:center;gap:28px;width:560px;height:104px;border-radius:60px;background:var(--bordo);
+  color:#F3E6DA;font-family:Jost;font-weight:300;font-size:30px;letter-spacing:.38em;text-transform:uppercase;padding-left:.38em;
+  box-shadow:0 18px 40px -22px rgba(92,26,27,.65),inset 0 0 0 1px rgba(255,235,220,.18)}
+.cta .arr{display:inline-block;width:46px;height:1.4px;background:#F3E6DA;position:relative}
+.cta .arr::after{content:"";position:absolute;right:0;top:-6px;width:12px;height:12px;border-top:1.4px solid #F3E6DA;border-right:1.4px solid #F3E6DA;transform:rotate(45deg);transform-origin:center}
+</style></head><body>
+</head><body>
+
+<!-- 1 HOOK -->
+<div class="s" id="s1">
+  <div class="shade"></div>
+  <div class="abs caps z" style="left:86px;top:96px;color:#6F5C4D">Laboratorija Olujić</div>
+  <div class="abs disp z" style="left:80px;top:170px;font-size:126px;line-height:1">Najskuplji zubi<br>su oni koje ste<br><i>nekada imali<br>besplatno.</i></div>
+</div>
+
+<!-- 2 ODLAGANJE -->
+<div class="s paper" id="s2">
+  <div class="abs caps z" style="left:86px;top:110px">Odlaganje</div>
+  <div class="abs disp z" style="left:80px;top:190px;font-size:150px">Uvek postoji<br><i>nešto preče.</i></div>
+  <div class="abs rule z" style="left:86px;top:540px;width:120px"></div>
+  <div class="abs body z" style="left:86px;top:590px;width:920px">Popraviću sledećeg meseca.<br>Nije strašno. Ne boli. Ne vidi se.<br><span style="font-family:Cor;font-style:italic;font-size:66px;color:var(--bordo);line-height:1.7">I tako prolaze godine.</span></div>
+  <div id="ticks"></div>
+</div>
+
+<!-- 3 POSLEDICE -->
+<div class="s paper" id="s3">
+  <div class="arch z" style="left:86px;top:120px;width:400px;height:640px"><img src="gips.jpg" style="object-position:50% 0%"></div>
+  <div class="abs caps z" style="left:540px;top:140px">Posledice</div>
+  <div class="abs disp z" style="left:536px;top:200px;font-size:66px;width:470px;line-height:1.02">A onda dođe trenutak kada više ne popravljamo. <i>Već nadoknađujemo.</i></div>
+  <div class="abs z" style="left:540px;top:560px;font-family:Cor;font-style:italic;font-size:48px;line-height:1.18;color:var(--bordo)">Mostovi.<br>Krunice.<br>Implantati.<br>Proteze.</div>
+  <div class="abs body z" style="left:86px;top:820px;width:910px">Ono što je nekada moglo da se sačuva, sada ponekad mora da se zameni.</div>
+</div>
+
+<!-- 4 PREOKRET (dark) -->
+<div class="s paper" id="s4">
+  <div class="abs caps z" style="left:0;width:1080px;text-align:center;top:170px">Preokret</div>
+  <div class="abs disp z" style="left:60px;width:960px;text-align:center;top:240px;font-size:96px;color:var(--bakar);line-height:1.04">Nije pitanje koliko koštaju novi zubi.<br><i>Pitanje je koliko je moglo da se sačuva.</i></div>
+  <div class="abs body z" style="left:110px;width:860px;text-align:center;top:690px;color:#E6CDB9">Jer svaki prirodan zub koji sačuvamo znači jednostavniju terapiju, više mogućnosti i manje troškova u budućnosti.</div>
+</div>
+
+<!-- 5 ZAVRSNICA -->
+<div class="s paper" id="s5">
+  <div class="arch z" style="left:540px;top:0;width:540px;height:720px;border-radius:0 0 0 270px"><img src="kruna.jpg" style="object-position:70% 70%;transform:scale(1.35);transform-origin:60% 75%"></div>
+  <div class="abs caps z" style="left:86px;top:110px">Laboratorija<br>Olujić</div>
+  <div class="abs disp z" style="left:80px;top:280px;font-size:98px;width:460px;line-height:1.0">Mi pravimo<br>nove zube.</div>
+  <div class="abs disp z" style="left:84px;top:500px;font-size:74px;width:450px;line-height:1.06"><i>Ali ćemo vam prvi reći da čuvate svoje.</i></div>
+  <div class="abs z cta" style="left:86px;top:1096px">Pišite mi <span class="arr"></span></div>
+  <div class="abs disp z" style="left:90px;top:1222px;font-size:50px;color:var(--bordo)"><i>Sačuvajte ono što je vaše.</i></div>
+</div>
+
+<script>
+const D = "M 1080 1090 C 1350 1090 1550 1210 1850 1170 S 2200 1080 2450 1150 S 2900 1250 3240 1190 S 3700 1110 4000 1170 S 4250 1060 4500 995 S 4900 975 5300 1010";
+const D2 = "M 1080 1170 C 1400 1290 1700 1040 2000 1100 S 2500 1300 2900 1250 S 3300 1120 3500 1260 S 4000 1300 4320 1260 S 4800 1345 5300 1345";
+const slides=[...document.querySelectorAll('.s')];
+slides.forEach((s,i)=>{
+  if(i===0) return;
+  const dark = s.id==='s4';
+  const ink = dark? '#D2AE95' : '#2B211B';
+  const NS='http://www.w3.org/2000/svg';
+  const svg=document.createElementNS(NS,'svg');
+  svg.setAttribute('class','line'); svg.setAttribute('viewBox','0 0 5400 1350');
+  svg.style.width='5400px'; svg.style.left=(-i*1080)+'px';
+  svg.innerHTML=`
+   <defs>
+    <filter id="pen${i}" x="-5%" y="-50%" width="110%" height="200%">
+      <feTurbulence type="fractalNoise" baseFrequency="1.6" numOctaves="2" seed="${i}" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="1.6"/>
+    </filter>
+    <filter id="soft${i}" x="-5%" y="-50%" width="110%" height="200%">
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" seed="${i+7}" result="t"/>
+      <feColorMatrix in="t" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 2.2 -.6" result="g"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="16" result="b"/>
+      <feComposite in="b" in2="g" operator="in"/>
+    </filter>
+   </defs>
+   <g opacity="${dark?.5:.9}">
+    <path d="${D}" fill="none" stroke="${ink}" stroke-width="46" opacity="${dark?.16:.13}" transform="translate(0,26)" filter="url(#soft${i})"/>
+    <path d="${D2}" fill="none" stroke="${ink}" stroke-width="1.3" opacity=".45" filter="url(#pen${i})"/>
+    <path d="${D}" fill="none" stroke="${ink}" stroke-width="2.4" opacity=".85" filter="url(#pen${i})" stroke-linecap="round"/>
+    ${i===4?`<circle cx="5300" cy="1010" r="7" fill="${ink}"/>`:''}
+   </g>`;
+  s.appendChild(svg);
+});
+const tmp=document.createElementNS('http://www.w3.org/2000/svg','path'); tmp.setAttribute('d',D);
+const sv=document.createElementNS('http://www.w3.org/2000/svg','svg'); sv.style.position='absolute'; sv.appendChild(tmp); document.body.appendChild(sv);
+const L=tmp.getTotalLength();
+function yAt(x){let lo=0,hi=L;for(let k=0;k<40;k++){const m=(lo+hi)/2;tmp.getPointAtLength(m).x<x?lo=m:hi=m}return tmp.getPointAtLength(lo).y}
+// slide 2: time ticks along the line, fading ("i tako prolaze godine")
+{const s2=document.getElementById('s2'); for(let k=0;k<14;k++){const x=180+k*62, y=yAt(1080+x);
+  const t=document.createElement('div'); t.className='abs'; const op=(1-k/15)*.85;
+  t.style.cssText=`left:${x-1}px;top:${y-(k%4===0?26:15)}px;width:1.6px;height:${k%4===0?52:30}px;background:#5C1A1B;opacity:${op};z-index:4`;
+  s2.appendChild(t);}}
+</script>
+</body></html>
