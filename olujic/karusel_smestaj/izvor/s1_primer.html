@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="sr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="pf_fonts.css">
+<style>
+@font-face{font-family:CorB;src:url(fonts/CormorantGaramond-600.ttf);font-weight:600}
+@font-face{font-family:CorB;src:url(fonts/CormorantGaramond-700.ttf);font-weight:700}
+@font-face{font-family:CorB;src:url(fonts/CormorantGaramond-600i.ttf);font-weight:600;font-style:italic}
+@font-face{font-family:CorB;src:url(fonts/CormorantGaramond-700i.ttf);font-weight:700;font-style:italic}
+:root{--teal:#2FCFB8;--tealL:#A6F5E8;--tealXL:#E3FBF7;--tealD:#0F8F7E;--tealDD:#0B6E61;--lilac:#A48AD0;--lilacL:#E9E1F6;--lilacD:#6E54A8;--ink:#1C2633;--body:#2B3644}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#888}
+.s{width:1080px;height:1350px;position:relative;overflow:hidden;background:#FFFFFF;margin-bottom:20px}
+.s::before{content:"";position:absolute;inset:0;z-index:0;
+  background:radial-gradient(55% 40% at 100% 0%,rgba(166,245,232,.55),rgba(166,245,232,0) 70%),
+             radial-gradient(50% 38% at 0% 100%,rgba(196,178,235,.42),rgba(196,178,235,0) 70%),
+             radial-gradient(40% 30% at 0% 18%,rgba(233,225,246,.6),rgba(233,225,246,0) 70%)}
+.a{position:absolute;z-index:4}
+.brand{position:absolute;z-index:5;left:80px;top:72px;display:flex;align-items:center;gap:16px;font-family:Jost;font-weight:500;font-size:22px;letter-spacing:.34em;text-transform:uppercase;color:var(--tealD)}
+.brand img{height:54px}
+.caps{font-family:Jost;font-weight:500;font-size:26px;letter-spacing:.38em;text-transform:uppercase;color:var(--lilacD)}
+.sr{font-family:CorB;font-weight:600;color:var(--ink);line-height:1.02}
+.em{font-family:CorB;font-weight:700;font-style:italic;color:var(--tealD);line-height:.98}
+.tx{font-family:Jost;font-weight:500;font-size:44px;line-height:1.4;color:var(--body)}
+.chip{display:inline-flex;align-items:center;gap:14px;background:#FFFFFF;border:2px solid var(--tealL);border-radius:60px;padding:16px 30px 16px 18px;
+  font-family:Jost;font-weight:500;font-size:34px;color:var(--ink);box-shadow:0 14px 30px -18px rgba(15,143,126,.45)}
+.chip .ic{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--tealL),var(--lilacL));display:flex;align-items:center;justify-content:center}
+.chip .ic img{height:30px}
+.line{position:absolute;top:0;height:1350px;z-index:2;pointer-events:none}
+.blob{position:absolute;z-index:1;border-radius:50%}
+.arch{position:absolute;z-index:3;overflow:hidden;border-radius:300px 300px 30px 30px;background:#fff;border:3px solid var(--tealL);box-shadow:0 30px 60px -34px rgba(15,110,97,.5)}
+.cta{display:flex;align-items:center;justify-content:center;gap:26px;height:104px;border-radius:60px;background:linear-gradient(90deg,var(--tealD),#1BB39D);
+  color:#fff;font-family:Jost;font-weight:500;font-size:32px;letter-spacing:.32em;text-transform:uppercase;padding:0 54px 0 64px;box-shadow:0 20px 40px -20px rgba(15,143,126,.7)}
+.cta .arr{display:inline-block;width:46px;height:2px;background:#fff;position:relative}
+.cta .arr::after{content:"";position:absolute;right:0;top:-6px;width:12px;height:12px;border-top:2px solid #fff;border-right:2px solid #fff;transform:rotate(45deg)}
+.big3{font-family:CorB;font-weight:700;font-style:italic;font-size:104px;line-height:1.08}
+.chk{display:inline-block;width:62px;height:62px;border-radius:50%;background:var(--tealXL);border:2px solid var(--teal);position:relative;margin-right:26px;vertical-align:14px}
+.chk::after{content:"";position:absolute;left:19px;top:12px;width:16px;height:28px;border-right:4px solid var(--tealD);border-bottom:4px solid var(--tealD);transform:rotate(45deg)}
+.blk{position:absolute;z-index:4;left:80px}
+.blk .u{font-family:PF;font-weight:400;letter-spacing:-.01em;color:var(--ink);line-height:1.02}
+.blk .i{font-family:PF;font-weight:400;font-style:italic;letter-spacing:-.01em;color:var(--tealD);line-height:1.0}
+.blk .i.l{color:var(--lilacD)}
+.blk .r{width:130px;height:2.5px;background:var(--teal);margin:34px 0 30px;border-radius:2px}
+.blk .s2{font-family:PF;font-weight:400;color:var(--body);line-height:1.12}
+.blk .s2 i{color:var(--lilacD)}
+</style></head><body>
+
+<!-- 1 HOOK -->
+<div class="s" id="s1">
+  <div class="brand"><img src="logo_zub.png">Laboratorija Olujić</div>
+  <div class="blk" style="top:180px;width:640px">
+    <div class="u" style="font-size:104px">Ne živite<br>u Beogradu,</div>
+    <div class="i" style="font-size:94px">a želite nove<br>zube kod nas?</div>
+    <div class="r"></div>
+    <div class="s2" style="font-size:62px">Mislili smo<br>i na <i>smeštaj</i><br>i na <i>prevoz.</i></div>
+  </div>
+  <svg class="a" style="left:0;top:0;width:1080px;height:1350px;z-index:1" viewBox="0 0 1080 1350">
+    <defs>
+      <filter id="wc" x="-30%" y="-30%" width="160%" height="160%">
+        <feTurbulence type="fractalNoise" baseFrequency=".012" numOctaves="3" seed="4" result="t"/>
+        <feDisplacementMap in="SourceGraphic" in2="t" scale="70" result="d"/>
+        <feGaussianBlur in="d" stdDeviation="14"/>
+      </filter>
+      <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="2"/><feColorMatrix values="0 0 0 0 .06  0 0 0 0 .5  0 0 0 0 .45  0 0 0 .10 0"/><feComposite in2="SourceGraphic" operator="in"/></filter>
+      <radialGradient id="gT"><stop offset="0" stop-color="#A6F5E8" stop-opacity="1"/><stop offset="1" stop-color="#A6F5E8" stop-opacity="0"/></radialGradient>
+      <radialGradient id="gL"><stop offset="0" stop-color="#C9B8EC" stop-opacity=".9"/><stop offset="1" stop-color="#C9B8EC" stop-opacity="0"/></radialGradient>
+    </defs>
+    <g filter="url(#wc)">
+      <ellipse cx="860" cy="760" rx="250" ry="330" fill="url(#gT)"/>
+      <ellipse cx="700" cy="1010" rx="230" ry="190" fill="url(#gL)"/>
+    </g>
+    <ellipse cx="848" cy="1222" rx="190" ry="13" fill="#0F8F7E" opacity=".12" style="filter:blur(6px)"/>
+  </svg>
+  <svg class="a" style="left:0;top:0;width:1080px;height:1350px;z-index:3;pointer-events:none" viewBox="0 0 1080 1350">
+    <path d="M 405 848 C 520 900 560 1060 690 1172" fill="none" stroke="#6E54A8" stroke-width="3.2" stroke-dasharray="1 15" stroke-linecap="round"/>
+    <path d="M 804 446 C 770 470 700 545 655 640" fill="none" stroke="#0F8F7E" stroke-width="2"/>
+    <circle cx="804" cy="446" r="5" fill="none" stroke="#0F8F7E" stroke-width="2"/>
+  </svg>
+  <img class="a" src="kofer_line.png" style="left:680px;top:407px;width:330px;z-index:3">
+  <div class="a" style="left:590px;top:625px;width:130px;height:130px;border-radius:50%;z-index:2;background:radial-gradient(circle,rgba(201,184,236,.75),rgba(201,184,236,0) 70%)"></div>
+  <img class="a" src="zub_line.png" style="left:606px;top:632px;width:96px;transform:rotate(-12deg);transform-origin:50% 0;z-index:3">
+
+</div>
+
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+const D="M 0 1230 C 300 1230 520 1180 820 1210 S 1300 1290 1600 1240 S 2100 1180 2400 1230 S 2900 1300 3240 1240 S 3700 1180 4000 1230 S 4600 1290 5000 1250 S 5300 1240 5400 1245";
+const D2="M 0 1275 C 350 1310 650 1240 950 1265 S 1450 1320 1800 1290 S 2400 1240 2800 1290 S 3400 1330 3800 1290 S 4500 1250 5000 1300 S 5300 1305 5400 1300";
+document.querySelectorAll('.s').forEach((s,i)=>{
+  const svg=document.createElementNS(NS,'svg'); svg.setAttribute('class','line'); svg.setAttribute('viewBox','0 0 5400 1350');
+  svg.style.width='5400px'; svg.style.left=(-i*1080)+'px';
+  svg.innerHTML=`<path d="${D}" fill="none" stroke="#2FCFB8" stroke-width="3" stroke-linecap="round"/>
+   <path d="${D2}" fill="none" stroke="#A48AD0" stroke-width="2" opacity=".8"/>`;
+  s.appendChild(svg);
+  // small tooth markers riding on the line
+});
+window.READY=1;
+</script>
+</body></html>
