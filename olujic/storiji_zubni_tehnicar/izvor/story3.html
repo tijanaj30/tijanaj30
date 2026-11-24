@@ -1,0 +1,37 @@
+<!doctype html><html lang="sr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts.css"><link rel="stylesheet" href="pf_fonts.css">
+<style>
+:root{--ivory:#F3ECE2;--ink:#2F2119;--body:#3A2A20;--taupe:#8C7B6B;--bordo:#5C1A1B;--gold:#B8935A;--gold2:#9C7A45}
+*{margin:0;padding:0;box-sizing:border-box}body{background:#888}
+.s{width:1080px;height:1920px;position:relative;overflow:hidden;background:var(--ivory)}
+.s::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.55;mix-blend-mode:multiply;z-index:1;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .55  0 0 0 0 .47  0 0 0 0 .38  0 0 0 .16 0'/></filter><rect width='400' height='400' filter='url(%23n)'/></svg>");}
+.s::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 60% at 20% 10%,rgba(255,255,255,.6),rgba(255,255,255,0) 60%)}
+.a{position:absolute;z-index:3}
+.caps{font-family:Jost;font-weight:500;font-size:26px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold2)}
+.u{font-family:PF;font-weight:400;color:var(--ink);line-height:1.06;letter-spacing:-.01em}
+.i{font-family:PF;font-weight:400;font-style:italic;color:var(--bordo);line-height:1.04;letter-spacing:-.01em}
+.arch{position:absolute;z-index:2;overflow:hidden;border-radius:300px 300px 0 0;box-shadow:0 40px 70px -40px rgba(70,45,25,.55)}
+.arch img{width:100%;height:100%;object-fit:cover;object-position:62% 38%;transform:scale(1.45);transform-origin:62% 52%}
+.archline{position:absolute;z-index:2;border:2px solid var(--gold);border-bottom:none;border-radius:320px 320px 0 0}
+.li{font-family:PF;font-style:italic;font-size:60px;color:var(--bordo);line-height:1.5}
+.li b{display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--gold);margin-right:22px;vertical-align:12px}
+.body{font-family:Jost;font-weight:500;font-size:40px;line-height:1.4;color:var(--body)}
+</style></head><body>
+<div class="s">
+  <div class="a caps" style="left:80px;top:230px">Laboratorija Olujić</div>
+  <div class="a u" style="left:80px;top:290px;font-size:96px">Možda me nikada<br>ne upoznate.</div>
+  <div class="a i" style="left:80px;top:505px;font-size:96px">Ali moj rad nosite<br>svaki dan.</div>
+
+  <div class="archline" style="left:438px;top:788px;width:600px;height:880px"></div>
+  <div class="arch" style="left:460px;top:810px;width:556px;height:858px"><img src="foto.jpg"></div>
+
+  <div class="a body" style="left:80px;top:850px;width:340px">Izrađujem vaše</div>
+  <div class="a li" style="left:80px;top:920px"><b></b>krune<br><b></b>mostove<br><b></b>proteze</div>
+  <div class="a" style="left:80px;top:1220px;width:330px;height:2px;background:linear-gradient(90deg,#B8935A,rgba(184,147,90,0))"></div>
+  <div class="a body" style="left:80px;top:1250px;width:350px;font-size:34px;color:#5A4A3E">oblik · boja ·<br>proporcije · detalji</div>
+
+  <div class="a" style="left:80px;top:1700px;width:920px">
+    <div class="u" style="font-size:52px;line-height:1.2">Važno je da znate ne samo ko vam leči zube, već i <span class="i" style="font-size:60px">ko ih izrađuje.</span></div>
+  </div>
+</div></body></html>
