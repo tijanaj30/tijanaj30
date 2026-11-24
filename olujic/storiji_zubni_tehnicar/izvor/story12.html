@@ -26,9 +26,7 @@
   <div class="a caps" style="left:80px;top:200px">Laboratorija Olujić</div>
   <div class="a u" style="left:80px;top:255px;font-size:96px">Da li znate<br>čime se bavi</div>
   <div class="a i" style="left:80px;top:470px;font-size:112px">zubni tehničar?</div>
-  <div class="ring" style="left:640px;top:690px;width:340px;height:340px;background:radial-gradient(circle,#FFFFFF 0%,rgba(255,255,255,.55) 55%,rgba(255,255,255,0) 72%)"></div>
-  <div class="ring d" style="left:618px;top:668px;width:384px;height:384px"></div>
-  <img class="a" src="zub_ink.png" style="left:732px;top:718px;width:158px">
+  <img class="a" src="instr_ink.png" style="left:610px;top:640px;width:420px;transform:rotate(-4deg)">
   <div class="a body" style="left:80px;top:720px;width:520px">Nedavno sam vas to pitala na svom profilu.</div>
   <div class="a body" style="left:80px;top:900px;width:540px">Iznenadilo me je koliko vas je odgovorilo:</div>
   <div class="a i" style="left:80px;top:1030px;font-size:120px">„ne znam.”</div>
@@ -40,8 +38,9 @@
   <div class="a caps" style="left:80px;top:200px">Iza scene</div>
   <div class="a u" style="left:80px;top:255px;font-size:76px">Kada imate problem<br>sa zubima, idete</div>
   <div class="a u" style="left:80px;top:420px;font-size:76px">kod <span class="i" style="font-size:84px">stomatologa.</span></div>
+  <img class="a" src="artik_ink.png" style="left:690px;top:745px;width:330px">
   <div class="a body" style="left:80px;top:545px;width:900px">Sa njim razgovarate, dogovarate terapiju i njemu se obraćate za sve što vas zanima.</div>
-  <div class="a u" style="left:80px;top:745px;font-size:66px;line-height:1.15">Ali kada su vam potrebni<br>novi zubi, iza scene<br>postoji još neko.</div>
+  <div class="a u" style="left:80px;top:745px;font-size:62px;line-height:1.15">Ali kada su vam<br>potrebni novi zubi,<br>iza scene postoji<br>još neko.</div>
   <div id="steps"></div>
   <div class="a c i" style="top:1330px;font-size:130px">Zubni tehničar.</div>
 </div>
@@ -74,7 +73,7 @@ const st=document.getElementById('steps');
 });
 function spark(sid,x,y,r){const s=document.getElementById(sid);const e=document.createElementNS(NS,'svg');e.style.cssText=`position:absolute;z-index:5;left:${x-r}px;top:${y-r}px;width:${2*r}px;height:${2*r}px`;
   e.setAttribute('viewBox','-10 -10 20 20');e.innerHTML='<path d="M0 -10 C1 -2 2 -1 10 0 C2 1 1 2 0 10 C-1 2 -2 1 -10 0 C-2 -1 -1 -2 0 -10Z" fill="#B8935A"/>';s.appendChild(e)}
-spark('s1',960,700,18);spark('s1',990,745,9);spark('s1',630,1010,12);
+spark('s1',1000,650,18);spark('s1',1030,700,9);spark('s1',600,1000,12);
 spark('s2',955,1235,20);spark('s2',990,1190,10);spark('s2',870,1500,12);
 </script>
 </body></html>
