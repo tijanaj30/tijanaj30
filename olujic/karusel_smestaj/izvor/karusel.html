@@ -35,74 +35,91 @@ body{background:#888}
 .big3{font-family:CorB;font-weight:700;font-style:italic;font-size:104px;line-height:1.08}
 .chk{display:inline-block;width:62px;height:62px;border-radius:50%;background:var(--tealXL);border:2px solid var(--teal);position:relative;margin-right:26px;vertical-align:14px}
 .chk::after{content:"";position:absolute;left:19px;top:12px;width:16px;height:28px;border-right:4px solid var(--tealD);border-bottom:4px solid var(--tealD);transform:rotate(45deg)}
+.blk{position:absolute;z-index:4;left:80px}
+.blk .u{font-family:CorB;font-weight:600;color:var(--ink);line-height:1.02}
+.blk .i{font-family:CorB;font-weight:600;font-style:italic;color:var(--tealD);line-height:1.0}
+.blk .i.l{color:var(--lilacD)}
+.blk .r{width:130px;height:2.5px;background:var(--teal);margin:34px 0 30px;border-radius:2px}
+.blk .s2{font-family:CorB;font-weight:600;color:var(--body);line-height:1.12}
+.blk .s2 i{color:var(--lilacD)}
 </style></head><body>
 
 <!-- 1 HOOK -->
 <div class="s" id="s1">
   <div class="brand"><img src="logo_zub.png">Laboratorija Olujić</div>
-  <div class="a sr" style="left:80px;top:200px;font-size:124px">Ne živite<br>u Beogradu?</div>
-  <div class="a tx" style="left:84px;top:470px;width:560px">Novi zubi kod nas –</div>
-  <div class="a em" style="left:80px;top:530px;font-size:112px;width:600px">bez brige<br>o smeštaju<br>i prevozu.</div>
-  <div class="blob" style="left:640px;top:520px;width:400px;height:400px;background:radial-gradient(circle,rgba(166,245,232,.75),rgba(166,245,232,0) 70%)"></div>
-  <div class="blob" style="left:520px;top:780px;width:300px;height:300px;background:radial-gradient(circle,rgba(196,178,235,.6),rgba(196,178,235,0) 70%)"></div>
-  <img class="a" src="kofer_t.png" style="left:735px;top:500px;width:220px">
-  <img class="a" src="zub_t.png" style="left:600px;top:830px;width:118px;transform:rotate(-8deg)">
+  <div class="blk" style="top:180px;width:640px">
+    <div class="u" style="font-size:104px">Ne živite<br>u Beogradu,</div>
+    <div class="i" style="font-size:108px">a želite nove<br>zube kod nas?</div>
+    <div class="r"></div>
+    <div class="s2" style="font-size:62px">Mislili smo<br>i na <i>smeštaj</i><br>i na <i>prevoz.</i></div>
+  </div>
+  <div class="blob" style="left:640px;top:560px;width:400px;height:400px;background:radial-gradient(circle,rgba(166,245,232,.75),rgba(166,245,232,0) 70%)"></div>
+  <div class="blob" style="left:560px;top:820px;width:300px;height:300px;background:radial-gradient(circle,rgba(196,178,235,.6),rgba(196,178,235,0) 70%)"></div>
+  <img class="a" src="kofer_t.png" style="left:760px;top:560px;width:215px">
+  <img class="a" src="zub_t.png" style="left:640px;top:880px;width:112px;transform:rotate(-8deg)">
 </div>
 
 <!-- 2 SMESTAJ -->
 <div class="s" id="s2">
   <div class="brand"><img src="logo_zub.png">Smeštaj</div>
-  <div class="a sr" style="left:80px;top:190px;font-size:104px">Spavate na<br>istom spratu</div>
-  <div class="a em" style="left:80px;top:400px;font-size:104px">gde je i ordinacija.</div>
-  <div class="arch" style="left:80px;top:580px;width:500px;height:560px;background:linear-gradient(180deg,var(--tealXL),#fff)"><img src="soba_t.png" style="position:absolute;left:-10px;top:120px;width:520px"></div>
-  <div class="a" style="left:640px;top:610px;display:flex;flex-direction:column;gap:22px">
-    <div class="chip"><span class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0F8F7E" stroke-width="2"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>Centar Beograda</div>
-    <div class="chip"><span class="ic"><img src="zub_t.png"></span>Isti sprat</div>
+  <div class="blk" style="top:180px;width:940px">
+    <div class="u" style="font-size:96px">Spavate</div>
+    <div class="i" style="font-size:116px">na istom spratu</div>
+    <div class="u" style="font-size:96px">gde je i ordinacija,</div>
+    <div class="s2" style="font-size:62px;margin-top:14px">u samom centru Beograda.</div>
+    <div class="r"></div>
   </div>
-  <div class="a sr" style="left:640px;top:870px;width:380px;font-size:66px;line-height:1.05">Od sobe do stolice – <i style="font-style:italic;color:var(--lilacD)">par koraka.</i></div>
+  <div class="arch" style="left:560px;top:690px;width:440px;height:500px;background:linear-gradient(180deg,var(--tealXL),#fff)"><img src="soba_t.png" style="position:absolute;left:-8px;top:110px;width:460px"></div>
+  <div class="blk" style="top:760px;width:440px">
+    <div class="s2" style="font-size:66px">Od sobe<br>do stolice –</div>
+    <div class="i l" style="font-size:96px">par koraka.</div>
+  </div>
 </div>
 
 <!-- 3 PREVOZ -->
 <div class="s" id="s3">
   <div class="brand"><img src="logo_zub.png">Prevoz</div>
-  <div class="a sr" style="left:80px;top:190px;font-size:112px">Treba vam<br>prevoz?</div>
-  <div class="a em" style="left:80px;top:420px;font-size:124px">Organizujemo ga.</div>
-  <div class="a tx" style="left:84px;top:580px;width:900px">Po potrebi organizujemo i prevoz, da o putu ne morate da brinete.</div>
-  <img class="a" src="auto_t.png" style="left:70px;top:880px;width:560px">
+  <div class="blk" style="top:180px;width:940px">
+    <div class="u" style="font-size:100px">Treba vam prevoz?</div>
+    <div class="i" style="font-size:132px">Organizujemo ga.</div>
+    <div class="r"></div>
+    <div class="s2" style="font-size:64px">Po potrebi brinemo i o tome,<br><i>da o putu ne morate da mislite.</i></div>
+  </div>
+  <img class="a" src="auto_t.png" style="left:70px;top:860px;width:560px">
   <svg class="a" style="left:0;top:0;width:1080px;height:1350px;z-index:3" viewBox="0 0 1080 1350">
-    <path d="M 620 1090 C 720 1100 780 1040 860 990" fill="none" stroke="#6E54A8" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"/>
+    <path d="M 620 1070 C 720 1080 780 1020 860 975" fill="none" stroke="#6E54A8" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"/>
   </svg>
-  <div class="a" style="left:820px;top:780px;width:170px;height:215px">
+  <div class="a" style="left:820px;top:765px;width:170px;height:215px">
     <svg width="170" height="215" viewBox="0 0 170 215"><path d="M85 210 C 85 210 10 130 10 82 A75 75 0 0 1 160 82 C 160 130 85 210 85 210Z" fill="#fff" stroke="#0F8F7E" stroke-width="4"/><circle cx="85" cy="82" r="52" fill="#E3FBF7"/></svg>
     <img src="zub_t.png" style="position:absolute;left:62px;top:40px;height:84px">
   </div>
-  <div class="a" style="left:800px;top:1005px;width:210px;text-align:center;font-family:CorB;font-weight:600;font-style:italic;font-size:44px;color:var(--tealD)">ordinacija</div>
+  <div class="a" style="left:800px;top:990px;width:210px;text-align:center;font-family:CorB;font-weight:600;font-style:italic;font-size:44px;color:var(--tealD)">ordinacija</div>
 </div>
 
 <!-- 4 SLOBODNO VREME -->
 <div class="s" id="s4">
   <div class="brand"><img src="logo_zub.png">Između termina</div>
-  <div class="a sr" style="left:80px;top:190px;font-size:100px">Beograd vam je na</div>
-  <div class="a em" style="left:80px;top:300px;font-size:112px">nekoliko minuta<br>šetnje.</div>
-  <div class="a" style="left:80px;top:560px;display:flex;flex-direction:column;gap:20px">
-    <div class="chip"><span class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0F8F7E" stroke-width="2"><path d="M4 20h16M6 20V10l6-5 6 5v10M10 20v-5h4v5"/></svg></span>Znamenitosti</div>
-    <div class="chip"><span class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0F8F7E" stroke-width="2"><path d="M7 3v8M5 3v5a2 2 0 0 0 4 0V3M7 11v10M16 3c-2 2-2 6 0 8v10"/></svg></span>Restorani</div>
-    <div class="chip"><span class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0F8F7E" stroke-width="2"><path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9zM16 10h2a2 2 0 0 1 0 4h-2M8 3v3M12 3v3"/></svg></span>Kafići</div>
+  <div class="blk" style="top:180px;width:940px">
+    <div class="u" style="font-size:96px">Beograd vam je</div>
+    <div class="i" style="font-size:112px">na nekoliko<br>minuta šetnje.</div>
+    <div class="r"></div>
+    <div class="s2" style="font-size:62px;width:540px">Znamenitosti,<br>restorani, kafići –<br><i>a mi vam rado<br>preporučimo gde<br>da provedete<br>slobodno vreme.</i></div>
   </div>
-  <img class="a" src="pobednik_t.png" style="left:560px;top:470px;width:470px">
-  <div class="a tx" style="left:84px;top:960px;width:900px">A mi ćemo vam rado preporučiti <b style="color:var(--lilacD);font-weight:600">kako da provedete slobodno vreme.</b></div>
+  <img class="a" src="pobednik_t.png" style="left:600px;top:600px;width:440px">
 </div>
 
 <!-- 5 ZAVRSNICA -->
 <div class="s" id="s5">
-  <img class="a" src="logo.png" style="left:80px;top:80px;width:220px">
-  <div class="a tx" style="left:84px;top:330px;width:900px">Od dolaska do završetka terapije, da se osećate:</div>
-  <div class="a big3" style="left:80px;top:470px;color:var(--tealD)"><span class="chk"></span>sigurno,</div>
-  <div class="a big3" style="left:80px;top:590px;color:var(--lilacD)"><span class="chk"></span>prijatno,</div>
-  <div class="a big3" style="left:80px;top:710px;color:var(--tealD)"><span class="chk"></span>zbrinuto.</div>
-  <img class="a" src="zub_t.png" style="left:820px;top:430px;width:170px;transform:rotate(10deg);opacity:.9">
-  <div class="a cta" style="left:80px;top:1010px">Pišite nam <span class="arr"></span></div>
-  <div class="a" style="left:86px;top:1140px;font-family:CorB;font-weight:600;font-style:italic;font-size:48px;color:var(--lilacD)">Mi brinemo o svemu ostalom.</div>
+  <img class="a" src="logo.png" style="left:80px;top:80px;width:200px">
+  <div class="blk" style="top:330px;width:940px">
+    <div class="u" style="font-size:80px">Od dolaska do kraja terapije</div>
+    <div class="s2" style="font-size:62px;margin-top:6px">želimo da se osećate</div>
+    <div class="i" style="font-size:112px;margin-top:20px;line-height:1.1"><span class="chk"></span>sigurno,<br><span class="chk"></span><span style="color:var(--lilacD)">prijatno</span><br><span class="chk"></span>i zbrinuto.</div>
+    <div class="r"></div>
+  </div>
+  <img class="a" src="zub_t.png" style="left:830px;top:600px;width:160px;transform:rotate(10deg);opacity:.9">
+  <div class="a cta" style="left:80px;top:1040px">Pišite nam <span class="arr"></span></div>
+  <div class="a" style="left:86px;top:1168px;font-family:CorB;font-weight:600;font-style:italic;font-size:48px;color:var(--lilacD)">Mi brinemo o svemu ostalom.</div>
 </div>
 
 <script>
