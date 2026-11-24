@@ -52,7 +52,7 @@ For long talking-head interviews (sofa / window), split into separate reels. Scr
 - Audience is older: body text Jost 400 ≈45px in dark ink #43342A, headlines ≥ 90px; small caps labels 26px.
 - **Never put page numbers or numbered labels anywhere** (no "01 — 08", no "01 · Naslov") — in any deliverable.
 - Small illustrations are drawn on the graphite line: dots growing in size ("sitnicu po sitnicu"), labelled points (Danas → Sutra), rising sun on the line (juče → danas).
-- Headline typography (client's own inspiration): all-serif statements — upright Cormorant 600 lines, the key phrase in larger italic (accent colour), then upright continuation, closed by a short thin rule. Avoid sans paragraphs in headline blocks.
+- Headline typography (client's own inspiration, font = Playfair Display 400 + italic): all-serif statements — upright Playfair lines, the key phrase in larger italic (accent colour), then upright continuation, closed by a short thin rule. Avoid sans paragraphs in headline blocks.
 - Second palette for service/info posts: white + light teal #A6F5E8 / dark teal #0F8F7E + light lilac / #6E54A8, tooth from the logo as a marker on every slide (`olujic/karusel_smestaj`).
 - CTA: wide bordo pill button "Pišite mi" (Jost 300 light caps + thin arrow) with a bordo italic tagline under it.
 - Source: `olujic/karusel_tihe_promene/izvor/karusel3.html` (render with `render3.js`, Playwright, 1080×1350).
