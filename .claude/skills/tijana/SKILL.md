@@ -7,13 +7,15 @@ description: Edit Tijana's own TikTok/Instagram content — first format is fast
 
 The user speaks Serbian; reply in Serbian. These are Tijana's own videos (not a client).
 
+**Rule for editing this skill:** add or change anything here ONLY after Tijana explicitly confirms a result is what she wanted. Drafts, experiments and her corrections-in-progress stay out of the skill (keep them in the work folder or `plan/`). When she approves, write in only the final approved rules, not the history of fixes.
+
 ## Inspiration (what the format is)
 Reference TikToks: Gymshark hauls (`vt.tiktok.com/ZSsAjW6Ny`, `vt.tiktok.com/ZSsA6h4BH`).
 - Locked camera from above/at an angle on a clean surface (sofa, bed). Hands tear bags, items are **thrown/dropped into frame** one by one, the pile grows, last shot = full flat-lay.
 - Very fast: a cut about every **1 s** (2 beats at 120 BPM), cuts land on the beat; no talking.
 - One small white text line on screen for the whole video, plus a trending sound.
 
-## Approved rules (v1, Nov 2026)
+## Working rules – v1 draft (NOT yet approved by Tijana; replace with the approved version once she confirms)
 - **Include ALL gear found in the raw footage** — every item must appear at least once (bag, box, shoes, each packaged piece, each unpacked piece, final pile). Make an inventory before cutting.
 - Order = story: brand bag → box opened → shoes → packaged items dropping → unpacking each colour group → final pile build-up, end on the full pile with the shoes on top (hold ~2 s).
 - Each cut starts with motion (item entering / landing), never on an empty sofa for more than a few frames. Check a start/mid/end contact sheet of every cut and shift in-points.
