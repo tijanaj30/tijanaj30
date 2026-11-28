@@ -6,8 +6,10 @@ edl = json.load(open(sys.argv[1])); RAW = sys.argv[2]; OUT = sys.argv[3]
 os.makedirs(f'{OUT}/seg', exist_ok=True)
 zoom = 0.035   # gentle push-in per shot, alternating direction for energy
 # iPhone footage is HDR (HLG / BT.2020, 10-bit): tone-map to SDR BT.709 or colours look pale
-TONEMAP = ("zscale=tin=arib-std-b67:min=bt2020nc:pin=bt2020:rin=tv:t=linear:npl=203,format=gbrpf32le,"
-           "zscale=p=bt709,tonemap=mobius:param=0.3:desat=0,zscale=t=bt709:m=bt709:r=tv,format=yuv420p,")
+# grade matched to Tijana's own iPhone photo of the same jackets (deep berry, steel blue, neutral cream - never pale, never neon)
+TONEMAP = ("zscale=tin=arib-std-b67:min=bt2020nc:pin=bt2020:rin=tv:t=linear:npl=100,format=gbrpf32le,"
+           "zscale=p=bt709,tonemap=hable:desat=0,zscale=t=bt709:m=bt709:r=tv,format=yuv420p,"
+           "eq=gamma=0.75:saturation=0.82,colorbalance=rm=-0.02:gm=-0.01:bm=0.02,")
 def is_hlg(src):
     r = subprocess.run(['ffprobe', '-v', 'error', '-select_streams', 'v:0', '-show_entries', 'stream=color_transfer',
                         '-of', 'csv=p=0', src], capture_output=True, text=True).stdout
